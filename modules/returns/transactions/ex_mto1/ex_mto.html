@@ -1,0 +1,71 @@
+<form id="dataform">
+	<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center" class="tdoptions">
+				<table border="0"class="label_text">
+					<tr>
+						<td>MTO NO.</td>
+						<td>
+							:<input type="text" id="txtmtono" name="txtmtono" placeholder="MTO No." class="centered">
+						</td>
+					</tr>
+					<tr>
+						<td>STATUS</td>
+						<td>
+							:<select id="selstatus" name="selstatus">
+								<option value=""><-- PLEASE SELECT --></option>
+								<option value="SAVED">SAVED</option>
+								<option value="UPDATED">UPDATED</option>
+								<option value="POSTED">POSTED</option>
+								<option value="PRINTED">PRINTED</option>
+								<option value="TRANSMITTED">TRANSMITTED</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>DATE TYPE</td>
+						<td>
+							:<select id="seldtype" name="seldtype">
+								<option value="ADDDATE">SAVED</option>
+								<option value="EDITDATE">UPDATED</option>
+								<option value="POSTDATE">POSTED</option>
+								<option value="PRINTDATE">PRINTED</option>
+								<option value="TRANSMITTED_DT">TRANSMITTED</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>DATE RANGE</td>
+						<td>
+							:<input type="text" name="mtodfrom" id="mtodfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+						 	<input type="text" name="mtodto" 	id="mtodto" 	class="dates"	value="" size="10"  placeholder = "To"	>
+						</td>
+					</tr>
+				<!--	<tr>
+						<td>DESTINATION</td>
+						<td>:
+							<label for="rdofillingbin">	<input type="radio" name="rdodestination" 	id="rdofillingbin" 	value="FILLING BIN" 	size="10">FILLING BIN</label>
+						 	<label for="rdoraw">		<input type="radio" name="rdodestination" 	id="rdoraw" 		value="RAW" 			size="10">RAW</label>
+						</td>
+					</tr>-->
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<input type="button" name="btnreport" id="btnreport" value="SEARCH" class="small_button">
+							<input type="button" name="btncreate" id="btncreate" value="CREATE" class="small_button">
+						</td>
+					</tr>
+				</table>
+				<br>
+				<div id="divdebug"></div>
+				<div id="divloader" style="display:none;" align="center"><img src="/wms/images/loading/animated-loading.gif" width="100%"><p>Please wait...</p></div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divrtnmto"><?php echo getTBLprev(); ?></div>
+			</td>
+		</tr>
+	</table>
+</form>
+<?php include($_SERVER['DOCUMENT_ROOT']."/wms/modules/returns/transactions/ex_mto/ex_mtoUI.php"); ?>

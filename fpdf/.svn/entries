@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2008-03-04T01:19:30.323792Z"
+   url="svn://192.168.204.181/dakila/sdiv2/maintenance/fpdf"
+   last-author="mrf"
+   kind="dir"
+   uuid="1c746182-051b-419b-9641-f2377121976d"
+   repos="svn://192.168.204.181/dakila/sdiv2"
+   revision="1"/>
+<entry
+   committed-rev="1"
+   name="session.inc.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="e7bc3a93ddc81c6d111c167debcb0a42"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="template.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="fd55b6f5c58f27404e1db511913def5f"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="vmfunctions.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="e994c8177dcd38085e5de7e49a5cb2be"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="pdml.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="6446e3f6896dbaa4eaf59427f8331efe"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="vmpdf.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="8bd40b55cf5f8e22e62e4f6c2977f766"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="fpdf_OLD.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="4a900c252c9cfad3b85ebe7601c5b2b1"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="fpdf.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="5c03145881197676c7f4e85dd7aaf896"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="fpdf_010907.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="fc0d581d5740b4327a54e4b559417d41"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   name="font"
+   kind="dir"/>
+</wc-entries>

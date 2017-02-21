@@ -1,0 +1,536 @@
+<div id="dialog_add" title="ADD USER" >
+<form id="frmUserConfig" name="frmUserConfig" method="POST" action="<?php echo $_SERVER['PHP_SELF']?>">
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+	<tr>
+		<td colspan="4">
+			<div class="ui-widget" id="passerror" style="display:none">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+					<strong>Alert:</strong> Password did not match</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr >
+		<td width="25%">&nbsp;</td>
+		<!--<td height="30px" align="right" width="25%" class="label_text">ID NUMBER</td>
+		<td align="left" width="25%">
+			&nbsp;: <input type="text" name="txtIdNo" id="txtIdNo" class="textbox2"style="width:75%; text-align:center;" readonly>
+		</td>-->
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%">&nbsp;</td>
+		<td height="30px" align="right" width="25%" class="label_text">USERNAME</td>
+		<td align="left" width="25%">&nbsp;:
+			<input type="text" id="txtUserName" name="txtUserName" style="width:75%; text-align:center;">
+		</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%" height="">&nbsp;</td>
+		<td height="30px" align="right" class="label_text">PASSWORD</td>
+		<td align="left">&nbsp;:
+			<input type="text" id="txtPass" name="txtPass" style="width:75%; text-align:center;">
+		</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center">
+			<hr>
+		</td>
+	</tr>
+	<tr>
+		<td height="30px" align="left" class="label_text" colspan="2">PERSONAL INFO :</td>
+	</tr>
+	<tr>
+		<td align="right" width="25%" class="label_text">
+			Name&nbsp;:&nbsp;
+		</td>
+		<td align="left" width="25%" class="label_text">
+			<input type="text" id="txtName" name="txtName" style="width:90%; text-align:center;">
+		</td>
+		<td align="right" width="25%" height="30px" class="label_text">
+			Department&nbsp;&nbsp;:&nbsp;
+		</td>
+		<td width="25%" align="left">
+			<select name="selDept" id="selDept" style="width:85%;text-align:center;">
+				<option value=""></option>
+				<option value="Accounting">Accounting</option>
+				<option value="HRGA">HRGA</option>
+				<option value="IT">IT</option>
+				<option value="LMC">LMC</option>
+				<option value="Marketing">Marketing</option>
+				<option value="MPC">MPC</option>
+				<option value="Product Planner">Product Planner</option>
+				<option value="Sales">Sales</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" width="25%" height="30px" class="label_text">
+			User Level&nbsp;&nbsp;:&nbsp;
+		</td>
+		<td width="25%" align="left">
+			<select name="selUserLevel" id="selUserLevel" style="width:85%;text-align:center;">
+				<option value=""></option>
+				<option value="Admin">Admin</option>
+				<option value="User">User</option>
+				<!--<option value="Officer">Officer</option>
+				<option value="Supervisor">Supervisor</option>
+				<option value="Employee">Employee</option>
+				<option value="Agency">Agency</option>-->
+			</select>
+		</td>
+		<td align="right" width="25%" height="30px" class="label_text">
+			Status&nbsp;&nbsp;:&nbsp;
+		</td>
+		<td width="25%" align="left">
+			<select name="selStatus" id="selStatus" style="width:85%;text-align:center;">
+				<option value=""></option>
+				<option value="Y">Active</option>
+				<option value="N">Inactive</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center">
+			<hr>
+		</td>
+	</tr>
+	<tr>
+		<td height="30px" align="left" class="label_text" colspan="2">ACCESS MODULE :</td>
+	</tr>
+	<tr>
+		<td colspan="6">
+			<div id="dialog_module" title="Access Module">
+				<ul>
+					<li><a href="#tabs-1">NBS-PL</a></li>
+					<li><a href="#tabs-2">REPORTS</a></li>
+					<li><a href="#tabs-3">TIANGGE</a></li>
+					<li><a href="#tabs-4">ITEM ASSEMBLY</a></li>
+					<li><a href="#tabs-5">CONFIRMED DELIVERY</a></li>
+					<li><a href="#tabs-6">INVENTORY ADJ</a></li>
+					<li><a href="#tabs-7">RECEIVING FORM</a></li>
+					<li><a href="#tabs-8">INVOICE GENERATION</a></li>
+					<li><a href="#tabs-9">MAINTENANCE</a></li>
+					<li><a href="#tabs-10">RETURNS</a></li>
+					<li><a href="#tabs-11">USER MAINTENANCE</a></li>
+				</ul>
+				<div id="tabs-1">
+					<span class="label_text"><input type="checkbox" id="chkNBSPL" name="access[]" value="1"><b>NBS-PL</span>
+				</div>
+				<div id="tabs-2">
+				<table width="100%" class="label_text">
+					<tr>
+						<td><input type="checkbox" id="chkRepII" name="access[]" value="4">Item Inquiry</td><td><strong>SEASON:</strong></td><td><strong>CONFIRMED DELIVERIES:</strong></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRepTGAS" name="access[]" value="5">TGAS Download</td><td><input type="checkbox" id="chkRepCH" name="access[]" value="2">Christmas</td><td><input type="checkbox" id="chkRepSS" name="access[]" value="6">SKU SUMMARY</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkOrderStat" name="access[]" value="22">Order Status</td><td><input type="checkbox" id="chkRepVA" name="access[]" value="3">Valentines</td><td><input type="checkbox" id="chkRepSI" name="access[]" value="7">STF / INV</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkDelRet" name="access[]" value="8">Deliveries/Return</td><td><input type="checkbox" id="chkRepBTS" name="access[]" value="21">Back-To-School</td><td></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td><td><input type="checkbox" id="chkRepMothers" name="access[]" value="27">Mother's Day</td><td>&nbsp;</td>
+					</tr>
+				</table>
+				</div>
+				<div id="tabs-3">
+					<span class="label_text"><input type="checkbox" id="chkTiaTR" name="access[]" value="9">Transaction&nbsp;<br>
+					<input type="checkbox" id="chkTiaRE" name="access[]" value="10">Report</span>
+				</div>
+				<div id="tabs-4">
+					<span class="label_text"><input type="checkbox" id="chkIA" name="access[]" value="11" ><b>ITEM ASSEMBLY</b></span>
+				</div>
+				<div id="tabs-5"><span class="label_text">
+<!--					<input type="checkbox" id="chkConfDel" name="access[]" value="12"><b>CONFIRMED DELIVERY</b>-->
+					<table border="0" width="100%" class="label_text" >
+						<tr>
+							<td width="50" valign="middle">TRANSACTION:</td><td width="50%">REPORTS:</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="chkCD_STFINV" name="access[]" value="23">&nbsp;STF/INVOICE</td><td height="30%"><input type="checkbox" id="chkCD_Transmit" name="access[]" value="25">&nbsp;Transmittal</td>
+						</tr>
+						<tr>
+							<td valign="middle"><input type="checkbox" id="chkCD_REFDOC" name="access[]" value="24">&nbsp;REF DOC</td><td><input type="checkbox" id="chkCD_Summary" name="access[]" value="26">&nbsp;Summary</td>
+						</tr>
+					</table>
+					</span>
+				</div>
+				<div id="tabs-6"><span class="label_text">
+					<input type="checkbox" id="chkINV_ADJTrans" name="access[]" value="16" >TRANSACTION<BR>
+<!--					<input type="checkbox" id="chkRet_Tr_Sca" name="access[]" value="13">MPOS SCANNING&nbsp;<br><br>-->
+					<input type="checkbox" id="chkINV_ADJRep" name="access[]" value="17" >REPORTS<BR>
+<!--					<input type="checkbox" id="chkRet_Rep_Moni" name="access[]" value="14">MPOS MONITORING-->
+				</span>
+				</div>
+				<div id="tabs-7"><span class="label_text">
+					<input type="checkbox" id="chkReceivingForm" name="access[]" value="18" >RECEIVING FORM
+					</span>
+				</div>
+				<div id="tabs-8"><span class="label_text">
+						MAINTENANCE
+					</span>
+				</div>
+				<div id="tabs-9"><span class="label_text">
+					<input type="checkbox" id="chkNonMtoItms" name="access[]" value="20" >NON-MTO ITEMS MAINTENANCE
+					</span>
+				</div>
+				<div id="tabs-10"><span class="label_text">
+				<table width="100%" class="label_text">
+					<tr>
+						<td>TRANSACTION:</td><td>REPORTS:</td><td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRet_Tr_Sca" name="access[]" value="13">MPOS SCANNING</td>
+						<td><input type="checkbox" id="chkRet_Rep_Moni" name="access[]" value="14">MPOS MONITORING</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRet_Trans_RetMTO" name="access[]" value="31">RETURNS MTO</td>
+						<td><input type="checkbox" id="chkRet_Rep_PerItem" name="access[]" value="15">MPOS MONITORING PER ITEM</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRet_Tr_ExMto2" name="access[]" value="13">EXCLUSIVE MTO</td>
+						<td><input type="checkbox" id="chkMposMoniPerSr" name="access[]" value="19" >MPOS MONITORING PER SR</span></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRet_Tr_Inv2" name="access[]" value="13">INVENTORY</td>
+						<td><input type="checkbox" id="chkMposTransmittal" name="access[]" value="29" >MPOS TRANSMITTAL</span></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><input type="checkbox" id="chkMposTransmittalReprint" name="access[]" value="30" >REPRINT MPOS TRANSMITTAL</span></td>
+					</tr>
+				</table>
+		
+				</div>
+				<div id="tabs-11"><span class="label_text">
+				CONFIG<BR>
+					<input type="checkbox" id="chkUserConfig" name="access[]" value="28">Config&nbsp;<br><br>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+</form>
+</div>
+<div id="dialog_edit" title="UPDATE USER" >
+<form id="frmUserConfigEdit" name="frmUserConfigEdit" method="POST" action="<?php echo $_SERVER['PHP_SELF']?>">
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+	<tr>
+		<td colspan="4">
+			<div class="ui-widget" id="passerror" style="display:none">
+				<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+					<strong>Alert:</strong> Password did not match</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	<tr >
+		<td width="25%">&nbsp;</td>
+		<td height="30px" align="right" width="25%" class="label_text">ID NUMBER</td>
+		<td align="left" width="25%">
+			&nbsp;: <input type="text" name="txtIdNoEdit" id="txtIdNoEdit" class="textbox2"style="width:75%; text-align:center;" readonly>
+		</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%">&nbsp;</td>
+		<td height="30px" align="right" width="25%" class="label_text">USERNAME</td>
+		<td align="left" width="25%">&nbsp;:
+			<input type="text" id="txtUserNameEdit" name="txtUserNameEdit" style="width:75%; text-align:center;" readonly>
+		</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="25%" height="">&nbsp;</td>
+		<td height="30px" align="right" class="label_text">PASSWORD</td>
+		<td align="left">&nbsp;:
+			<input type="password" id="txtPassEdit" name="txtPassEdit" style="width:75%; text-align:center;" readonly>
+		</td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center">
+			<hr>
+		</td>
+	</tr>
+	<tr>
+		<td height="30px" align="left" class="label_text" colspan="2">PERSONAL INFO :</td>
+	</tr>
+	<tr>
+		<td align="right" width="25%" class="label_text">
+			Name&nbsp;:&nbsp;
+		</td>
+		<td align="left" width="25%" class="label_text">
+			<input type="text" id="txtNameEdit" name="txtNameEdit" style="width:90%; text-align:center;" readonly>
+		</td>
+		<td align="right" width="25%" height="30px" class="label_text">
+			Department&nbsp;&nbsp;:&nbsp;
+		</td>
+		<td width="25%" align="left">
+			<select name="selDeptEdit" id="selDeptEdit" style="width:85%;text-align:center;" readonly>
+				<option value=""></option>
+				<option value="Accounting">Accounting</option>
+				<option value="HRGA">HRGA</option>
+				<option value="IT">IT</option>
+				<option value="LMC">LMC</option>
+				<option value="Marketing">Marketing</option>
+				<option value="MPC">MPC</option>
+				<option value="Product Planner">Product Planner</option>
+				<option value="Sales">Sales</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" width="25%" height="30px" class="label_text">
+			User Level&nbsp;&nbsp;:&nbsp;
+		</td>
+		<td width="25%" align="left">
+			<select name="selUserLevelEdit" id="selUserLevelEdit" style="width:85%;text-align:center;">
+				<option value=""></option>
+				<option value="Admin">Admin</option>
+				<option value="User" selected>User</option>
+<!--				<option value="Officer">Officer</option>
+				<option value="Supervisor">Supervisor</option>
+				<option value="Employee">Employee</option>
+				<option value="Agency">Agency</option>-->
+			</select>
+		</td>
+		<td align="right" width="25%" height="30px" class="label_text">
+			Status&nbsp;&nbsp;:&nbsp;
+		</td>
+		<td width="25%" align="left">
+			<select name="selStatusEdit" id="selStatusEdit" style="width:85%;text-align:center;">
+				<option value=""></option>
+				<option value="Y">Active</option>
+				<option value="N">Inactive</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center">
+			<hr>
+		</td>
+	</tr>
+	<tr>
+		<td height="30px" align="left" class="label_text" colspan="2">ACCESS MODULE :</td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<div id="dialog_moduleEdit" title="Access Module">
+				<ul>
+					<li><a href="#tabs-1">NBS-PL</a></li>
+					<li><a href="#tabs-2">REPORTS</a></li>
+					<li><a href="#tabs-3">TIANGGE</a></li>
+					<li><a href="#tabs-4">ITEM ASSEMBLY</a></li>
+					<li><a href="#tabs-5">CONFIRMED DELIVERY</a></li>
+					<li><a href="#tabs-6">INVENTORY ADJ</a></li>
+					<li><a href="#tabs-7">RECEIVING FORM</a></li>
+					<li><a href="#tabs-8">INVOICE GENERATION</a></li>
+					<li><a href="#tabs-9">MAINTENANCE</a></li>
+					<li><a href="#tabs-10">RETURNS</a></li>
+					<li><a href="#tabs-11">USER MAINTENANCE</a></li>
+				</ul>
+				<div id="tabs-1">
+					<span class="label_text"><input type="checkbox" id="chkNBSPL2" value="1"><b>NBS-PL</span>
+				</div>
+				<div id="tabs-2">
+				<table width="100%" class="label_text">
+						<tr>
+							<td><input type="checkbox" id="chkRepII2" name="access[]" value="4">Item Inquiry</td><td><b>SEASON:</b></td><td><b>CONFIRMED DELIVERIES:</b></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="chkRepTGAS2" name="access[]" value="5">TGAS Download</td><td><input type="checkbox" id="chkRepCH2" name="access[]" value="2">Christmas</td><td><input type="checkbox" id="chkRepSS2" name="access[]" value="6">SKU SUMMARY</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="chkOrderStat2" name="access[]" value="22">Order Status</td><td><input type="checkbox" id="chkRepVA2" name="access[]" value="3">Valentines</td><td><input type="checkbox" id="chkRepSI2" name="access[]" value="7">STF / INV</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="chkDelRet2" name="access[]" value="8">Deliveries/Return</td><td><input type="checkbox" id="chkRepBTS2" name="access[]" value="21">Back-To-School</td><td></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td><td><input type="checkbox" id="chkRepMothers2" name="access[]" value="27">Mother's Day</td><td></td>
+						</tr>
+					</table>
+			</div>
+				<div id="tabs-3">
+					<span class="label_text"><input type="checkbox" id="chkTiaTR2" name="access[]" value="9">Transaction&nbsp;<br>
+					<input type="checkbox" id="chkTiaRE2" name="access[]" value="10">Report</span>
+				</div>
+				<div id="tabs-4">
+					<span class="label_text"><input type="checkbox" id="chkIA2" name="access[]" value="11" ><b>ITEM ASSEMBLY</b></span>
+				</div>
+				<div id="tabs-5"><span class="label_text">
+<!--					<input type="checkbox" id="chkConfDel" name="access[]" value="12"><b>CONFIRMED DELIVERY</b>-->
+					<table border="0" width="100%" class="label_text" >
+						<tr>
+							<td width="50" valign="middle">TRANSACTION:</td><td width="50%">REPORTS:</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="chkCD_STFINV2" name="access[]" value="23">&nbsp;STF/INVOICE</td><td height="30%"><input type="checkbox" id="chkCD_Transmit2" name="access[]" value="25">&nbsp;Transmittal</td>
+						</tr>
+						<tr>
+							<td valign="middle"><input type="checkbox" id="chkCD_REFDOC2" name="access[]" value="24">&nbsp;REF DOC</td><td><input type="checkbox" id="chkCD_Summary2" name="access[]" value="26">&nbsp;Summary</td>
+						</tr>
+					</table>
+					</span>
+				</div>
+				<div id="tabs-6"><span class="label_text">
+					<input type="checkbox" id="chkINV_ADJTrans2" name="access[]" value="16" >TRANSACTION<BR>
+<!--					<input type="checkbox" id="chkRet_Tr_Sca" name="access[]" value="13">MPOS SCANNING&nbsp;<br><br>-->
+					<input type="checkbox" id="chkINV_ADJRep2" name="access[]" value="17" >REPORTS<BR>
+<!--					<input type="checkbox" id="chkRet_Rep_Moni" name="access[]" value="14">MPOS MONITORING-->
+				</span>
+				</div>
+				<div id="tabs-7"><span class="label_text">
+					<input type="checkbox" id="chkReceivingForm2" name="access[]" value="18" >RECEIVING FORM
+					</span>
+				</div>
+				<div id="tabs-8"><span class="label_text">
+						MAINTENANCE
+					</span>
+				</div>
+				<div id="tabs-9"><span class="label_text">
+					<input type="checkbox" id="chkNonMtoItms2" name="access[]" value="20" >NON-MTO ITEMS MAINTENANCE
+					</span>
+				</div>
+				<div id="tabs-10"><span class="label_text">
+					<table width="100%" class="label_text">
+					<tr>
+						<td>TRANSACTION:</td><td>REPORTS:</td><td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRet_Tr_Sca2" name="access[]" value="13">MPOS SCANNING</td>
+						<td><input type="checkbox" id="chkRet_Rep_Moni2" name="access[]" value="14">MPOS MONITORING</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRet_Trans_RetMTO2" name="access[]" value="31">RETURNS MTO</td>
+						<td><input type="checkbox" id="chkRet_Rep_PerItem2" name="access[]" value="15">MPOS MONITORING PER ITEM</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRet_Tr_ExMto2" name="access[]" value="13">EXCLUSIVE MTO</td>
+						<td><input type="checkbox" id="chkMposMoniPerSr2" name="access[]" value="19" >MPOS MONITORING PER SR</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" id="chkRet_Tr_Inv2" name="access[]" value="13">INVENTORY</td>
+						<td><input type="checkbox" id="chkMposTransmittal2" name="access[]" value="29" >MPOS TRANSMITTAL</span></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><input type="checkbox" id="chkMposTransmittalReprint2" name="access[]" value="30" >REPRINT MPOS TRANSMITTAL</span></td>
+					</tr>
+				</table>
+				</div>
+				<div id="tabs-11"><span class="label_text">
+				CONFIG<BR>
+					<input type="checkbox" id="chkUserConfig2" name="access[]" value="28">Config&nbsp;<br><br>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+</form>
+</div>
+<!--<div id="dialog_module" title="MODULES" >-->
+<div id="dialog_module" title="Access Module">
+	<ul>
+		<li><a href="#tabs-1">NBS-PL</a></li>
+		<li><a href="#tabs-2">REPORTS</a></li>
+		<li><a href="#tabs-3">TIANGGE</a></li>
+		<li><a href="#tabs-4">ITEM ASSEMBLY</a></li>
+		<li><a href="#tabs-5">CONFIRMED DELIVERY</a></li>
+		<li><a href="#tabs-6">RETURNS</a></li>
+	</ul>
+	<div id="tabs-1">
+		<input type="checkbox" id="chkNBSPL" value="NBS_PL"><b>NBS-PL
+	</div>
+	<div id="tabs-2">
+		<input type="checkbox" id="chkRepII" value="Item_Inq">Item Inquiry&nbsp;
+		<input type="checkbox" id="chkRepTGAS" value="TGAS">TGAS Download<br>
+		&nbsp;&nbsp;Season<br>
+		&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chkRepCH" value="Christmas_Alloc">Christmas<br>
+		&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chkRepVA" value="Valentines_Alloc">Valentines<br>
+		&nbsp;&nbsp;Confirmed Deliveries<br>
+		&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chkRepSS" value="SKU_Summary">SKU SUMMARY&nbsp;
+		&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chkRepSI"  value="STF_INV">STF / INV
+	</div>
+	<div id="tabs-3">
+		<input type="checkbox" id="chkTiaTR"  value="TI_Trans">Transaction&nbsp;<br>
+		<input type="checkbox" id="chkTiaRE" value="TI_Rep">Report
+	</div>
+	<div id="tabs-4">
+		<input type="checkbox" id="chkIA" value="Assembly" ><b>ITEM ASSEMBLY</b>
+	</div>
+	<div id="tabs-5">
+		<input type="checkbox" id="chkConfDel" value="Confirmed_Del"><b>CONFIRMED DELIVERY</b>
+	</div>
+	<div id="tabs-6">
+		<input type="checkbox" id="chkRetTR" value="Ret_Trans">Transactions&nbsp;
+		<input type="checkbox" id="chkRetRE" value="Ret_Rep">Reports
+	</div>
+</div>
+<!--</div>-->
+<div id="dialog_moduleEdit" title="Edit Access Module">
+	<ul>
+		<li><a href="#tabs-1">NBS-PL</a></li>
+		<li><a href="#tabs-2">REPORTS</a></li>
+		<li><a href="#tabs-3">TIANGGE</a></li>
+		<li><a href="#tabs-4">ITEM ASSEMBLY</a></li>
+		<li><a href="#tabs-5">CONFIRMED DELIVERY</a></li>
+		<li><a href="#tabs-6">RETURNS</a></li>
+	</ul>
+	<div id="tabs-1">
+		<input type="checkbox" id="chkNBSPL2" value="NBS_PL"><b>NBS-PL
+	</div>
+	<div id="tabs-2">
+		<input type="checkbox" id="chkRepII2" value="Item_Inq">Item Inquiry&nbsp;
+		<input type="checkbox" id="chkRepTGAS2" value="TGAS">TGAS Download<br>
+		&nbsp;&nbsp;Season<br>
+		&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chkRepCH2" value="Christmas_Alloc">Christmas<br>
+		&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chkRepVA2" value="Valentines_Alloc">Valentines<br>
+		&nbsp;&nbsp;Confirmed Deliveries<br>
+		&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chkRepSS2" value="SKU_Summary">SKU SUMMARY&nbsp;
+		&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chkRepSI2"  value="STF_INV">STF / INV
+	</div>
+	<div id="tabs-3">
+		<input type="checkbox" id="chkTiaTR2"  value="TI_Trans">Transaction&nbsp;<br>
+		<input type="checkbox" id="chkTiaRE2" value="TI_Rep">Report
+	</div>
+	<div id="tabs-4">
+		<input type="checkbox" id="chkIA2" value="Assembly" ><b>ITEM ASSEMBLY</b>
+	</div>
+	<div id="tabs-5">
+		<input type="checkbox" id="chkConfDel2" value="Confirmed_Del"><b>CONFIRMED DELIVERY</b>
+	</div>
+	<div id="tabs-6">
+		<input type="checkbox" id="chkRetTR2" value="Ret_Trans">Transactions&nbsp;
+		<input type="checkbox" id="chkRetRE2" value="Ret_Rep">Reports
+	</div>
+</div>
+<div id="dialog_view" title="Access Module">
+<table>
+	<tr>
+		<td>position 0,0</td><td>position 0,1</td><td>position 0,2</td>
+	</tr>
+	<tr>
+		<td>position 1,0</td><td>position 1,1</td><td>position 1,2</td>
+	</tr>
+	<tr>
+		<td>position 2,0</td><td>position 2,1</td><td>position 2,2</td>
+	</tr>
+</table>
+</div>
+<script>
+$('#txtName').keyup(function(){
+    this.value = this.value.toUpperCase();
+});
+$('#txtNameEdit').keyup(function(){
+    this.value = this.value.toUpperCase();
+});
+</script>

@@ -1,0 +1,71 @@
+<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center">
+				<br>
+				<form id="frmsearch">
+				<table border="0"class="label_text">
+					<tr>
+						<td>SKU No.</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtitemno" name="txtitemno" size="10" placeholder='ITEM NO.' class="searchitem centered">
+							<input type="text" id="txtitemdesc" name="txtitemdesc" size="35" placeholder='ITEM DESCRIPTION' class="searchitem centered">
+							<div id="divselitem" class="divsel"></div>
+							<input type="hidden" id="hdnvalitem" name="hdnvalitem" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>P.O. No.</td>
+						<td>:</td>
+						<td><input type="text" id="txtPONO" name="txtPONO"></td>
+					</tr>
+					<tr>
+						<td>Vendor</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtvendorno" name="txtvendorno" size="10" placeholder='CODE' class="searchvend centered">
+							<input type="text" id="txtvendorname" name="txtvendorname" size="35" placeholder='NAME' class="searchvend centered">
+							<div id="divselvend" class="divsel"></div>
+							<input type="hidden" id="hdnval" name="hdnval" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>Transaction No.</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txttrxno" name="txttrxno">
+						</td>
+					</tr>
+					<tr>
+						<td>Status</td>
+						<td>:</td>
+						<td>
+							<select id="selstatus" name="selstatus">
+								<option value=""><-- Please Select --></option>
+								<option value="SAVED">SAVED</option>
+								<option value="POSTED">POSTED</option>
+								<option value="CANCELLED">CANCELLED</option>
+								<option value="CLOSED">CLOSED</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>
+							<button type="button" id="btnsearch" class="btnsearch">Search</button>
+							<button type="button" id="btncreate" class="btnplus">Create</button>
+						</td>
+					</tr>
+				</table>
+				</form>
+				<br>
+				<div id="divdebug"></div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divPOlist"><?php echo getTBLprev(); ?></div>
+			</td>
+		</tr>
+</table>

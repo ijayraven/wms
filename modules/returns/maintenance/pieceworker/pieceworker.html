@@ -1,0 +1,48 @@
+
+<form id="frmasearch">
+	<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center">
+				<br>
+				<table border="0"class="label_text">
+					<tr>
+						<td>Code</td>
+						<td>:</td>
+						<td><input type="text" id="txtcodeS" name="txtcodeS"></td>
+					</tr>
+					<tr>
+						<td>Descrition</td>
+						<td>:</td>
+						<td><input type="text" id="txtdescS" name="txtdesc" size="40S"></td>
+					</tr>
+					<tr>
+						<td>Status</td>
+						<td>:</td>
+						<td>
+							<select id="selstatusS" name="selstatusS">
+								<option value=""><-- Please Select --></option>
+								<option value="ACTIVE">Active</option>
+								<option value="INACTIVE">Inactive</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>
+							<button type="button" id="btnsearch" class="btnsearch">Search</button>
+							<button type="button" id="btncreate" class="btnperson">Create</button>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<div id="divdebug"></div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divPlist"></div>
+			</td>
+		</tr>
+	</table>
+</form>

@@ -1,0 +1,30 @@
+<script type="text/javascript" src="inventory_sku.js"></script>
+<form name="dataform" id="dataform" enctype="multipart/form-data" method="POST">
+	<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center" class="tdoptions">
+				<br>
+				<table border="0"class="label_text">
+					<tr>
+						<td>ITEM</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtitemno" name="txtitemno" size="10" placeholder='ITEM NO.' class="searchitem centered">
+							<input type="text" id="txtitemdesc" name="txtitemdesc" size="35" placeholder='ITEM DESCRIPTION' class="searchitem centered">
+							<div id="divselitem" class="divsel"></div>
+							<input type="hidden" id="hdnvalitem" name="hdnvalitem" value="">
+							<input type="hidden" id="hdnis_exclusive" name="hdnis_exclusive" value="">
+						</td>
+					</tr>
+				</table>
+				<br>
+				<div id="divdebug"></div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divitemdtls"><?php echo getitemdtlstbl(); ?></div>
+			</td>
+		</tr>
+	</table>
+</form>

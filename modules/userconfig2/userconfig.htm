@@ -1,0 +1,739 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en" />
+<meta name="GENERATOR" content="Zend Studio" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link 		href=	"../../includes/JQUERYUI/cupertino/jquery-ui.min.css"	rel	="stylesheet">
+<script 	src	=	"../../includes/JQUERYUI/cupertino/external/jquery/jquery.js"></script>
+<script 	src	=	"../../includes/JQUERYUI/cupertino/jquery-ui.min.js"></script>
+<script 	src	=	"userconfig.js"></script>
+<title>USER CONFIG</title>
+<style type="text/css">
+body {
+	font-size: 60%;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+table {
+	font-size: 1em;
+}
+tr.dtl {
+	color: #336699;
+	font-size: 12px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: bold;
+	padding: 0px;
+}
+
+tr.dtl:hover td { 
+	background: #ceeef9; 
+}
+th.dtl, td.dtl { padding: 0px; text-align: center; border-bottom: 1px solid #ddd;
+}
+
+.div_text_shadow 
+{
+color: #f5f8f9;
+font-size: 20px;
+text-shadow: white 0px 0px 6px;
+}
+.css_button {
+    font-size: 12px bold;
+    font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: normal;
+    text-decoration: inherit;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #3866a3;
+    padding: 3px 8px;
+    text-shadow: 1px 1px 0px #7cacde;
+    -webkit-box-shadow: inset 1px 1px 0px 0px #fff;
+    -moz-box-shadow: inset 1px 1px 0px 0px #fff;
+    box-shadow: inset 1px 1px 0px 0px #fff;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    background: -webkit-linear-gradient(90deg, #468ccf 5%, #63b8ee 100%);
+    background: -moz-linear-gradient(90deg, #468ccf 5%, #63b8ee 100%);
+    background: -ms-linear-gradient(90deg, #468ccf 5%, #63b8ee 100%);
+    background: linear-gradient(180deg, #63b8ee 5%, #468ccf 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#63b8ee",endColorstr="#468ccf");
+}
+.css_button:hover {
+    background: -webkit-linear-gradient(90deg, #63b8ee 5%, #468ccf 100%);
+    background: -moz-linear-gradient(90deg, #63b8ee 5%, #468ccf 100%);
+    background: -ms-linear-gradient(90deg, #63b8ee 5%, #468ccf 100%);
+    background: linear-gradient(180deg, #468ccf 5%, #63b8ee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#468ccf",endColorstr="#63b8ee");
+}
+.css_button:active {
+    position:relative;
+    top: 1px;
+}
+.ui-dialog-titlebar-close {
+	display:none;
+}
+.ui-dialog-title{
+    font-size: 80% !important;
+}
+.ui-dialog .ui-button-text {
+    font-size: 10px;
+    font-style: bold;
+    padding: 8px 8px 8px 8px; /* Or whatever makes it small enough. */
+}
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+}
+#txtPass2:focus 
+{
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid rgba(81, 203, 238, 1);
+}
+#txtPass:focus 
+{
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid rgba(81, 203, 238, 1);
+}
+input[type=text]:focus, textarea:focus {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid rgba(81, 203, 238, 1);
+}
+.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+.ui-widget button{
+	background: #f8dbdb;
+	
+}
+.text_color{
+	background:#FDFACD;
+}
+.label_text{
+	font-size: 11px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: bold;
+	color:#1D5987;
+	
+}
+
+.text_white11 {
+    font-size: 11px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 800;
+	color: #ffffff;
+}
+#dialog-link {
+	padding: 0em 1em 0em 20px;
+	text-decoration: none;
+	position: relative;
+	}
+#dialog-link span.ui-icon {
+	margin: 0 5px 0 0;
+	position: absolute;
+	left: .2em;
+	top: 50%;
+	margin-top: -8px;
+}
+
+</style>
+</head>
+<body>
+
+<table class="" align="center" width="90%" height="50%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td>	
+			<table align="center" border="0" cellpadding="0" cellspacing="0"  height="" width="100%"  style="background-color:#f5f8f9;">
+				<tr>
+					<td style="background-color:#f5f8f9; background-repeat:no-repeat;" width="10" height="5"></td>
+					<td height="5" style="background-color:#f5f8f9; background-repeat:repeat-x;"></td>
+					<td style="background-color:#f5f8f9; background-repeat:no-repeat;" width="10" height="5"></td>
+				</tr>
+				<tr>					
+					<td rowspan="2" width="10" height="100%" style="background-color:#f5f8f9; background-repeat:repeat-y;"></td>					
+					<td height="25" style="font-size: 17px; font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-weight:bold; color:#000000; text-align:center; background-image: url(../../includes/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png); -moz-border-radius: 4px; -webkit-border-radius: 4px; background-position:center;"><span class="div_text_shadow">USER CONFIGURATIONS</span></td>
+					<td rowspan="2" width="10" height="100%" style="background-color:#f5f8f9; background-repeat:repeat-y;"></td>
+				</tr>
+				<tr>
+					<td bgcolor="#f5f8f9" align="center" valign="top">
+						<table border="0" cellpadding="1" cellspacing="0" width="100%" align="center">
+							<tr>
+								<td colspan="2" align="center">&nbsp;&nbsp;
+								<div class="ui-widget" id="searcherror" style="display:none;width:20%;height:25%">
+									<div class="ui-state-error ui-corner-all" style="padding: 0 .7em 0 0;">
+										<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .1em;"></span>
+										<strong>NOTHING TO SEARCH</strong></p>
+									</div>
+								</div>
+								</td>
+							</tr>
+							<tr>
+								<td align="center" colspan="3" class="label_text">
+									<select name="selField" id="selField" size="0">
+<!--										<option value="ID">ID</option>-->
+										<option value="USERNAME">USERNAME</option>
+										<option value="NAME">NAME</option>
+										<option value="DEPT">DEPARTMENT</option>
+										<option value="USERLEVEL">USER LEVEL</option>
+										<option value="STATUS">STATUS</option>
+									</select>
+									
+									<input type="text" id="txtSearch" name="txtSearch"  style="width:15%" onkeypress="if(event.keyCode == 13){return search();}">
+								
+									<button type="button" id="dialog-link" style="border: 0px solid #73AD21;"class="ui-state-default ui-corner-all" onclick="search()"><span class="ui-icon ui-icon-search"></span>SEARCH</button>
+ 								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+<!--									<input type="button" id="btnSearch" name="btnSearch" value="SEARCH" onclick="search();">-->
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<p><button type="button" id="dialog-link" style=" border: 0px solid #73AD21;"class="ui-state-default ui-corner-all" onclick="addUser()"><span class="ui-icon ui-icon-person"></span>ADD USER</button></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<table style="border: 2px solid white; width: 80%;" cellpadding="0" cellspacing="0" width="80%" align="center" height="">
+					 				<tr align="center" bgcolor="Teal">
+					 					<td style="border: 2px solid white;" width="12%" class="text_white11" height="25px"><p>ID</p></td>
+					 					<td style="border: 2px solid white;" width="12%" class="text_white11"><p>USERNAME</p></td>	 								 			 								 		
+					 					<td style="border: 2px solid white;" width="28%" class="text_white11"><p>NAME</p></td>	 								 			 								 		
+					 					<td style="border: 2px solid white;" width="12%" class="text_white11"><p>DEPARTMENT</p></td>	 								 			 								 		
+										<td style="border: 2px solid white;" width="12%" class="text_white11"><p>USER LEVEL</p></td>	 								 			 								 		
+										<td style="border: 2px solid white;" width="12%" class="text_white11"><p>STATUS</p></td>	 								 			 								 		
+					 					<td style="border: 2px solid white;" width="12%" class="text_white11"><p>ACTION</p></td>	 								 			 								 		
+					 				</tr>
+					 			</table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+								<!--235px-->		 		
+						 			<div id="divResult"  style="height:absolute;"> <?php echo $table; ?></div>
+						 		</td>	
+					 		</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>		
+</table>
+<?php include('userconfig_dialog.htm'); ?>
+<div id="dialog_ok" title="Alert" ></div>
+<div id="dialog_ok_cancel" title="Alert" ></div>
+</body>
+</html>
+<script>
+
+$( "#btnSearch" ).button();
+$( "#dialog_module" ).tabs();
+$( "#dialog_moduleEdit" ).tabs();
+$("#dialog_ok").dialog({
+	bgiframe:true, resizable:false, modal:true, autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	buttons: {
+		'OK': function()
+		{
+			$(this).dialog('close');
+			
+		}
+	}
+});
+$("#dialog_add").dialog({
+	bgiframe:true, resizable:false, width:800, modal:true, autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	buttons:
+	{
+		'CLOSE': function()
+		{
+			$('#txtIdNo').val('');
+			$('#txtUserName').val('');
+			$('#txtPass').val('');
+			$('#txtName').val('');
+			$('#selDept').val('');
+			$('#selUserLevel').val('');
+			$('#selStatus').val('');
+			$('#chkNBSPL').attr('checked', false);
+			$('#chkIA').attr('checked', false);
+			$('#chkConfDel').attr('checked', false);
+			$('#chkRepII').attr('checked', false);
+			$('#chkRepTGAS').attr('checked', false);
+			$('#chkRepCH').attr('checked', false);
+			$('#chkRepVA').attr('checked', false);
+			$('#chkRepMothers').attr('checked', false);
+			$('#chkRepSS').attr('checked', false);
+			$('#chkRepSI').attr('checked', false);
+			$('#chkTiaTR').attr('checked', false);
+			$('#chkTiaRE').attr('checked', false);
+			$('#chkRet_Tr_Sca').attr('checked', false);
+			$('#chkRet_Trans_RetMTO').attr('checked', false);
+			$('#chkRet_Rep_Moni').attr('checked', false);
+			$('#chkRet_Rep_PerItem').attr('checked', false);
+			$('#chkDelRet').attr('checked', false);
+			$('#chkOrderStat').attr('checked', false);
+			$('#chkCD_STFINV').attr('checked', false);
+			$('#chkCD_REFDOC').attr('checked', false);
+			$('#chkCD_Transmit').attr('checked', false);
+			$('#chkCD_Summary').attr('checked', false);
+			$('#chkUserConfig').attr('checked', false);
+			$(this).dialog('close');
+			
+		},
+		'ADD USER': function()
+		{
+			
+			var txtIdNo			= $('#txtIdNo').val();
+			var txtUserName		= $('#txtUserName').val();
+			var txtPass			= $('#txtPass').val();
+			var txtName			= $('#txtName').val();
+			var selDept			= $('#selDept').val();
+			var selUserLevel	= $('#selUserLevel').val();
+			var selStatus		= $('#selStatus').val();
+			var errorMsg		= "";
+			var formdata		= $('#frmUserConfig').serialize();
+			if ($('#chkAP').is(":checked") == true)
+			{
+			  var chkAP	= $('#chkAP').val();
+			}
+		
+			if(txtIdNo!='' && txtUserName!='' && txtPass!='' && txtName!='' && selDept!='' && selUserLevel!='')
+			{
+				$.ajax({
+					type : 'POST',
+					data : formdata,
+					url: 'userconfig.php?action=do_add_user&txtIdNo='+txtIdNo+'&txtUserName='+txtUserName+'&txtPass='+txtPass+'&txtName='+txtName+'&selDept='+selDept+'&selUserLevel='+selUserLevel+'&selStatus='+selStatus,
+					success: function(html)
+					{
+						eval(html);
+						$('#dialog_add').dialog('close');
+						$('#dialog_ok').dialog('open');
+						$('#dialog_ok').html('SUCCESSFULLY ADDED!');
+						search();
+					}		
+				})	
+			}
+			else
+			{
+				if(txtIdNo==''){ $('#txtIdNo').removeClass("text_color").addClass("error"); errorMsg += '\t- ID Number<br>'; }else{ $('#txtIdNo').removeClass("error").addClass(""); }
+				if(txtUserName==''){ $('#txtUserName').removeClass("text_color").addClass("error"); errorMsg += '\t- Username<br>'; }else{ $('#txtUserName').removeClass("error").addClass(""); }
+				if(txtPass==''){ $('#txtPass').removeClass("text_color").addClass("error"); errorMsg += '\t- Password<br>'; }else{ $('#txtPass').removeClass("error").addClass(""); }
+				if(txtName==''){ $('#txtName').removeClass("text_color").addClass("error"); errorMsg += '\t- Name<br>'; }else{ $('#txtName').removeClass("error").addClass(""); }
+				if(selDept==''){ $('#selDept').removeClass("text_color").addClass("ui-widget"); errorMsg += '\t- Department<br>'; }else{ $('#selDept').removeClass("errorSel").addClass(""); }
+				if(selUserLevel==''){ $('#selUserLevel').removeClass("text_color").addClass("errorSel"); errorMsg += '\t- User Level<br>'; }else{ $('#selUserLevel').removeClass("errorSel").addClass(""); }
+		
+				if(errorMsg!=""){
+				$('#dialog_ok').dialog('open');
+				$('#dialog_ok').html('MISSING FIELD/S <br>' + errorMsg);	
+				}
+			}
+		}
+	}
+});
+$("#dialog_edit").dialog({
+	bgiframe:true, resizable:false, width:800, modal:true, autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	buttons: {
+	'CLOSE': function()
+		{
+			$('#txtIdNoEdit').val('');
+			$('#txtUserNameEdit').val('');
+			$('#txtPassEdit').val('');
+			$('#txtNameEdit').val('');
+			$('#selDeptEdit').val('');
+			$('#selUserLevelEdit').val('');
+			$('#selStatusEdit').val('');
+			$('#txtPassEdit').removeAttr('disabled');
+			$('#chkNBSPL2').attr('checked', false);
+			$('#chkIA2').attr('checked', false);
+			$('#chkConfDel2').attr('checked', false);
+			$('#chkRepII2').attr('checked', false);
+			$('#chkRepTGAS2').attr('checked', false);
+			$('#chkRepCH2').attr('checked', false);
+			$('#chkRepVA2').attr('checked', false);
+			$('#chkRepMothers2').attr('checked', false);
+			$('#chkRepBTS2').attr('checked', false);
+			$('#chkRepSS2').attr('checked', false);
+			$('#chkRepSI2').attr('checked', false);
+			$('#chkTiaTR2').attr('checked', false);
+			$('#chkTiaRE2').attr('checked', false);
+			$('#chkRetTR2').attr('checked', false);
+			$('#chkRetRE2').attr('checked', false);
+			$('#chkRet_Tr_Sca2').attr('checked', false);
+			$('#chkRet_Tr_ExMto2').attr('checked', false);
+			$('#chkRet_Tr_Inv2').attr('checked', false);
+			$('#chkRet_Tr_Sca2').attr('checked', false);
+			$('#chkRet_Trans_RetMTO2').attr('checked', false);
+			$('#chkRet_Rep_Moni2').attr('checked', false);
+			$('#chkRet_Rep_PerItem2').attr('checked', false);			
+			$('#chkDelRet2').attr('checked', false);	
+			$('#chkOrderStat2').attr('checked', false);	
+			$('#chkCD_STFINV2').attr('checked', false);
+			$('#chkCD_REFDOC2').attr('checked', false);
+			$('#chkCD_Transmit2').attr('checked', false);
+			$('#chkCD_Summary2').attr('checked', false);
+			$('#chkUserConfig2').attr('checked', false);
+			
+			
+			$('#chkINV_ADJTrans2').attr('checked', false);	
+			$('#chkINV_ADJRep2').attr('checked', false);	
+			$('#chkReceivingForm2').attr('checked', false);	
+			$('#chkMposMoniPerSr2').attr('checked', false);	
+			$('#chkMposTransmittal2').attr('checked', false);	
+			$('#chkMposTransmittalReprint2').attr('checked', false);	
+			$('#chkNonMtoItms2').attr('checked', false);	
+			
+
+			$(this).dialog('close');
+		},
+		'UPDATE USER': function()
+		{
+			
+			var txtIdNo				= $('#txtIdNoEdit').val();
+			var txtUserName			= $('#txtUserNameEdit').val();
+			var txtPass				= $('#txtPassEdit').val();
+			var txtNameEdit			= $('#txtNameEdit').val();
+			var selDept				= $('#selDeptEdit').val();
+			var selUserLevel		= $('#selUserLevelEdit').val();
+			var selStatus			= $('#selStatusEdit').val();
+			var errorMsg			= "";
+			var formdata			= $('#frmUserConfigEdit').serialize();
+//			var arrAccess			= new Array();
+			var chkNBSPL2			=	"NO";
+			var chkIA2				=	"NO";
+			var chkConfDel2			=	"NO";
+			var chkRepII2			=	"NO";
+			var chkRepTGAS2			=	"NO";
+			var chkRepCH2			=	"NO";
+			var chkRepVA2			=	"NO";
+			var chkRepMothers2		=	"NO";
+			var chkRepBTS2			=	"NO";
+			var chkRepSS2			=	"NO";
+			var chkRepSI2			=	"NO";
+			var chkTiaTR2			=	"NO";
+			var chkTiaRE2			=	"NO";
+			var chkRet_Tr_Sca2		=	"NO";
+			var chkRet_Tr_ExMto2	=	"NO";
+			var chkRet_Tr_Inv2		=	"NO";
+			var chkRet_Trans_RetMTO2=	"NO";
+			var chkRet_Rep_Moni2	=	"NO";
+			var chkRet_Rep_PerItem2	=	"NO";
+			var chkDelRet2			=	"NO";
+			var chkOrderStat2		=	"NO";
+			
+			var chkCD_STFINV		= 	"NO";
+			var chkCD_REFDOC		= 	"NO";
+			var chkCD_Transmit		= 	"NO";
+			var chkCD_Summary		= 	"NO";
+			var chkUserConfig		= 	"NO";
+			
+			var chkINV_ADJTrans2	=	"NO";
+			var chkINV_ADJRep2		=	"NO";
+			var chkReceivingForm2	=	"NO";
+			var chkMposMoniPerSr2	=	"NO";
+			var chkMposTransmittal2	=	"NO";
+			var chkMposTransmittalReprint2	=	"NO";
+			var chkNonMtoItms2		=	"NO";
+			
+			if ($('#chkNBSPL2').is(":checked") == true)
+			{
+				chkNBSPL2	=	"YES";
+			}
+			if ($('#chkIA2').is(":checked") == true)
+			{
+				chkIA2	=	"YES";
+			}
+			if ($('#chkConfDel2').is(":checked") == true)
+			{
+				chkConfDel2	=	"YES";
+			}
+			if ($('#chkRepII2').is(":checked") == true)
+			{
+				chkRepII2	=	"YES";
+			}
+			if ($('#chkRepTGAS2').is(":checked") == true)
+			{
+				chkRepTGAS2	=	"YES";
+			}
+			if ($('#chkRepCH2').is(":checked") == true)
+			{
+				chkRepCH2	=	"YES";
+			}
+			if ($('#chkRepVA2').is(":checked") == true)
+			{
+				chkRepVA2	=	"YES";
+			}
+			if ($('#chkRepMothers2').is(":checked") == true)
+			{
+				chkRepMothers2	=	"YES";
+			}
+			if ($('#chkRepBTS2').is(":checked") == true)
+			{
+				chkRepBTS2	=	"YES";
+			}
+			if ($('#chkRepSS2').is(":checked") == true)
+			{
+				chkRepSS2	=	"YES";
+			}
+			if ($('#chkRepSI2').is(":checked") == true)
+			{
+				chkRepSI2	=	"YES";
+			}
+			if ($('#chkTiaTR2').is(":checked") == true)
+			{
+				chkTiaTR2	=	"YES";
+			}
+			if ($('#chkTiaRE2').is(":checked") == true)
+			{
+				chkTiaRE2	=	"YES";
+			}
+			if ($('#chkRet_Tr_Sca2').is(":checked") == true)
+			{
+				chkRet_Tr_Sca2	=	"YES";
+			}
+			if ($('#chkRet_Trans_RetMTO2').is(":checked") == true)
+			{
+				chkRet_Trans_RetMTO2	=	"YES";
+			}
+			if ($('#chkRet_Rep_PerItem2').is(":checked") == true)
+			{
+				chkRet_Rep_PerItem2	=	"YES";
+			}
+			if ($('#chkDelRet2').is(":checked") == true)
+			{
+				chkDelRet2	=	"YES";
+			}
+			if ($('#chkOrderStat2').is(":checked") == true)
+			{
+				chkOrderStat2	=	"YES";
+			}
+			
+			if ($('#chkINV_ADJTrans2').is(":checked") == true)
+			{
+				chkINV_ADJTrans2	=	"YES";
+			}
+			if ($('#chkINV_ADJRep2').is(":checked") == true)
+			{
+				chkINV_ADJRep2	=	"YES";
+			}
+			if ($('#chkReceivingForm2').is(":checked") == true)
+			{
+				chkReceivingForm2	=	"YES";
+			}
+			if ($('#chkMposMoniPerSr2').is(":checked") == true)
+			{
+				chkMposMoniPerSr2	=	"YES";
+			}
+			if ($('#chkMposTransmittalReprint2').is(":checked") == true)
+			{
+				chkMposTransmittalReprint2	=	"YES";
+			}
+			if ($('#chkMposTransmittal2').is(":checked") == true)
+			{
+				chkMposTransmittal2	=	"YES";
+			}
+			if ($('#chkNonMtoItms2').is(":checked") == true)
+			{
+				chkNonMtoItms2	=	"YES";
+			}
+			
+			if ($('#chkCD_STFINV2').is(":checked") == true)
+			{
+				chkCD_STFINV2	=	"YES";
+			}
+			if ($('#chkCD_REFDOC2').is(":checked") == true)
+			{
+				chkCD_REFDOC2	=	"YES";
+			}
+			if ($('#chkCD_Transmit2').is(":checked") == true)
+			{
+				chkCD_Transmit2	=	"YES";
+			}
+			if ($('#chkCD_Summary2').is(":checked") == true)
+			{
+				chkCD_Summary2	=	"YES";
+			}
+			if ($('#chkUserConfig2').is(":checked") == true)
+			{
+				chkUserConfig2	=	"YES";
+			}
+			if ($('#chkRet_Rep_Moni2').is(":checked") == true)
+			{
+				chkRet_Rep_Moni2	=	"YES";
+			}
+
+			if ($('#chkRet_Tr_ExMto2').is(":checked") == true)
+			{
+				chkRet_Tr_ExMto2	=	"YES";
+			}
+			if ($('#chkRet_Tr_Inv2').is(":checked") == true)
+			{
+				chkRet_Tr_Inv2	=	"YES";
+			}
+
+
+			if(txtIdNo!='' && txtUserName!='' && txtPass!='' && txtNameEdit!='' && selDept!='' && selUserLevel!='')
+			{
+				$.ajax({
+					type : 'POST',
+					data : formdata,
+					url: 'userconfig.php?action=do_update_user&txtIdNo='+txtIdNo+'&txtUserName='+txtUserName+'&txtPass='+txtPass+'&txtNameEdit='+txtNameEdit+'&selDept='+selDept+'&selUserLevel='+selUserLevel+'&selStatus='+selStatus+
+						 '&chkNBSPL2='+chkNBSPL2+'&chkIA2='+chkIA2+'&chkConfDel2='+chkConfDel2+'&chkRepII2='+chkRepII2+'&chkRepTGAS2='+chkRepTGAS2+'&chkRet_Rep_PerItem2='+chkRet_Rep_PerItem2+
+						 '&chkRepCH2='+chkRepCH2+'&chkRepVA2='+chkRepVA2+'&chkRepMothers2='+chkRepMothers2+'&chkRepBTS2='+chkRepBTS2+'&chkRepSS2='+chkRepSS2+'&chkRepSI2='+chkRepSI2+'&chkTiaTR2='+chkTiaTR2+'&chkRet_Tr_Sca2='+chkRet_Tr_Sca2+'&chkRet_Trans_RetMTO2='+chkRet_Trans_RetMTO2+
+						 '&chkTiaRE2='+chkTiaRE2+'&chkRetTR2='+chkRetTR2+'&chkRetRE2='+chkRetRE2+'&chkINV_ADJTrans2='+chkINV_ADJTrans2+'&chkINV_ADJRep2='+chkINV_ADJRep2+'&chkDelRet2='+chkDelRet2+'&chkOrderStat2='+chkOrderStat2+
+						 '&chkReceivingForm2='+chkReceivingForm2+'&chkMposMoniPerSr2='+chkMposMoniPerSr2+'&chkMposTransmittalReprint2='+chkMposTransmittalReprint2+'&chkMposTransmittal2='+chkMposTransmittal2+'&chkNonMtoItms2='+chkNonMtoItms2+
+						 '&chkRet_Rep_Moni2='+chkRet_Rep_Moni2+'&chkCD_STFINV2='+chkCD_STFINV2+'&chkCD_REFDOC2='+chkCD_REFDOC2+'&chkCD_Transmit2='+chkCD_Transmit2+'&chkCD_Summary2='+chkCD_Summary2+'&chkUserConfig2='+chkUserConfig2+
+						 '&chkRet_Tr_ExMto2='+chkRet_Tr_ExMto2+'&chkRet_Tr_Inv2='+chkRet_Tr_Inv2,
+					success: function(html)
+					{
+						eval(html);
+						$('#dialog_edit').dialog('close');
+						location.reload(); 
+						$('#dialog_ok').dialog('open');
+						$('#dialog_ok').html('User '+txtUserName+'Successfully Updated');
+						search();
+						$('#txtIdNoEdit').val('');
+						$('#txtUserNameEdit').val('');
+						$('#txtPassEdit').val('');
+						$('#txtNameEdit').val('');
+						$('#selDeptEdit').val('');
+						$('#selUserLevelEdit').val('');
+						$('#selStatusEdit').val('');
+						$('#txtPassEdit').removeAttr('disabled');
+						$('#chkNBSPL2').attr('checked', false);
+						$('#chkIA2').attr('checked', false);
+						$('#chkConfDel2').attr('checked', false);
+						$('#chkRepII2').attr('checked', false);
+						$('#chkRepTGAS2').attr('checked', false);
+						$('#chkRepCH2').attr('checked', false);
+						$('#chkRepVA2').attr('checked', false);
+						$('#chkRepMothers2').attr('checked', false);
+						$('#chkRepBTS2').attr('checked', false);
+						$('#chkRepSS2').attr('checked', false);
+						$('#chkRepSI2').attr('checked', false);
+						$('#chkTiaTR2').attr('checked', false);
+						$('#chkTiaRE2').attr('checked', false);
+						$('#chkRetTR2').attr('checked', false);
+						$('#chkRetRE2').attr('checked', false);
+						$('#chkRet_Tr_Sca2').attr('checked', false);
+						$('#chkRet_Trans_RetMTO2').attr('checked', false);
+						$('#chkRet_Rep_Moni2').attr('checked', false);
+						$('#chkRet_Rep_PerItem2').attr('checked', false);			
+						$('#chkDelRet2').attr('checked', false);	
+						$('#chkOrderStat2').attr('checked', false);	
+						$('#chkCD_STFINV2').attr('checked', false);
+						$('#chkCD_REFDOC2').attr('checked', false);
+						$('#chkCD_Transmit2').attr('checked', false);
+						$('#chkCD_Summary2').attr('checked', false);
+						$('#chkUserConfig2').attr('checked', false);
+						
+						
+						$('#chkINV_ADJTrans2').attr('checked', false);	
+						$('#chkINV_ADJRep2').attr('checked', false);	
+						$('#chkReceivingForm2').attr('checked', false);	
+						$('#chkMposMoniPerSr2').attr('checked', false);	
+						$('#chkMposTransmittal2').attr('checked', false);	
+						$('#chkMposTransmittalReprint2').attr('checked', false);	
+						$('#chkNonMtoItms2').attr('checked', false);
+						
+					}		
+				})	
+			}
+			else
+			{
+				if(txtIdNo==''){ $('#txtIdNo').removeClass("text_color").addClass("error"); errorMsg += '\t- ID Number<br>'; }else{ $('#txtIdNo').removeClass("error").addClass(""); }
+				if(txtUserName==''){ $('#txtUserName').removeClass("text_color").addClass("error"); errorMsg += '\t- Username<br>'; }else{ $('#txtUserName').removeClass("error").addClass(""); }
+				if(txtPass==''){ $('#txtPass').removeClass("text_color").addClass("error"); errorMsg += '\t- Password<br>'; }else{ $('#txtPass').removeClass("error").addClass(""); }
+				if(txtPass2==''){ $('#txtPass2').removeClass("text_color").addClass("error"); errorMsg += '\t- Re-type Password<br>'; }else{ $('#txtPass2').removeClass("error").addClass(""); }
+				if(txtFirstName==''){ $('#txtFirstName').removeClass("text_color").addClass("error"); errorMsg += '\t- First Name<br>'; }else{ $('#txtFirstName').removeClass("error").addClass(""); }
+				if(txtMiddleName==''){ $('#txtMiddleName').removeClass("text_color").addClass("error"); errorMsg += '\t- Middle Name<br>'; }else{ $('#txtMiddleName').removeClass("error").addClass(""); }
+				if(txtLastName==''){ $('#txtLastName').removeClass("text_color").addClass("error"); errorMsg += '\t- Last Name<br>'; }else{ $('#txtLastName').removeClass("error").addClass(""); }
+				if(selDept==''){ $('#selDept').removeClass("text_color").addClass("ui-widget"); errorMsg += '\t- Department<br>'; }else{ $('#selDept').removeClass("errorSel").addClass(""); }
+				if(selUserLevel==''){ $('#selUserLevel').removeClass("text_color").addClass("errorSel"); errorMsg += '\t- User Level<br>'; }else{ $('#selUserLevel').removeClass("errorSel").addClass(""); }
+
+				if(errorMsg!=""){
+				$('#dialog_ok').dialog('open');
+				$('#dialog_ok').html('MISSING FIELD/S <br>' + errorMsg);	
+				}
+			}
+		}
+	}
+});
+$("#dialog_module").dialog({
+	bgiframe:true, resizable:false,width:800, modal:true, autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	buttons: {
+		'CLOSE': function()
+		{
+			$(this).dialog('close');
+			
+		},
+		'OK': function()
+		{
+			$(this).dialog('close');
+			
+		}
+	}
+});
+$("#dialog_moduleEdit").dialog({
+	bgiframe:true, resizable:false,width:800, modal:true, autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	buttons: {
+	'CLOSE': function()
+		{
+			$(this).dialog('close');
+		},
+		'OK': function()
+		{
+			$(this).dialog('close');
+		}
+	}
+});
+$("#dialog_view").dialog({
+	bgiframe:true, resizable:false, modal:true, autoOpen: false, width:800, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	buttons: {
+		'OK': function()
+		{
+			$(this).dialog('close');
+			
+		}
+	}
+});
+$("#dialog_ok_cancel").dialog({
+	bgiframe:true, resizable:false, modal:true, autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	buttons: {
+		'OK': function()
+		{
+			var	id	= $(this).data('id');
+			
+			$.ajax({
+				type : 'POST',
+				url: 'userconfig.php?action=do_cancel&id='+id,
+				success: function(html)
+				{
+					eval(html);
+					$('#dialog_ok_cancel').dialog('close');
+					search();
+				}		
+			})	
+		}
+	}
+});
+</script>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2008-03-04T01:19:30.323792Z"
+   url="svn://192.168.204.181/dakila/sdiv2/maintenance/fpdf/font"
+   last-author="mrf"
+   kind="dir"
+   uuid="1c746182-051b-419b-9641-f2377121976d"
+   repos="svn://192.168.204.181/dakila/sdiv2"
+   revision="1"/>
+<entry
+   committed-rev="1"
+   name="timesi.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="4ff5b220d7c754e2150c2d0ab7f7a499"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="timesbi.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="72952b50ab13815c82aa984d76516e13"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="zapfdingbats.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="05296fa60133b7a415237b2083f1a748"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="helveticai.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="54e8686215214fc28e4a1eb9e9a3b05b"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   name="makefont"
+   kind="dir"/>
+<entry
+   committed-rev="1"
+   name="helveticabi.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="8ebacb40c1a5f8a65cb311d6bd131216"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="times.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="bbf949b03a5c8e5095b8c712de28856d"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="timesb.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="6704a156b70e2c1cca70b2764563b934"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="helvetica.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="18a86c71e4288c7cfe6ad5116fe097c3"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="symbol.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="56b0bdc3e447810455731272a60bb343"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="helveticab.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="536316f08a186e84a7c43cad3c09a1a5"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+<entry
+   committed-rev="1"
+   name="courier.php"
+   text-time="2008-03-04T01:16:52.000000Z"
+   committed-date="2008-03-04T01:19:30.323792Z"
+   checksum="fc24409ed4079afe5a49dc21bfc18dc6"
+   last-author="mrf"
+   kind="file"
+   prop-time="2008-03-04T01:16:52.000000Z"/>
+</wc-entries>

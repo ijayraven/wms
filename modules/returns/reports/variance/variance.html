@@ -1,0 +1,92 @@
+<form name="dataform" id="dataform" enctype="multipart/form-data" method="POST">
+	<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center" class="tdoptions">
+				<table border="0"class="label_text">
+					<tr>
+						<td>MPOS NO.</td>
+						<td>
+							:<input type="text" id="txtmposno" name="txtmposno" placeholder="MPOS No." class="centered">
+						</td>
+					</tr>
+					<tr>
+						<td>CUSTOMER TYPE</td>
+						<td>
+							:<select id="selcusttype" name="selcusttype">
+								<option value=""><-- Please Select --></option>
+								<option value="TRADE">TRADE</option>
+								<option value="NBS">NBS</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>CUSTOMER</td>
+						<td>
+							:<input type="text" id="txtcustno" name="txtcustno" size="10" placeholder='CODE' class="searchcust centered">
+							<input type="text" id="txtcustname" name="txtcustname" size="35" placeholder='NAME' class="searchcust centered">
+							<div id="divselcust" class="divsel"></div>
+							<input type="hidden" id="hdnval" name="hdnval" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>REASON</td>
+						<td>
+							<?php 
+							$GETREASON	=	"SELECT DISTINCT(REASON) FROM WMS_NEW.`MPOSHDR` WHERE REASON != ''";
+							$RSGETREASON	=	$conn_255_10->Execute($GETREASON);
+							if($RSGETREASON== false)
+							{
+								$errmsg	=	($conn_255_10->ErrorMsg()."::".__LINE__); 
+								$DATASOURCE->logError("wms",$errmsg,$GETREASON,$_SESSION['username'],"VARIANCE REPORT","REASON");
+								$DATASOURCE->displayError();
+							}
+							?>
+							:<select id="selreason" name="selreason">
+								<option value="ALL">All</option>
+								<?php 
+								while (!$RSGETREASON->EOF) {
+									
+									$REASON 	=	$RSGETREASON->fields["REASON"];
+									echo "<option value='$REASON'>$REASON</option>";
+									$RSGETREASON->MoveNext();
+								}
+								?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>DATE TYPE</td>
+						<td>
+							:<select id="seldtype" name="seldtype">
+								<option value=""><-- Please Select --></option>
+								<option value="MPOSDATE">MPOS DATE</option>
+								<option value="RECEIVEDDATE">RECEIVED DATE</option>
+								<option value="POSTEDDATE">POSTED DATE</option>
+								<option value="SCANDATE">SCANNED DATE</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>DATE RANGE</td>
+						<td>
+							:<input type="text" name="dfrom" id="dfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+						 	<input type="text" name="dto" 	id="dto" 	class="dates"	value="" size="10"  placeholder = "To"	>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							&nbsp;<button type="button" id="btnreport" class="btnsearch">Search</button>
+						</td>
+					</tr>
+				</table>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divMPOS"><?php echo getTBLprev(); ?></div>
+			</td>
+		</tr>
+	</table>
+</form>

@@ -1,0 +1,490 @@
+<div id="dialog_lookup_vendor" title="VENDOR LOOKUP" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right"  width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left"  width="55%">&nbsp;: <input type="text" id="txtLookVendorCode" name="txtLookVendorCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">NAME &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookVendorDesc" name="txtLookVendorDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" id="btnLookupVendor" name="btnLookupVendor" value=" SEARCH " onclick="fncLookupSearch('vendor')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinnerVendor" align="middle"></div></td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchVendor" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" background="../../../images/images/pmscellpic3.gif">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>NAME</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultVendor">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="dialog_lookup_genclass" title="GENERAL CLASS LOOKUP" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookGenClassCode" name="txtLookGenClassCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookGenClassDesc" name="txtLookGenClassDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" id="btnLookupGenClass" name="btnLookupGenClass" value=" SEARCH " onclick="fncLookupSearch('genclass')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinnerGenClass" align="middle"></div></td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchGenClass" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" background="../../../images/images/pmscellpic3.gif">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultGenClass">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="dialog_lookup_catclass" title="CATEGORY CLASS LOOKUP" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >		
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookCatClassCode" name="txtLookCatClassCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookCatClassDesc" name="txtLookCatClassDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" id="btnLookupCatClass" name="btnLookupCatClass" value=" SEARCH " onclick="fncLookupSearch('catclass')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinnerCatClass" align="middle"></div></td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchCatClass" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" background="../../../images/images/pmscellpic3.gif">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultCatClass">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="dialog_lookup_caption" title="CAPTION LOOKUP" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookCaptionCode" name="txtLookCaptionCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookCaptionDesc" name="txtLookCaptionDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" id="btnLookupCaption" name="btnLookupCaption" value=" SEARCH " onclick="fncLookupSearch('caption')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinnerCaption" align="middle"></div></td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchCaption" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" background="../../../images/images/pmscellpic3.gif">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultCaption">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="dialog_lookup_sacode" title="SA CODE LOOKUP" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookSACodeCode" name="txtLookSACodeCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookSACodeDesc" name="txtLookSACodeDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" id="btnLookupSACode" name="btnLookupSACode" value=" SEARCH " onclick="fncLookupSearch('sacode')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinnerSACode" align="middle"></div></td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchSACode" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" background="../../../images/images/pmscellpic3.gif">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultSACode">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="dialog_lookup_itemstat" title="ITEM STAT LOOKUP" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookItemStatCode" name="txtLookItemStatCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookItemStatDesc" name="txtLookItemStatDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" id="btnLookupItemStat" name="btnLookupItemStat" value=" SEARCH " onclick="fncLookupSearch('itemstat')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinnerItemStat" align="middle"></div></td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchItemStat" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" background="../../../images/images/pmscellpic3.gif">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultItemStat">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="dialog_lookup_priceclass" title="PRICE CLASS LOOKUP" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookPriceClassCode" name="txtLookPriceClassCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookPriceClassDesc" name="txtLookPriceClassDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" id="btnLookupPriceClass" name="btnLookupPriceClass" value=" SEARCH " onclick="fncLookupSearch('priceclass')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinnerPriceClass" align="middle"></div></td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchPriceClass" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" background="../../../images/images/pmscellpic3.gif">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultPriceClass">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="dialog_lookup_itemtype" title="ITEM TYPE LOOKUP" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookItemTypeCode" name="txtLookItemTypeCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookItemTypeDesc" name="txtLookItemTypeDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" id="btnLookupItemType" name="btnLookupItemType" value=" SEARCH " onclick="fncLookupSearch('itemtype')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinnerItemType" align="middle"></div></td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchItemType" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" background="../../../images/images/pmscellpic3.gif">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultItemType">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="dialog_view_item" title="ITEM INQUIRY DETAIL" style="background-color:#D6F5F1;">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" >
+		<tr>
+			<td height="28px" align="center" class="label_text" colspan="4">Item Number &nbsp;&nbsp;
+				&nbsp;: <label id="lblItemNo">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4"><hr></td>
+		</tr>
+		<tr>
+			<td align="left" class="label_text" colspan="4">ITEM DETAILS</td>
+		</tr>
+		<tr>
+			<td colspan="4"><hr></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Item Description</td>
+			<td align="left" colspan="3" class="label_text2">: <label id="lblItemDesc"></td>			
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text">Barcode Description</td>
+			<td colspan="3" class="label_text2">: <label id="lblBarcodeDesc"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" width="20%" align="left">Barcode Type</td>
+			<td width="30%" align="left" class="label_text2">: <label id="lblBarcodeType"></td>
+			<td width="15%" class="label_text" align="left">NBS Barcode</td>
+			<td width="35%" align="left" class="label_text2">: <label id="lblNBSBarcode"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Trade Barcode</td>
+			<td align="left" class="label_text2">: <label id="lblTradeBarcode"></td>
+			<td class="label_text" align="left">Filstar Barcode</td>
+			<td align="left" class="label_text2">: <label id="lblFilBarcode"></td>
+		</tr>
+		
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Item Category/Type</td>
+			<td align="left" class="label_text2">: <label id="lblItemCat"></td>
+			<td class="label_text" align="left">Supplement Code</td>
+			<td align="left" class="label_text2">: <label id="lblSupCode"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Product Planner Code</td>
+			<td align="left" class="label_text2">: <label id="lblProdPlan"></td>
+			<td class="label_text" align="left">Section Group</td>
+			<td align="left" class="label_text2">: <label id="lblSecGrp"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">KC Stock No</td>
+			<td align="left" class="label_text2">: <label id="lblKCStockNo"></td>
+			<td class="label_text" align="left">Status</td>
+			<td align="left" class="label_text2">: <label id="lblStat"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Imported Item Code</td>
+			<td align="left" class="label_text2">: <label id="lblImpItemCode"></td>
+			<td class="label_text" align="left">Price Class</td>
+			<td align="left" class="label_text2">: <label id="lblPriceClass"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Vendor Code</td>
+			<td align="left" class="label_text2">: <label id="lblVendor"></td>
+			<td class="label_text" align="left">Section Group</td>
+			<td align="left" class="label_text2">: <label id="lblSecGrp"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Merchandise Code</td>
+			<td align="left" class="label_text2">: <label id="lblMerchCode"></td>
+			<td class="label_text" align="left">Character Code</td>
+			<td align="left" class="label_text2">: <label id="lblCharCode"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Alpha Code</td>
+			<td align="left" class="label_text2">: <label id="lblAlphCode"></td>
+			<td class="label_text" align="left">Color</td>
+			<td align="left" class="label_text2">: <label id="lblColor"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Size</td>
+			<td align="left" class="label_text2">: <label id="lblSize"></td>
+			<td class="label_text" align="left">&nbsp;</td>
+			<td align="left">&nbsp;</td>
+		</tr>
+		
+		<tr>
+			<td colspan="4"><hr></td>
+		</tr>
+		<tr>
+			<td align="left" class="label_text" colspan="4">PRICE / COST / UM INFORMATION</td>
+		</tr>
+		<tr>
+			<td colspan="4"><hr></td>
+		</tr>
+		
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Retail Price</td>
+			<td align="left" class="label_text2">: <label id="lblRetPrice"></td>
+			<td class="label_text" align="left">Litho/Home Cost</td>
+			<td align="left" class="label_text2">: <label id="lblLithoHome"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Royalty/TPR Code</td>
+			<td align="left" class="label_text2">: <label id="lblRoyaltyTPR"></td>
+			<td class="label_text" align="left">Cost Price</td>
+			<td align="left" class="label_text2">: <label id="lblCostPrice"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Unit of Measure</td>
+			<td align="left" class="label_text2">: <label id="lblUOM"></td>
+			<td class="label_text" align="left">Packing Code</td>
+			<td align="left" class="label_text2">: <label id="lblPackCode"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Paper Cost</td>
+			<td align="left" class="label_text2">: <label id="lblPaperCost"></td>
+			<td class="label_text" align="left">Plastic Cost</td>
+			<td align="left" class="label_text2">: <label id="lblPlasticCost"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Sticker Cost</td>
+			<td align="left" class="label_text2">: <label id="lblStickCost"></td>
+			<td class="label_text" align="left">Piecework Cost</td>
+			<td align="left class="label_text2"">: <label id="lblPiecework"></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Envelope Cost</td>
+			<td align="left" class="label_text2">: <label id="lblEnvelope"></td>
+			<td class="label_text" align="left">Other Cost</td>
+			<td align="left" class="label_text2">: <label id="lblOther"></td>
+		</tr>
+		
+		<tr>
+			<td colspan="4"><hr></td>
+		</tr>
+		<tr>
+			<td align="left" class="label_text" colspan="4">ADDITIONAL INFORMATION</td>
+		</tr>
+		<tr>
+			<td colspan="4"><hr></td>
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">General Class</td>
+			<td width="35%" align="left" class="label_text2">: <label id="lblGenClass"></td>
+			<td height="21px" class="label_text" align="left">Category Class</td>
+			<td width="35%" align="left" class="label_text2">: <label id="lblCatClass"></td>			
+		</tr>
+		
+		<tr> 
+			<td height="21px" class="label_text" align="left">Product Group</td>
+			<td width="35%" align="left" class="label_text2">: <label id="lblProdGrp"></td>
+			<td height="21px" class="label_text" align="left">Caption</td>
+			<td width="35%" align="left" class="label_text2">: <label id="lblCaption"></td>			
+		</tr>
+		
+		<tr>
+			<td height="21px" class="label_text" align="left">Item Type</td>
+			<td width="35%" align="left" class="label_text2">: <label id="lblItemType"></td>
+			<td height="21px" class="label_text" align="left">Sales Analysis Code</td>
+			<td width="35%" align="left" class="label_text2">: <label id="lblSalesAnalCode"></td>			
+		</tr>
+
+		<tr>
+			<td height="21px" class="label_text" align="left">Group Code/Description</td>
+			<td width="35%" align="left" class="label_text2">: <label id="lblGrpCodeDesc"></td>
+			<td width="15%" class="label_text" align="left">&nbsp;</td>
+			<td width="35%" align="left">&nbsp;</td>
+		</tr>
+		
+	</table>
+</div>

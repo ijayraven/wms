@@ -1,0 +1,39 @@
+
+	<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center">
+				<br>
+				<form id="frmasearch">
+				<table border="0"class="label_text">
+					<tr>
+						<td>P.I.F. No.</td>
+						<td>:</td>
+						<td><input type="text" id="txtmtono" name="txtmtono"></td>
+					</tr>
+					<tr>
+						<td>Printed Date</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtfrom" name="txtfrom" class="dates" placeholder='From'> to 
+							<input type="text" id="txtto" name="txtto" class="dates"  placeholder='To'>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>
+							<button type="button" id="btnsearch" class="btnsearch">Search</button>
+						</td>
+					</tr>
+				</table>
+				</form>
+				<br>
+				<div id="divdebug"></div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divMTO"><?php echo getTblhdr(); ?></div>
+			</td>
+		</tr>
+	</table>

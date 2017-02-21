@@ -1,0 +1,260 @@
+<?php include ($_SERVER['DOCUMENT_ROOT'].'/wms/includes/sub_header.inc.php') ?>
+<script type="text/javascript" src="/wms/modules/returns/transactions/scanning/scanning.js"></script>
+	<form name="dataform" id="dataform" enctype="multipart/form-data" method="POST">
+		<table width="100%" border="0"  class="Text_header">
+			<tr>
+				<td align="center" class="tdoptions">
+					<table border="0"class="label_text">
+						<tr>
+							<td>MPOS NO.</td>
+							<td>:</td>
+							<td>
+								<input type="text" id="txtmposno" name="txtmposno" placeholder="MPOS No." class="centered">
+							</td>
+						</tr>
+						<tr>
+							<td>CUSTOMER</td>
+							<td>:</td>
+							<td>
+								<input type="text" id="txtcustno" name="txtcustno" size="10" placeholder='CODE' class="searchcust centered">
+								<input type="text" id="txtcustname" name="txtcustname" size="35" placeholder='NAME' class="searchcust centered">
+								<div id="divselcust" class="divsel"></div>
+								<input type="hidden" id="hdnval" name="hdnval" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>MPOS DATE</td>
+							<td>:</td>
+							<td>
+								<input type="text" name="mposdfrom" id="mposdfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+							 	<input type="text" name="mposdto" 	id="mposdto" 	class="dates"	value="" size="10"  placeholder = "To"	>
+							</td>
+						</tr>
+							<td>PICK DATE</td>
+							<td>:</td>
+							<td>
+								<input type="text" name="pickdfrom" id="pickdfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+							 	<input type="text" name="pickdto" 	id="pickdto" 	class="dates"	value="" size="10"  placeholder = "To"	>
+							</td>
+						</tr>
+						<tr>
+							<td>SCAN DATE</td>
+							<td>:</td>
+							<td>
+								<input type="text" name="scandfrom" id="scandfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+							 	<input type="text" name="scandto" 	id="scandto" 	class="dates"	value="" size="10"  placeholder = "To">
+							</td>
+						</tr>
+						<tr>
+							<td>STATUS</td>
+							<td>:</td>
+							<td>
+								<select id="selstatus" name="selstatus">
+									<option value=""><-- PLEASE SELECT --></option>
+									<option value="NOT">NOT YET SCANNED</option>
+									<option value="SAVED">SAVED</option>
+									<option value="DELETED">DELETED</option>
+									<option value="UPDATED">UPDATED</option>
+									<option value="POSTED">POSTED</option>
+									<option value="TRANSMITTED">TRANSMITTED</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td></td>
+							<td>
+								<input type="button" name="btnreport" id="btnreport" value="SEARCH" class="small_button">
+							</td>
+						</tr>
+					</table>
+					<div id="divMPOSdebug"></div>
+					<div id="divloader" style="display:none;" align="center"><img src="/wms/images/loading/animated-loading.gif" width="100%"><p>Please wait...</p></div>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" class="td-result">
+					<div id="divMPOS"><?php echo getTBLprev();?></div>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div id="divmposdtls">
+		<table  class="label_text" width="100%" border="0">
+			<tr>
+				<td width="10%">MPOS NO</td>
+				<td id="tdmposno"></td>
+				<td width="15%">MPOS DATE</td>
+				<td id="tdmposnodt"></td>
+			</tr>
+			<tr>
+				<td>CUSTOMER</td>
+				<td id="tdcustomer"></td>
+				<td>TOTAL QTY</td>
+				<td id="tdtotqty"></td>
+			</tr>
+			<tr>
+				<td>SR</td>
+				<td id="tdsr"></td>
+				<td>TOTAL AMOUNT</td>
+				<td id="tdtotamount"></td>
+			</tr>
+			
+			<tr>
+				<td colspan="10">
+					<div id="divitems" align="center"></div>
+					<form id="frmitems">
+						<input type='hidden' id='txtitems' name='txtitems'>
+						<input type='hidden' id='txtitemsqty' name='txtitemsqty'>
+						<input type='hidden' id='txtitemsdefqty' name='txtitemsdefqty'>
+					</form>
+					<div id="divitemsdebug"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="divscanning">
+		<table class="label_text" width="100%" border="0">
+			<tr>
+				<td colspan="10" align="center">
+					SCAN ITEM
+				</td>
+			</tr>
+			<tr>
+				<td colspan="10" align="center">
+					<input type="text" id="txtqtyS" name="txtqtyS" placeholder='ITEM QTY'  title='ITEM QTY' class="txtitemnos centered">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="10" align="center">
+					<input type="password" id="txtitemno" name="txtitemno" placeholder='BARCODE'   title='BARCODE' class="txtitemnos centered">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="10" align="center">
+					<input type="text" id="txtitemno2" name="txtitemno2" placeholder='ITEM No.'   title='ITEM No.' class="txtitemnos centered">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="10" align="center">
+					<h3 id="errmsg" style="color:red;"></h3>
+				</td>
+			</tr>
+		</table>
+	</div>
+<script>
+$(".dates").datepicker({ 
+	dateFormat: 'yy-mm-dd',
+	changeMonth: true,
+    changeYear: true 
+});
+$("#divloader").dialog({
+	dialogClass: "no-close",
+	closeOnEscape:false,	
+	title:'Processing',
+	bgiframe:true, resizable:false, height: "auto", width: 250, modal:true, autoOpen: false,draggable: false,
+	overlay: { backgroundColor: '#000', opacity: 0.5 }
+	});
+$("#divscanning").dialog({
+	dialogClass: "no-close",
+	closeOnEscape:false,	
+	position: ['center',20],
+	title:'Scanning',
+	width: 500,
+	bgiframe:true, resizable:false, height: "auto", width: 250, modal:false, autoOpen: false,draggable: true,
+	overlay: { backgroundColor: '#000', opacity: 0.5 }
+	});
+$("#divscanning").dialog().parent().css('position', 'fixed');
+
+$("#divmposdtls").dialog({
+	dialogClass: "no-close",
+	closeOnEscape:false,	
+	title:'SCAN ITEMS',
+	bgiframe:true, resizable:false, height: "auto", width: 1000, modal:true, autoOpen: false,draggable: false,
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons:{
+		"Save":function(){
+			var frmitems = $("#frmitems").serialize();
+			var tdmposno = $("#tdmposno").text();
+			var updatemode	=	 $('#dia-btn-save').html();
+			var endmsg	=	"save";
+			var eendmsg	=	"saved";
+			if(updatemode == "Update")
+			{
+				endmsg	=	"update";
+				eendmsg	=	"updated";
+			}
+			if(validate())
+			{
+				var txtaddeditemscnt	=	+ $("#txtaddeditemscnt").val();
+				var rowcount			=	+ $("#btnadditem").attr("data-aboverowcnt");
+				var newcnt				=	txtaddeditemscnt + rowcount;
+				var item			=	"";
+				var itemqtyl		=	"";
+				var itemdefqty		=	"";
+				var itemibqty		=	"";
+				//alert(newcnt);
+				if(confirm("You are about to "+ endmsg +" these scanned items for the MPOS"+tdmposno+"."))
+				{
+					$("#divloader").dialog("open");
+					$.ajax({
+						url		:	"scanning.php?action=SAVESCANNINGHDR&MPOSNO="+tdmposno+"&UPDATEMODE="+updatemode,
+						beforeSend:function(){
+							
+						},
+						success	:function(valid)
+						{
+							//$("#divitemsdebug").html(response);
+							$("#divMPOSdebug").html(valid);
+							if(valid == "")
+							{
+								for(var a = 1; a < newcnt; a++)
+								{
+									item		= $("#hiditemno"+a).val();
+									itemqty 	= $("#txtrecqty"+a).val();
+									itemdefqty	= $("#txtdefqty"+a).val();
+									itemibqty	= $("#txtibqty"+a).val();
+									
+									$.ajax({
+										url		:	"scanning.php?action=SAVESCANNINGDTLS&MPOSNO="+tdmposno+"&UPDATEMODE="+updatemode+"&hiditemno="+item+
+													 "&txtrecqty="+itemqty+"&txtdefqty="+itemdefqty+"&itemibqty="+itemibqty+"&count="+a,
+										async	:	false,
+										beforeSend:function(){
+											
+										},
+										success	:function(response)
+										{
+											//$("#divitemsdebug").html(response);
+											$("#divMPOSdebug").html(response);
+										}
+									});
+								}
+							}
+							else
+							{
+								alert("Error saving MPOS header. Please contact web admin.");
+							}
+							alert('MPOS has been successfully '+eendmsg+".");
+							$('#btnreport').trigger('click',['mainquery','']);
+							$('#divmposdtls').dialog('close');
+							$('#divscanning').dialog('close');
+							$("#divloader").dialog("close");
+						}
+					});
+				}
+			}
+			else
+			{
+				alert("Some fields are left empty.");
+			}
+		},
+		"Close":function(){
+			$(this).dialog("close");
+			$("#divscanning").dialog("close");
+			$("#txtitemno").val("");
+			$("#errmsg").text("");
+			$("#divitems").html("");
+		}
+	}
+	});
+</script>

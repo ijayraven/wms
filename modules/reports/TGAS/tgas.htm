@@ -1,0 +1,305 @@
+<html>
+<head>
+<title>T.G.A.S Download</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link 		href=	"/wms/includes/JQUERYUI/cupertino/jquery-ui.min.css"	rel	="stylesheet">
+<script 	src	=	"/wms/includes/JQUERYUI/cupertino/external/jquery/jquery.js"></script>
+<script 	src	=	"/wms/includes/JQUERYUI/cupertino/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/.mouseevent.js"></script>	
+<script 	src	=	"tgas.js"></script>
+<style type="text/css">
+body {
+	font-size: 62.5%;
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+
+table {
+	font-size: 1em;
+}
+
+.label_text {
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #000000;
+}
+
+.label_text2 {
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+.boxcolor{
+	background : #FDFACD;
+}
+.text_white11 {
+    font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.text_white10 {
+    font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.text_white9 {
+    font-size: 9px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+tr.dtl {
+	color: #336699;
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 0px;
+}
+
+tr.dtl:hover td { 
+	background: #dddddd; 
+}
+th.dtl, td.dtl { padding: 0px; text-align: center; border-bottom: 1px solid #ddd;
+}
+
+.no-close
+	.ui-dialog-titlebar-close{ display:none; }
+.textbox { 
+	-webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
+	background: transparent url(http://html-generator.weebly.com/files/theme/input-text-8.png) repeat-x; 
+	border: 1px solid #999; 
+	outline:0; 
+	height:20px; 
+	width: 100px; 
+	text-align:center;
+} 
+</style>
+</head>
+<body>
+<form id="frmTGAS" name="frmTGAS" method="POST" action="<?php echo $_SERVER['PHP_SELF']?>">
+<table border="0" cellpadding="1" width="90%" cellspacing="1" align="center">
+	<tr>
+		<td align="right" width="40%">GENERAL CLASS&nbsp;:</td>
+		<td align="center" width="10%"><input type="text" class="textbox"  id="txtGenClass" name="txtGenClass" onblur="fncSearchGenC(this.value)" size="8" maxlength="10"></td>
+		<td align="left" width="23%"><input type="text" id="txtGenClassDesc" name="txtGenClassDesc" size="25" readonly></td>
+		<td><input type="button" class="navbtn" id="btnLookGenClass" name="btnLookGenClass" value="..." onclick="fncLookup('genclass');"></td>
+	</tr>
+	<tr>
+		<td align="right">PRODUCT GROUP&nbsp;:</td>
+		<td align="center" width="10%"><input type="text" class="textbox" id="txtProdGroup" name="txtProdGroup" onblur="fncSearchProdGrp(this.value)" size="8" maxlength="10"></td>
+		<td><input type="text" id="txtProdGroupDesc" name="txtProdGroupDesc" size="25" readonly></td>
+		<td><input type="button"  class="navbtn" id="btnLookProdGroup" name="btnLookProdGroup" value="..." onclick="fncLookup('prodgroup');"></td>
+	</tr>
+	<tr>
+		<td align="right">ITEM TYPE&nbsp;:</td>
+		<td align="center" width="10%"><input type="text" class="textbox" id="txtType" name="txtType" onblur="fncSearchItemType(this.value)" size="8" maxlength="10"></td>
+		<td><input type="text" id="txtTypeDesc" name="txtTypeDesc" size="25" readonly></td>
+		<td><input type="button"  class="navbtn" id="btnLookType" name="btnLookType" value="..." onclick="fncLookup('itemtype');"></td>
+	</tr>
+	<tr>
+		<td align="right">CATEGORY CLASS&nbsp;:</td>
+		<td align="center" width="10%"><input type="text" class="textbox" id="txtCatClass" name="txtCatClass" onblur="fncSearchCatClass(this.value)" size="8" maxlength="10"></td>
+		<td><input type="text" id="txtCatClassDesc" name="txtCatClassDesc" size="25" readonly></td>
+		<td><input type="button" class="navbtn" id="btnLookCatClass" name="btnLookCatClass" value="..."onclick="fncLookup('catclass');"></td>
+	</tr>
+	<tr>
+		<td align="right">CAPTION&nbsp;:</td>
+		<td align="center" width="10%"><input type="text" class="textbox" id="txtCaption" name="txtCaption" onblur="fncSearchCaption(this.value)" size="8" maxlength="10"></td>
+		<td><input type="text" id="txtCaptionDesc" name="txtCaptionDesc" size="25" readonly></td>
+		<td><input type="button" class="navbtn" id="btnLookCaption" name="btnLookCaption" value="..." onclick="fncLookup('caption');"></td>
+	</tr>
+	<tr>
+		<td align="right">EQUI&nbsp;:</td>
+		<td align="center" width="10%"><input type="text" class="textbox" id="txtEqui" name="txtEqui" onblur="fncSearchEqui(this.value)" size="8" maxlength="10"></td>
+<!--		<td><input type="text" id="txtEquiDesc" name="txtEquiDesc" size="25"></td>-->
+		<td><input type="button" class="navbtn" id="btnLookEqui" name="btnLookEqui" value="..." onclick="fncLookup('equi');"></td>
+	</tr>
+	<tr>
+		<td align="right">STATUS&nbsp;:</td>
+		<td colspan="2">
+			<?php
+				$sel_status		=	"SELECT * FROM ITEMSTATUS WHERE 1";
+				$rssel_status	=	$conn->Execute($sel_status);
+				if ($rssel_status == false) 
+				{
+					echo $conn->ErrorMsg()."::".__LINE__;exit();
+				}
+			?>
+		<select id="selStat" name="selStat" class="navselect">
+			<option value=""></option>
+		<?php
+			while (!$rssel_status->EOF) 
+			{
+				$statuscode	=	$rssel_status->fields['ITEMSTATCODE'];
+				$statusname	=	$rssel_status->fields['ITEMSTATDESC'];
+	?>
+		<option value="<?php echo $statuscode; ?>"><?php echo ucwords(strtoupper($statusname)); ?></option>
+		<?php $rssel_status->MoveNext();}?>
+	</select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="4">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="4">
+<!--			<input type="button" name="btnPrint" class="navbtn" id="btnPrint" value="PRINT">-->
+			<input type="button" name="btnDownload" class="navbtn" id="btnDownload" value="DOWNLOAD" onclick="fncDownload();">
+<!--			<input type="button" name="btnClose" class="navbtn" id="btnClose" value="CLOSE">-->
+		</td>
+	</tr>
+</table>
+<?php include('tgas_dialog.htm'); ?>
+
+</form>
+</body>
+</html>
+<script>
+onload();
+function onload()
+{
+	$(".navselect").selectmenu();	
+	$(".navbtn").button();	
+}
+$("#dialog_genclass").dialog({
+	bgiframe:true, resizable:false, modal:true,height:440, width:790,autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	show: {
+	effect: "fade",
+	duration: 400
+	},
+	hide: {
+	effect: "explode",
+	duration: 400
+	},
+	buttons: {
+		'Close': function() 
+		{
+			$(this).dialog('close');
+			$('#divResultGenClass').html('');
+			$('#txtLookGenClassCode').val('');
+			$('#txtLookGenClassDesc').val('');
+		}
+	}
+});
+$("#dialog_lookup_prodgroup").dialog({
+	bgiframe:true, resizable:false, modal:true, height:440, width:790,autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	show: {
+	effect: "fade",
+	duration: 400
+	},
+	hide: {
+	effect: "explode",
+	duration: 400
+	},
+	buttons: {
+		'Close': function() 
+		{
+			$(this).dialog('close');
+			$('#divResultProdGroup').html('');
+			$('#txtLookGenClassCode').val('');
+			$('#txtLookGenClassDesc').val('');
+		}
+	}
+});
+$("#dialog_lookup_itemtype").dialog({
+	bgiframe:true, resizable:false, modal:true,height:440, width:790,autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	show: {
+	effect: "fade",
+	duration: 400
+	},
+	hide: {
+	effect: "explode",
+	duration: 400
+	},
+	buttons: {
+		'Close': function() 
+		{
+			$('#divResultItemType').html('');
+			$('#txtLookItemTypeCode').val('');
+			$('#txtLookItemTypeDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+$("#dialog_lookup_catclass").dialog({
+	bgiframe:true, resizable:false, modal:true,height:440, width:790,autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	show: {
+	effect: "fade",
+	duration: 400
+	},
+	hide: {
+	effect: "explode",
+	duration: 400
+	},
+	buttons: {
+		'Close': function() 
+		{
+			$(this).dialog('close');
+			$('#divResultCatClass').html('');
+			$('#txtLookCatClassCode').val('');
+			$('#txtLookCatClassDesc').val('');
+		}
+	}
+});
+$("#dialog_lookup_caption").dialog({
+	bgiframe:true, resizable:false, modal:true,height:440, width:790,autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	show: {
+	effect: "fade",
+	duration: 400
+	},
+	hide: {
+	effect: "explode",
+	duration: 400
+	},
+	buttons: {
+		'Close': function() 
+		{
+			$('#divResultCaption').html('');
+			$('#txtLookCaptionCode').val('');
+			$('#txtLookCaptionDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+$("#dialog_lookup_equi").dialog({
+	bgiframe:true, resizable:false, modal:true,height:440, width:790,autoOpen: false, dialogClass:'no-close',closeOnEscape:false,
+	overlay: {backgroundColor: '#000', opacity: 0.5},
+	show: {
+	effect: "fade",
+	duration: 400
+	},
+	hide: {
+	effect: "explode",
+	duration: 400
+	},
+	buttons: {
+		'Close': function() 
+		{
+			$('#divResultEqui').html('');
+			$('#txtLookEquiCode').val('');
+			$('#txtLookEquiDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+
+
+</script>

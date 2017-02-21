@@ -1,0 +1,318 @@
+<style type="text/css">
+body {
+	font-size: 70%;
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+
+table {
+	font-size: 1em;
+}
+
+.action_butt {
+	cursor:pointer;
+}
+
+.label_text {
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: bold;
+	color: #000000;
+}
+
+.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+.text_color{
+	background:#FDFACD;
+}
+
+.select_color{
+	background:#FDFACD;
+	width:200px;
+}
+
+.text_white11 {
+    font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.text_white9 {
+    font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+tr.dtl {
+	color: #336699;
+	font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+tr.dtl:hover td { 
+	background: #dddddd; 
+}
+
+.no-close
+.ui-dialog-titlebar-close{ display:none; }
+.ui-datepicker{ z-index:10003; }
+.div_text_shadow 
+{
+color: rgb(181, 223, 255);
+font-size: 24px;
+text-shadow: rgb(54, 54, 54) 5px 3px 4px;
+}
+.css-input
+{ 
+border-style:solid;
+text-align:center; 
+border-width:1px; 
+border-radius:0px; 
+font-size:14px; 
+padding:2px; 
+background-color:#f8ffcc; 
+border-color:#000000; 
+color:#000000; 
+box-shadow:0; 
+text-shadow:0px;
+} 
+.tb10 {
+	text-align: center;
+	background-color: #CBEEFF;
+	background-repeat:repeat-x;
+	border:3px double #65CEFF;
+	width: 230px;
+	color:#000000;
+	padding:3px;
+	margin-right:4px;
+	margin-bottom:8px;
+	font-family:tahoma, arial, sans-serif;
+}
+
+</style>
+<div id="dialog_genclass" title="GENERAL CLASS LOOKUP">
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookGenClassCode" name="txtLookGenClassCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookGenClassDesc" name="txtLookGenClassDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" class="navbtn" id="btnLookupGenClass" name="btnLookupGenClass" value=" SEARCH " onclick="fncLookupSearch('genclass')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%">&nbsp;</td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchGenClass" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" bgcolor="Teal">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultGenClass">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="dialog_lookup_prodgroup" title="PRODUCT GROUP LOOKUP">
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookProdGroup" name="txtLookProdGroup" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookProdGroupDesc" name="txtLookProdGroupDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" class="navbtn" id="btnLookupGenClass" name="btnLookupGenClass" value=" SEARCH " onclick="fncLookupSearch('prodgroup')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%">&nbsp;</td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchProdGroup" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" bgcolor="Teal">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultProdGroup">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="dialog_lookup_itemtype" title="ITEM TYPE LOOKUP">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookItemTypeCode" name="txtLookItemTypeCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookItemTypeDesc" name="txtLookItemTypeDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" class="navbtn" id="btnLookupItemType" name="btnLookupItemType" value=" SEARCH " onclick="fncLookupSearch('itemtype')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%">&nbsp;&nbsp;</td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchItemType" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" bgcolor="Teal">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultItemType">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="dialog_lookup_catclass" title="CATEGORY CLASS LOOKUP">
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >		
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookCatClassCode" name="txtLookCatClassCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookCatClassDesc" name="txtLookCatClassDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" class="navbtn" id="btnLookupCatClass" name="btnLookupCatClass" value=" SEARCH " onclick="fncLookupSearch('catclass')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%">&nbsp;&nbsp;</td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchCatClass" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" bgcolor="Teal">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultCatClass">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="dialog_lookup_caption" title="CAPTION LOOKUP" >
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookCaptionCode" name="txtLookCaptionCode" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookCaptionDesc" name="txtLookCaptionDesc" style="background:#FDFACD;"></td>
+		</tr>
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" class="navbtn" id="btnLookupCaption" name="btnLookupCaption" value=" SEARCH " onclick="fncLookupSearch('caption')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%">&nbsp;&nbsp;</td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchCaption" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="75%" align="center" height="">
+	 				<tr align="center" bgcolor="Teal">
+	 					<td width="30%" class="text_white9" height="25px"><p>CODE</p></td>
+	 					<td width="45%" class="text_white9"><p>DESCRIPTION</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultCaption">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="dialog_lookup_equi" title="EQUI LOOKUP" >
+	<table border="0" cellpadding="0" cellspacing="0" align="center" width="90%" >
+		<tr>
+			<td height="30px" align="right" width="35%">EQUI CODE &nbsp;&nbsp;</td>
+			<td align="left" width="55%">&nbsp;: <input type="text" id="txtLookEquiCode" name="txtLookEquiCode" style="background:#FDFACD;"></td>
+		</tr>
+		<!--<tr>
+			<td height="30px" align="right">DESCRIPTION &nbsp;&nbsp;</td>
+			<td align="left">&nbsp;: <input type="text" id="txtLookEquiDesc" name="txtLookEquiDesc" style="background:#FDFACD;"></td>
+		</tr>-->
+		<tr>
+			<td height="30px" align="center" colspan="2">
+				<input type="button" class="navbtn" id="btnLookupEqui" name="btnLookupEqui" value=" SEARCH " onclick="fncLookupSearch('equi')">
+			</td>
+		</tr>
+		<tr>
+	 		<td height="28" align="right" width="45%">&nbsp;&nbsp;</td>
+			<td height="28" align="left" valign="middle"><div id="dvSearchEqui" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+	 	</tr>
+	 	<tr>
+	 		<td colspan="2">
+	 			<table border="1" cellpadding="0" cellspacing="0" width="100%" align="center" height="">
+	 				<tr align="center" bgcolor="Teal">
+	 					<td width="11%" class="text_white9" height="25px"><p>EQUI</p></td>
+	 					<td width="11%" class="text_white9"><p>GENCLASS</p></td>	 								 			 								 		
+	 					<td width="11%" class="text_white9"><p>PROD GROUP</p></td>	 								 			 								 		
+	 					<td width="11%" class="text_white9"><p>ITEM TYPE</p></td>	 								 			 								 		
+	 					<td width="11%" class="text_white9"><p>CATEGORY CLASS</p></td>	 								 			 								 		
+	 					<td width="12%" class="text_white9"><p>SA CODE</p></td>	 								 			 								 		
+	 					<td width="11%" class="text_white9"><p>PRICE CLASS</p></td>	 								 			 								 		
+	 				</tr>
+	 			</table>
+	 		</td>
+	 	</tr>
+		<tr>
+			<td colspan="2">
+				<div id="divResultEqui">&nbsp;</div>
+			</td>
+		</tr>
+	</table>
+</div>

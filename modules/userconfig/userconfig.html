@@ -1,0 +1,53 @@
+<link 		href=	"/wms/css/style.css"	rel	="stylesheet">
+<link 		href=	"/wms/includes/JQUERYUI/cupertino/jquery-ui.min.css"	rel	="stylesheet">
+<script 	src	=	"/wms/includes/JQUERYUI/cupertino/external/jquery/jquery.js"></script>
+<script 	src	=	"/wms/includes/JQUERYUI/cupertino/jquery-ui.min.js"></script>
+
+<script 	src=	"/wms/includes/JQUERYUI/table_sorter/jquery.tablesorter.js"></script> 
+<link 		href=	"/wms/includes/JQUERYUI/table_sorter/themes/blue/style.css" rel="stylesheet">
+<script 	src=	"/wms/includes/JQUERYUI/Paging/paging.js"></script> 
+
+<script 	src	=	"userconfig.js"></script>
+<table width="100%" border="0"  class="Text_header" bgcolor="#fff">
+	<tr>
+		<td align="center" class="tdoptions">
+			
+			<table border="0"class="label_text">
+				<tr>
+					<td>User</td>
+					<td>
+						:&nbsp;<input type="text" id="txtUname" name="txtUname" placeholder="User's Name or Username" size="25" class="input">
+					</td>
+				</tr>
+				<tr>
+					<td>Status</td>
+					<td>
+						:&nbsp;<select id="selUstatus" name="selUstatus" class="input">
+							<option value=""><-- Please Select --></option>
+							<option value="Active">Active</option>
+							<option value="Inactive">Inactive</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+						&nbsp;&nbsp;<button type="button" id="btnsearch">Search</button>	&nbsp;	<button type="button" id="btncreate">Create</button>
+					</td>
+				</tr>
+			</table>
+			<div id="divdebug"></div>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" class="td-result">
+			<div id="divuserlist"></div>
+		</td>
+	</tr>
+</table>
+<?php include("userconfigUI.php")?>
+

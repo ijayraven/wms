@@ -1,0 +1,62 @@
+<========ERROR========>
+DATE-TIME:2017-02-15 09:51:49
+USER:
+MODULE:EXMTO_LASTCREATED
+ACTION:EXMTO_LASTCREATED
+ERROR MSG:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WMS_NEW.MTO_RTN_EXCHDR AS H ON ON H.MTONO = D.MTONO
+								 WHERE CONCAT(H.ADDD' at line 2::50
+QUERY:
+<=========END=========>
+
+<========ERROR========>
+DATE-TIME:2017-02-15 09:56:53
+USER:
+MODULE:EXMTO_LASTCREATED
+ACTION:EXMTO_LASTCREATED
+ERROR MSG:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ON H.MTONO = D.MTONO
+								 WHERE CONCAT(H.ADDDATE,' ',H.ADDTIME) = '2016-07-0' at line 2::50
+QUERY:SELECT H.`MTONO`, CONCAT(H.ADDDATE,' ',H.ADDTIME) AS MTODATE FROM WMS_NEW.MTO_RTN_EXCDTL AS D
+								 LEFT JOIN WMS_NEW.MTO_RTN_EXCHDR AS H ON ON H.MTONO = D.MTONO
+								 WHERE CONCAT(H.ADDDATE,' ',H.ADDTIME) = '2016-07-08 08:35:47' AND D.SKUNO= '411990'
+<=========END=========>
+
+<========ERROR========>
+DATE-TIME:2017-02-15 09:59:10
+USER:
+MODULE:EXMTO_CHECK
+ACTION:EXMTO_CHECK
+ERROR MSG:Query was empty::19
+QUERY:SELECT `ITEMNO` FROM WMS_LOOKUP.MTO_EX_ITEMS_DTLS WHERE `CANCELLED` != 'Y'
+<=========END=========>
+
+<========ERROR========>
+DATE-TIME:2017-02-15 12:13:09
+USER:
+MODULE:
+ACTION:
+ERROR MSG:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT CONCAT(D.`MTONO`,'-',MIX(CONCAT(H.ADDDATE,' ',H.ADDTIME))) 
+										FRO' at line 1::32
+QUERY:SELECT SELECT CONCAT(D.`MTONO`,'-',MIX(CONCAT(H.ADDDATE,' ',H.ADDTIME))) 
+										FROM  WMS_NEW.`MTO_RTN_EXCDTL` AS D
+										LEFT JOIN WMS_NEW.MTO_RTN_EXCHDR AS H ON H.`MTONO` = D.`MTONO` 
+										WHERE D.SKUNO =  '411990'
+										
+										AND H.STATUS !=  'CANCELLED'
+										GROUP BY H.MTONO
+<=========END=========>
+
+<========ERROR========>
+DATE-TIME:2017-02-15 12:13:48
+USER:
+MODULE:
+ACTION:
+ERROR MSG:FUNCTION MIX does not exist::32
+QUERY:SELECT CONCAT(D.`MTONO`,'-',MIX(CONCAT(H.ADDDATE,' ',H.ADDTIME))) 
+										FROM  WMS_NEW.`MTO_RTN_EXCDTL` AS D
+										LEFT JOIN WMS_NEW.MTO_RTN_EXCHDR AS H ON H.`MTONO` = D.`MTONO` 
+										WHERE D.SKUNO =  '411990'
+										
+										AND H.STATUS !=  'CANCELLED'
+										GROUP BY H.MTONO
+<=========END=========>
+

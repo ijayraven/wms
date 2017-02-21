@@ -1,0 +1,94 @@
+<form name="dataform" id="dataform" enctype="multipart/form-data" method="POST">
+	<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center" class="tdoptions">
+				<table border="0"class="label_text">
+					<tr>
+						<td>Customer Type</td>
+						<td>:</td>
+						<td>
+							<select id="selcusttype" name="selcusttype">
+								<option value="ALL">All</option>
+								<option value="O">Outright</option>
+								<option value="C">Concessionaire</option>
+							</select>
+							<label for="rdonbs"><input type="radio" id="rdonbs" name="rdcusttype" value="NBS">NBS</label>
+							<label for="rdotrade"><input type="radio" id="rdotrade" name="rdcusttype" value="TRADE">TRADE</label>
+						</td>
+					</tr>
+					<tr>
+						<td>Customer</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtcustno" name="txtcustno" size="10" placeholder='CODE' class="searchcust centered" >
+							<input type="text" id="txtcustname" name="txtcustname" size="35" placeholder='NAME' class="searchcust centered" >
+							<div id="divselcust" class="divsel"></div>
+							<input type="hidden" id="hdnval" name="hdnval" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>MPOS Type</td>
+						<td>:</td>
+						<td>
+							<select id="selmpostype" name="selmpostype">
+								<option value="">All</option>
+								<option value="WAREHOUSE">Warehouse</option>
+								<option value="W/STOCK">W/stock</option>
+								<option value="FORWARDERS">Forwarders</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>MPOS Date</td>
+						<td>:</td>
+						<td>
+							<input type="text" name="mposdfrom" id="mposdfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+						 	<input type="text" name="mposdto" 	id="mposdto" 	class="dates"	value="" size="10"  placeholder = "To">
+						</td>
+					</tr>
+					<tr>
+						<td>Received Date</td>
+						<td>:</td>
+						<td>
+							<input type="text" name="rcvddfrom" id="rcvddfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+						 	<input type="text" name="rcvddto" 	id="rcvddto" 	class="dates"	value="" size="10"  placeholder = "To">
+						</td>
+					</tr>
+					<tr>
+						<td>Scanned Date</td>
+						<td>:</td>
+						<td>
+							<input type="text" name="scandfrom" id="scandfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+						 	<input type="text" name="scandto" 	id="scandto" 	class="dates"	value="" size="10"  placeholder = "To">
+						</td>
+					</tr>
+					<tr>
+						<td>Report Type</td>
+						<td>:</td>
+						<td>
+							<select id="selrprttype" name="selrprttype">
+								<option value=""><-- Please Select --></option>
+								<option value="rcvd_and_scnd">Rceived and Scanned</option>
+								<option value="rcvd_not_scnd">Received and not yet Scanned</option>
+							</select>
+						</td>
+					</tr>
+					<tr>	
+						<td>&nbsp;</td>
+						<td></td>
+						<td>
+							&nbsp;<button type="button" id="btnsearch" class="btnsearch">Search</button>
+						</td>
+					</tr>
+				</table>
+				<br>
+				
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divMPOS"><?php echo getTBLprev();?></div>
+			</td>
+		</tr>
+	</table>
+</form>

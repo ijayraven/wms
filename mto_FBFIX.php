@@ -1,0 +1,54 @@
+<?php
+include($_SERVER['DOCUMENT_ROOT'].'/wms/includes/warehouse.inc.php');
+//$GETFBDTLS	=	"SELECT `TRANSNO`, `MTONO`, `ISCONFIRMED`, `SKUNO`, `DESCRIPTION`, `ITEMSTATUS`, SUM(`QTY`) AS QTY, SUM(`RECQTY`) AS RECQTY, 
+//				 SUM(`DEFQTY`) AS DEFQTY, SUM(`GOODQTY`) AS GOODQTY, SUM(`CURRONHANDQTY`) AS CURRONHANDQTY, SUM(`NEWONHANDQTY`) AS NEWONHANDQTY, 
+//				 `LOCATION`, `NO_OF_BOXES`, `NO_OF_PACK`, `BOXLABEL`, `UNITPRICE`, SUM(`GROSSAMT`) AS GROSSAMT, `CONFIRMEDBY`, `CONFIRMEDDATE`, 
+//				 `CONFIRMEDTIME` 
+//				 FROM WMS_NEW.MTO_FILLINGBINDTL2
+//				 GROUP BY `MTONO`,`SKUNO`";
+//$RSGETFBDTLS	=	$Filstar_conn->Execute($GETFBDTLS);
+//if($RSGETFBDTLS == false)
+//{
+//	echo $errmsg	=	($Filstar_conn->ErrorMsg()."::".__LINE__);
+//	exit();
+//}
+//else 
+//{
+//	while (!$RSGETFBDTLS->EOF)
+//	{
+//		$TRANSNO 		= $RSGETFBDTLS->fields["TRANSNO"]; 
+//		$MTONO 			= $RSGETFBDTLS->fields["MTONO"]; 
+//		$ISCONFIRMED 	= $RSGETFBDTLS->fields["ISCONFIRMED"]; 
+//		$SKUNO 			= $RSGETFBDTLS->fields["SKUNO"]; 
+//		$DESCRIPTION 	= addslashes($RSGETFBDTLS->fields["DESCRIPTION"]); 
+//		$ITEMSTATUS 	= $RSGETFBDTLS->fields["ITEMSTATUS"]; 
+//		$QTY 			= $RSGETFBDTLS->fields["QTY"]; 
+//		$RECQTY 		= $RSGETFBDTLS->fields["RECQTY"]; 
+//		$DEFQTY 		= $RSGETFBDTLS->fields["DEFQTY"]; 
+//		$GOODQTY 		= $RSGETFBDTLS->fields["GOODQTY"]; 
+//		$CURRONHANDQTY 	= $RSGETFBDTLS->fields["CURRONHANDQTY"]; 
+//		$NEWONHANDQTY 	= $RSGETFBDTLS->fields["NEWONHANDQTY"]; 
+//		$LOCATION 		= $RSGETFBDTLS->fields["LOCATION"]; 
+//		$NO_OF_BOXES 	= $RSGETFBDTLS->fields["NO_OF_BOXES"]; 
+//		$NO_OF_PACK 	= $RSGETFBDTLS->fields["NO_OF_PACK"]; 
+//		$BOXLABEL 		= $RSGETFBDTLS->fields["BOXLABEL"]; 
+//		$UNITPRICE 		= $RSGETFBDTLS->fields["UNITPRICE"]; 
+//		$GROSSAMT 		= $RSGETFBDTLS->fields["GROSSAMT"]; 
+//		$CONFIRMEDBY 	= $RSGETFBDTLS->fields["CONFIRMEDBY"]; 
+//		$CONFIRMEDDATE 	= $RSGETFBDTLS->fields["CONFIRMEDDATE"]; 
+//		$CONFIRMEDTIME 	= $RSGETFBDTLS->fields["CONFIRMEDTIME"]; 
+//		
+//		$INSERTFBDTLS	=	"INSERT INTO WMS_NEW.MTO_FILLINGBINDTL VALUES('$TRANSNO','$MTONO','$ISCONFIRMED','$SKUNO','$DESCRIPTION','$ITEMSTATUS','$QTY','$RECQTY',
+//							'$DEFQTY','$GOODQTY','$CURRONHANDQTY','$NEWONHANDQTY','$LOCATION','$NO_OF_BOXES','$NO_OF_PACK','$BOXLABEL',
+//							'$UNITPRICE','$GROSSAMT','$CONFIRMEDBY','$CONFIRMEDDATE','$CONFIRMEDTIME')";
+//		echo "$INSERTFBDTLS <br>";
+//		$RSINSERTFBDTLS	=	$Filstar_conn->Execute($INSERTFBDTLS);
+//		if($RSINSERTFBDTLS == false)
+//		{
+//			echo $errmsg	=	($Filstar_conn->ErrorMsg()."::".__LINE__);
+//			exit();
+//		}
+//		$RSGETFBDTLS->MoveNext();
+//	}
+//}
+?>

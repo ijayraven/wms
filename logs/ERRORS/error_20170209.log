@@ -1,0 +1,45 @@
+<========ERROR========>
+DATE-TIME:2017-02-09 03:31:51
+USER:
+MODULE:
+ACTION:
+ERROR MSG:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1::15
+QUERY:SELECT CONCAT(EDITDATE,' ',EDITTIME) FROM WMS_NEW.MTO_RTNHDR WHERE MTONO IN ()
+<=========END=========>
+
+<========ERROR========>
+DATE-TIME:2017-02-09 03:36:36
+USER:
+MODULE:
+ACTION:
+ERROR MSG:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1::15
+QUERY:SELECT CONCAT(EDITDATE,' ',EDITTIME) FROM WMS_NEW.MTO_RTNHDR WHERE MTONO IN ()
+<=========END=========>
+
+<========ERROR========>
+DATE-TIME:2017-02-09 03:39:34
+USER:
+MODULE:
+ACTION:
+ERROR MSG:FUNCTION MTONO does not exist::15
+QUERY:SELECT SUM(QTY) FROM WMS_NEW.MTO_RTN_EXCDTL WHERE MTONO (1) AND SKUNO = '034105'
+<=========END=========>
+
+<========ERROR========>
+DATE-TIME:2017-02-09 03:40:03
+USER:
+MODULE:
+ACTION:
+ERROR MSG:FUNCTION MTONO does not exist::15
+QUERY:SELECT SUM(QTY) FROM WMS_NEW.MTO_RTN_EXCDTL WHERE MTONO ('1') AND SKUNO = '034105'
+<=========END=========>
+
+<========ERROR========>
+DATE-TIME:2017-02-09 03:41:04
+USER:
+MODULE:
+ACTION:
+ERROR MSG:You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'XRTN-20170119-002''  AND `SKUNO` = '034105'' at line 1::15
+QUERY:SELECT QTY FROM WMS_NEW.MTO_RTN_EXCDTL WHERE MTONO = ''XRTN-20170119-002''  AND `SKUNO` = '034105'
+<=========END=========>
+

@@ -1,0 +1,78 @@
+<form name="dataform" id="dataform" enctype="multipart/form-data" method="POST">
+	<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center" class="tdoptions">
+				<table border="0"class="label_text">
+					<tr>
+						<td>MPOS NO.</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtmposno" name="txtmposno" placeholder="MPOS No." class="centered">
+						</td>
+					</tr>
+					<tr>
+						<td>CUSTOMER</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtcustno" name="txtcustno" size="10" placeholder='CODE' class="searchcust centered">
+							<input type="text" id="txtcustname" name="txtcustname" size="35" placeholder='NAME' class="searchcust centered">
+							<div id="divselcust" class="divsel"></div>
+							<input type="hidden" id="hdnval" name="hdnval" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>MPOS DATE</td>
+						<td>:</td>
+						<td>
+							<input type="text" name="mposdfrom" id="mposdfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+						 	<input type="text" name="mposdto" 	id="mposdto" 	class="dates"	value="" size="10"  placeholder = "To"	>
+						</td>
+					</tr>
+						<td>PICK DATE</td>
+						<td>:</td>
+						<td>
+							<input type="text" name="pickdfrom" id="pickdfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+						 	<input type="text" name="pickdto" 	id="pickdto" 	class="dates"	value="" size="10"  placeholder = "To"	>
+						</td>
+					</tr>
+					<tr>
+						<td>SCAN DATE</td>
+						<td>:</td>
+						<td>
+							<input type="text" name="scandfrom" id="scandfrom" 	class="dates" 	value="" size="10"  placeholder = "From">&nbsp;&nbsp;TO&nbsp;&nbsp;
+						 	<input type="text" name="scandto" 	id="scandto" 	class="dates"	value="" size="10"  placeholder = "To">
+						</td>
+					</tr>
+					<tr>
+						<td>STATUS</td>
+						<td>:</td>
+						<td>
+							<select id="selstatus" name="selstatus">
+								<option value=""><-- PLEASE SELECT --></option>
+								<option value="CANCELLED">CANCELLED</option>
+								<option value="NOT">NOT YET SCANNED</option>
+								<option value="SAVED">SAVED</option>
+								<option value="UPDATED">UPDATED</option>
+								<option value="POSTED">POSTED</option>
+								<option value="TRANSMITTED">TRANSMITTED</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td></td>
+						<td>
+							<input type="button" name="btnsearch" id="btnsearch" value="SEARCH" class="buttons">
+						</td>
+					</tr>
+				</table>
+				<div id="divMPOSdebug"></div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divMPOS"><?php echo getTBLprev();?></div>
+			</td>
+		</tr>
+	</table>
+</form>

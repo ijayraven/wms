@@ -1,0 +1,459 @@
+<html>
+<head>
+<title>T.G.A.S Download</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link 		href=	"/wms/includes/JQUERYUI/cupertino/jquery-ui.min.css"	rel	="stylesheet">
+<script 	src	=	"/wms/includes/JQUERYUI/cupertino/external/jquery/jquery.js"></script>
+<script 	src	=	"/wms/includes/JQUERYUI/cupertino/jquery-ui.min.js"></script>
+<script type="text/javascript" src="common/.mouseevent.js"></script>	
+<script 	src	=	"iteminquiry.js"></script>
+<style type="text/css">
+body {
+	font-size: 62.5%;
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+}
+
+table {
+	font-size: 1em;
+}
+
+.label_text {
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #000000;
+}
+
+.label_text2 {
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+
+.boxcolor{
+	background : #FDFACD;
+}
+.text_white11 {
+    font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.text_white10 {
+    font-size: 11px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.text_white9 {
+    font-size: 9px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+tr.dtl {
+	color: #336699;
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 0px;
+}
+
+tr.dtl:hover td { 
+	background: #dddddd; 
+}
+th.dtl, td.dtl { padding: 0px; text-align: center; border-bottom: 1px solid #ddd;
+}
+
+.no-close
+	.ui-dialog-titlebar-close{ display:none; }
+.textbox { 
+	-webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
+	background: transparent url(http://html-generator.weebly.com/files/theme/input-text-8.png) repeat-x; 
+	border: 1px solid #999; 
+	outline:0; 
+	height:20px; 
+	width: 150px; 
+	text-align:center;
+} 
+</style>
+</head>
+<body>
+<form id="frmInquiry" name="frmInquiry" method="post" action="<?=$_SERVER['PHP_SELF']?>">
+<!--start of contents//-->
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" align="center">
+	<tr>
+			<td class="label_text" align="center" colspan="4" height="20px"><br>
+				Item No.&nbsp;&nbsp;				 								 								 								 		
+				:&nbsp;&nbsp;<input type="text" class="textbox" id="txtSearchItemNo" name="txtSearchItemNo" onclick="$('#dvdownload').hide();" onkeypress="if(event.keyCode == 13){return fncSearch();} ; return TestChar(this,event,2)">				 		
+			</td>				 		
+		</tr>
+		
+		<tr>
+	 	<td class="label_text" align="right" height="20%" width="20%">Description&nbsp;&nbsp;</td>
+			<td align="left" class="label_text" width="30%">
+				 &nbsp;: 
+				<input type="text" id="txtDesc" name="txtDesc" onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">					 			
+			</td>	
+			<td class="label_text" align="right"  width="15%">Vendor Code&nbsp;&nbsp;</td>
+			<td class="label_text" width="35%">
+				&nbsp;:&nbsp;&nbsp;<input type="text" id="txtVendorCode" name="txtVendorCode"  onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">				 							 			
+				<button type="button" title="Vendor Lookup" id="btnVendor" name="btnVendor" onclick="fncLookup('vendor')" style="vertical-align: top;text-align:center; width:28; height:23px;" class="action_butt"><span class="ui-icon ui-icon-search"></span></button>
+			</td>				 		
+		</tr>
+		
+		<tr>
+	 	<td class="label_text" align="right" height="20%">General Class&nbsp;&nbsp;</td>
+			<td align="left" class="label_text">
+				 &nbsp;: 
+				<input type="text" id="txGenClass" name="txGenClass" onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">					 			
+				<button type="button" title="General Class Lookup" id="btnGenClass" name="btnGenClass" onclick="fncLookup('genclass')" style="vertical-align: top;text-align:center; width:28; height:23px;" class="action_butt"><span class="ui-icon ui-icon-search"></span></button>
+			</td>	
+			<td class="label_text" align="right">Category Class&nbsp;&nbsp;</td>
+			<td class="label_text">
+				&nbsp;:&nbsp;&nbsp;<input type="text" id="txtCatClass" name="txtCatClass"  onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">				 							 			
+				<button type="button" title="Category Class Lookup" id="btnCatClass" name="btnCatClass" onclick="fncLookup('catclass')" style="vertical-align: top;text-align:center; width:28; height:23px;" class="action_butt"><span class="ui-icon ui-icon-search"></span></button>
+			</td>				 		
+		</tr>
+		
+		<tr>
+	 	<td class="label_text" align="right" height="20%">Caption&nbsp;&nbsp;</td>
+			<td align="left" class="label_text">
+				 &nbsp;: 
+				<input type="text" id="txCaption" name="txCaption" onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">					 			
+				<button type="button" title="Caption Lookup" id="btnCaptionClass" name="btnCaptionClass" onclick="fncLookup('caption')" style="vertical-align: top;text-align:center; width:28; height:23px;" class="action_butt"><span class="ui-icon ui-icon-search"></span></button>
+			</td>	
+			<td class="label_text" align="right">Supplement Code&nbsp;&nbsp;</td>
+			<td class="label_text">
+				&nbsp;:&nbsp;&nbsp;<input type="text" id="txtSuppCode" name="txtSuppCode"  onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">				 							 			
+			</td>				 		
+		</tr>
+		
+		<tr>
+	 	<td class="label_text" align="right" height="20%">SA Code&nbsp;&nbsp;</td>
+			<td align="left" class="label_text">
+				 &nbsp;: 
+				<input type="text" id="txSACode" name="txSACode" onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">					 			
+				<button type="button"  title="SA Code Lookup" id="btnSACode" name="btnSACode" onclick="fncLookup('sacode')" style="vertical-align: top;text-align:center; width:28; height:23px;" class="action_butt"><span class="ui-icon ui-icon-search"></span></button>
+			</td>	
+			<td class="label_text" align="right">Item Status&nbsp;&nbsp;</td>
+			<td class="label_text">
+				&nbsp;:&nbsp;&nbsp;<input type="text" id="txtItemStat" name="txtItemStat"  onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox" >				 							 			
+				<button type="button" title="Item Status Lookup" id="btnItemStat" name="btnItemStat" onclick="fncLookup('itemstat')" style="vertical-align: top;text-align:center; width:28; height:23px;" class="action_butt"><span class="ui-icon ui-icon-search"></span></button>
+			</td>				 		
+		</tr>
+		
+		<tr>
+	 	<td class="label_text" align="right" height="20%">Price Class&nbsp;&nbsp;</td>
+			<td align="left" class="label_text">
+				 &nbsp;: 
+				<input type="text" id="txPriceClass" name="txPriceClass" onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">					 			
+				<button type="button" title="Price Class Lookup" id="btnPriceClass" name="btnPriceClass" onclick="fncLookup('priceclass')" style="vertical-align: top;text-align:center; width:28; height:23px;" class="action_butt"><span class="ui-icon ui-icon-search"></span></button>
+			</td>	
+			<td class="label_text" align="right">Item Type&nbsp;&nbsp;</td>
+			<td class="label_text">
+				&nbsp;:&nbsp;&nbsp;<input type="text" id="txtItemType" name="txtItemType"  onkeypress="if(event.keyCode == 13){return fncSearch();}" class="textbox">				 							 			
+				<button type="button" title="Item Type Lookup" id="btnItemType" name="btnItemType" onclick="fncLookup('itemtype')" style="vertical-align: top;text-align:center; width:28; height:23px;" class="action_butt"><span class="ui-icon ui-icon-search"></span></button>
+			</td>				 		
+		</tr>
+		
+		<tr>
+			<td colspan="4" align="center" class="label_text" height="25px">					 			 
+				Date Created From : <input type="text" id="txtDateFrom" name="txtDateFrom" size="10" tabindex="5" class="textbox">
+	  		&nbsp;&nbsp;&nbsp;
+	  		Date Created To : <input type="text" id="txtDateTo" name="txtDateTo" size="10" tabindex="6" class="textbox" onkeypress="if(event.keyCode == 13){return fncSearch();}">
+	  	<!--	&nbsp;&nbsp;
+	  		&nbsp;&nbsp;<img src="images/action_icon/search_button_blue.png" align="absmiddle" title="Search" class="action_butt" onclick="fncSearch();" >					 								 								 			-->
+			</td>
+		</tr>	
+		
+		<tr>
+			<td colspan="4" align="center" class="label_text" height="25px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;					 			 
+				Date Updated From : <input type="text" id="txtDateUpdateFrom" name="txtDateUpdateFrom" size="10" tabindex="5" class="textbox">
+	  		&nbsp;&nbsp;&nbsp;
+	  		Date Updated To : <input type="text" id="txtDateUpdatedTo" name="txtDateUpdatedTo" size="10" tabindex="6" class="textbox" onkeypress="if(event.keyCode == 13){return fncSearch();}">
+	  		&nbsp;&nbsp;
+	  		&nbsp;&nbsp;<img height="120%" src="../../../images/action_icon/new/magnifyingglass.png" align="absmiddle" title="Search" class="action_butt" onclick="fncSearch(); $('#dvdownload').hide();" >&nbsp;&nbsp;<img style="display:none;" height="100%"id="dvdownload"src="../../../images/action_icon/new/arrow-down.png" align="absmiddle" title="Download CSV" class="action_butt" onclick="fncDownload(); $('#dvdownload').hide();" >	 								 								 			
+			</td>
+		</tr>	
+		
+		<tr>
+			<td height="28" align="right" colspan="2" align="right"><div><img src="../../../images/images/loader_icon/ajax-loader.gif" id="spinner" align="middle"></div></td>
+		<td height="28" align="left" valign="middle" colspan="2" align="left"><div id="dvSearch" style="padding-left:10px; color: red; font-size: 12px;"></div></td>
+		</tr>		
+		
+		<tr>
+			<td colspan="4">
+				<table style="border: 2px solid white; width: 90%;"cellpadding="0" cellspacing="0" width="80%" align="center" height="23px">
+					<tr align="center" background="../../../images/action_icon/12123.png">
+						<td style="border: 2px solid white;" width="10%" class="text_white10" height="30px" ><p>ITEM NO.</p></td>
+						<td style="border: 2px solid white;" width="30%" class="text_white10"><p>DESCRIPTION</p></td>
+						<td style="border: 2px solid white;" width="10%" class="text_white10"><p>VENDOR</p></td>
+						<td style="border: 2px solid white;" width="10%" class="text_white10"><p>DATE CREATED</p></td>					 			
+						<td style="border: 2px solid white;" width="10%" class="text_white10"><p>DATE UPDATED</p></td>					 			
+						<td style="border: 2px solid white;" width="10%" class="text_white10"><p>ACTION</p></td>					 			
+					</tr>
+				</table>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="4">					 		
+				<div id="divResult" style="height:250px;"> <? echo $htm; ?></div>						 								 						 
+			</td>
+		</tr>
+		
+		<!--NAVIGATOR HERE-->				
+	<tr align="center">
+		<td colspan="8" align="center" height="40px" valign="middle">
+			<div align="center" id="mypager">																
+				<button type="button" title="First" id="first" onclick="pageNavigator(this.id);" class="action_butt"><span class="ui-icon ui-icon-seek-first"></span></button>
+				<button type="button" title="Prev" id="prev" onclick="pageNavigator(this.id);" class="action_butt"><span class="ui-icon ui-icon-triangle-1-w"></span></button>
+				<input type="text" id="search" value="Page <?=$page;?> of <?=$maxpage;?>" size="12" readonly align="top" style="vertical-align: top;text-align:center;"> 										
+				<button type="button" title="Next" id="next" onclick="pageNavigator(this.id);" class="action_butt"><span class="ui-icon ui-icon-triangle-1-e"></span></button>
+				<button type="button" title="Last" id="last" onclick="pageNavigator(this.id);" class="action_butt"><span class="ui-icon ui-icon-seek-end"></span></button>													
+			</div>								
+		</td>
+	</tr>	
+	<tr>
+		<td width="10" height="1" style="background-image:url(images/maroon_11.gif); background-repeat:no-repeat;"> </td>
+		<td height="1" style="background-image:url(images/maroon_12.gif); background-repeat:repeat-x;"> </td>
+		<td width="10" height="1" style="background-image:url(images/maroon_13.gif); background-repeat:no-repeat;"></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3">
+			<input type="hidden" id="hidOffset" title="offset">	
+			<input type="hidden" id="hidLimit" title="limit">	
+			<input type="hidden" id="hidRecCount" title="reccount">	
+			<input type="hidden" id="hidOrigDataCount" title="hidOrigDataCount">	
+			<input type="hidden" id="hidlastPage" title="lastpage">	
+			
+			<input type="hidden" id="hidEditCode" title="hidEditCode">
+			<input type="hidden" id="hidEditDesc" title="hidEditDesc">
+			<input type="hidden" id="hidDeleteCode" title="hidDeleteCode">
+			<input type="hidden" id="hidAction" title="hidAction">
+			<input type="hidden" id="hidCheck" size="100" title="hidCheck">
+						
+			<input type="hidden" id="hidUrl" value="<?=md5('fm_vendorcreation');?>">
+		</td>
+</tr>		
+</table>
+
+<div id="dialog_ok" title="ITEM INQUIRY ALERT"></div>
+<div id="dialog_ok_cancel" title="ITEM INQUIRY ALERT"></div>
+<div id="dialog_ok_reload" title="ITEM INQUIRY ALERT"></div>
+<div id="dialog_deleted_yes" title="ITEM INQUIRY ALERT"></div>
+<? include('iteminquiry_dialog.htm'); ?>
+<div id="divloader" style="display:none;" align="center"><img src="../../../images/loading/animated-loading.gif" width="100%"><p>Please wait...</p></div>
+
+
+</form>
+</body>
+</html>
+<script>
+onload();
+function onload()
+{
+	$(".navselect").selectmenu();	
+	$(".navbtn").button();	
+	$(".navbutton").button();	
+	
+	$('#txtDateFrom').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat:'yy-mm-dd'
+	});
+	$('#txtDateTo').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat:'yy-mm-dd'
+	});
+	//txtDateUpdateFrom txtDateUpdatedTo
+	$('#txtDateUpdateFrom').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat:'yy-mm-dd'
+	});
+	$('#txtDateUpdatedTo').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		dateFormat:'yy-mm-dd'
+	});
+	
+	<?	if(empty($offset)){	?>
+			$('#first').attr('disabled','disabled');
+			$('#prev').attr('disabled','disabled');		
+	<?	}else{	?>
+			$('#first').removeAttr('disabled');
+			$('#prev').removeAttr('disabled');
+	<?	}	?>
+	
+	<?  if ($offset == $lastpage){	?>
+			$('#next').attr('disabled','disabled');
+			$('#last').attr('disabled','disabled');
+	<?	}else{	?>
+			$('#next').removeAttr('disabled');
+			$('#last').removeAttr('disabled');
+	<?	}	?>
+	
+	<?	if($recCount == 0){?>
+			$('#next').attr('disabled','disabled');
+			$('#last').attr('disabled','disabled');
+	<?}?>
+
+	//$('#search').val('Page <? echo $page; ?> of <? echo $maxpage; ?>');	
+	$('#search').val('Page 0 of 0');	
+	
+	$('#hidOffset').val('<? echo $offset; ?>');
+	$('#hidLimit').val('<? echo $limit; ?>');
+	$('#hidRecCount').val('<? echo $recCount; ?>');
+	$('#hidOrigDataCount').val('<? echo $recCount; ?>');
+	$('#hidlastPage').val('<? echo $lastpage; ?>');
+	
+	$('#spinner').hide();
+	$('#spinnerVendor').hide();
+	$('#spinnerGenClass').hide();
+	$('#spinnerCatClass').hide();
+	$('#spinnerCaption').hide();
+	$('#spinnerSACode').hide();
+	$('#spinnerItemStat').hide();
+	$('#spinnerPriceClass').hide();
+	$('#spinnerItemType').hide();
+	
+	$('#txtSearchItemNo').select();
+}
+$("#divloader").dialog({
+	dialogClass: "no-close",
+	closeOnEscape:false,	
+	title:'Processing',
+	bgiframe:true, resizable:false, height: "auto", width: 250, modal:true, autoOpen: false,draggable: false,
+	overlay: { backgroundColor: '#000', opacity: 0.5 }
+	});
+$("#dialog_lookup_vendor").dialog({
+	bgiframe:true, resizable:false, height:440, modal:true, autoOpen: false, width:790,	
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$(this).dialog('close');
+			$('#divResultVendor').html('');
+			$('#txtLookVendorCode').val('');
+			$('#txtLookVendorDesc').val('');
+		}
+	}
+});
+
+$("#dialog_lookup_genclass").dialog({
+	bgiframe:true, resizable:false, height:440, modal:true, autoOpen: false, width:790,	
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$(this).dialog('close');
+			$('#divResultGenClass').html('');
+			$('#txtLookGenClassCode').val('');
+			$('#txtLookGenClassDesc').val('');
+		}
+	}
+});
+
+$("#dialog_lookup_catclass").dialog({
+	bgiframe:true, resizable:false, height:440, modal:true, autoOpen: false, width:790,	
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$(this).dialog('close');
+			$('#divResultCatClass').html('');
+			$('#txtLookCatClassCode').val('');
+			$('#txtLookCatClassDesc').val('');
+		}
+	}
+});
+
+$("#dialog_lookup_caption").dialog({
+	bgiframe:true, resizable:false, height:440, modal:true, autoOpen: false, width:790,	
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$('#divResultCaption').html('');
+			$('#txtLookCaptionCode').val('');
+			$('#txtLookCaptionDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+
+$("#dialog_lookup_sacode").dialog({
+	bgiframe:true, resizable:false, height:440, modal:true, autoOpen: false, width:790,	
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$('#divResultSACode').html('');
+			$('#txtLookSACodeCode').val('');
+			$('#txtLookSACodeDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+
+$("#dialog_lookup_itemstat").dialog({
+	bgiframe:true, resizable:false, height:440, modal:true, autoOpen: false, width:790,	
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$('#divResultItemStat').html('');
+			$('#txtLookItemStatCode').val('');
+			$('#txtLookItemStatDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+
+$("#dialog_lookup_priceclass").dialog({
+	bgiframe:true, resizable:false, height:440, modal:true, autoOpen: false, width:790,	
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$('#divResultPriceClass').html('');
+			$('#txtLookPriceClassCode').val('');
+			$('#txtLookPriceClassDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+
+$("#dialog_lookup_itemtype").dialog({
+	bgiframe:true, resizable:false, height:440, modal:true, autoOpen: false, width:790,	
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$('#divResultItemType').html('');
+			$('#txtLookItemTypeCode').val('');
+			$('#txtLookItemTypeDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+
+$("#dialog_view_item").dialog({ // height:470, 
+	bgiframe:true, resizable:false, modal:true, autoOpen: false, width:960,	dialogClass:'no-close', closeOnEscape:false, draggable:'false',
+	overlay: { backgroundColor: '#000', opacity: 0.5 },
+	buttons: {				
+		'Close': function() {
+			$('#divResultItemType').html('');
+			$('#txtLookItemTypeCode').val('');
+			$('#txtLookItemTypeDesc').val('');
+			$(this).dialog('close');
+		}
+	}
+});
+</script>

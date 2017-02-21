@@ -1,0 +1,106 @@
+<table width="100%" border="0"  class="Text_header">
+	<tr>
+		<td align="center" class="main-td tdoptions">
+			<form id="frmsearch">
+				<table border="0"class="label_text">
+					<tr>
+						<td>MPOS No.</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtmposno" name="txtmposno" placeholder="MPOS No." size="10" class="input">
+						</td>
+					</tr>
+					<tr>
+						<td>Customer Type</td>
+						<td>:</td>
+						<td>
+							<label for="rdonbs"><input type="radio" id="rdonbs" name="rdocusttype" value="NBS">NBS</label>
+							 <label for="rdotrade"><input type="radio" id="rdotrade" name="rdocusttype" value="TRADE">TRADE</label>
+						</td>
+					</tr>
+					<tr>
+						<td>Customer</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtcustno" name="txtcustno" size="10" placeholder='CODE' class="searchcust">
+								   	<input type="text" id="txtcustname" name="txtcustname" size="35" placeholder='NAME' class="searchcust">
+									<div id="divselcust" class="divsel"></div>
+									<input type="hidden" id="hdnval" name="hdnval" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>MPOS Type</td>
+						<td>:</td>
+						<td>
+							<select id="selmpostype" name="selmpostype" class="input">
+								<option value=""><-- Please Select --></option>
+								<option value="WAREHOUSE">Warehouse</option>
+								<option value="W/STOCK">W/stock</option>
+								<option value="FORWARDER">Forwarder</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Date Type</td>
+						<td>:</td>
+						<td>
+							<select id="selDtype" name="selDtype" class="input">
+								<option value=""><-- Please Select --></option>
+								<option value="docsdt">Docs Rcvd Date</option>
+								<option value="MPOSDATE">MPOS Date</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Date Range</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtdfrom" name="txtdfrom" class="dates input" placeholder="From">
+							<input type="text" id="txtdto" name="txtdto" class="dates input" placeholder="To">
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td></td>
+						<td>
+							&nbsp;
+							<button type="button" class="btnsearch">Search</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" class="td-result">
+			<div id="divmposlist">
+				<table class='tblresult tablesorter'>
+					<thead>
+						<tr class='trheader' bgcolor='Teal'>
+							<th>No.</th>
+							<th>Custosmer</th>
+							<th>MPOS No.</th>
+							<th>SR</th>
+							<th>MPOS Type</th>
+							<th>Quantity</th>
+							<th>Gross Amount</th>
+							<th>Docs Rec.Date<br>(From Financials)</th>
+							<th>Receive</th>
+						</tr>
+					<thead>
+					<tbody>
+						<tr class='trbody fnt-red'>
+							<td align='center' colspan='9'>Nothing to display.</td>
+					   </tr>
+					  </tbody>
+				</table>
+			</div>
+			<div id="divdebug"></div>
+		</td>
+	</tr>
+</table>

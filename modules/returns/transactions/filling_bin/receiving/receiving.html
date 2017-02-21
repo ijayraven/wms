@@ -1,0 +1,59 @@
+
+	<table width="100%" border="0"  class="Text_header">
+		<tr>
+			<td align="center">
+				<br>
+				<form id="frmasearch">
+				<table border="0"class="label_text">
+					<tr>
+						<td>MTO No.</td>
+						<td>:</td>
+						<td><input type="text" id="txtmtono" name="txtmtono"></td>
+					</tr>
+					<tr>
+						<td>Status</td>
+						<td>:</td>
+						<td>
+							<select id="selstatus" name="selstatus">
+								<option value="TRANSMITTED" selected>Raw Transmitted</option>
+								<option value="RECEIVED">Received</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Date Type</td>
+						<td>:</td>
+						<td>
+							<select id="selDtype" name="selDtype">
+								<option value="TRANSMITTED">Raw Transmitted Date</option>
+								<option value="RECEIVEDDATE">Received Date</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Date Range</td>
+						<td>:</td>
+						<td>
+							<input type="text" id="txtfrom" name="txtfrom" class="dates" placeholder='From'> to 
+							<input type="text" id="txtto" name="txtto" class="dates"  placeholder='To'>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>
+							<button type="button" id="btnsearch" class="btnsearch">Search</button>
+						</td>
+					</tr>
+				</table>
+				</form>
+				<br>
+				<div id="divdebug"></div>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" class="td-result">
+				<div id="divMTO"><?php echo getTblhdr(); ?></div>
+			</td>
+		</tr>
+	</table>

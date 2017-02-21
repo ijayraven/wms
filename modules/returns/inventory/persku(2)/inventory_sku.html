@@ -1,0 +1,131 @@
+<html>
+<title>SKU SUMMARY</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<style type="text/css">@import url(/wms/css/style.css);</style>
+		<style type="text/css">@import url(/wms/calendar/calendar-blue2.css);</style>
+		<script type="text/javascript" src="/wms/calendar/calendar.js"></script>
+		<script type="text/javascript" src="/wms/calendar/calendar-en.js"></script>
+		<script type="text/javascript" src="/wms/calendar/calendar-setup.js"></script>
+		<?php include ($_SERVER['DOCUMENT_ROOT'].'/wms/includes/sub_header.inc.php') ?>
+		<script type="text/javascript" src="inventory_sku.js"></script>
+	</head>
+	<body style="font-size:12px;">
+		<form name="dataform" id="dataform" enctype="multipart/form-data" method="POST">
+			<table width="100%" border="0"  class="Text_header">
+				<tr>
+					<td width="100%" align="center">
+						<table border="0"class="label_text">
+							<tr>
+								<td>ITEM</td>
+								<td>
+									:<input type="text" id="txtitemno" name="txtitemno" size="10" placeholder='ITEM NO.' class="searchitem">
+									<input type="text" id="txtitemdesc" name="txtitemdesc" size="35" placeholder='ITEM DESCRIPTION' class="searchitem">
+									<div id="divselitem" class="divsel"></div>
+									<input type="hidden" id="hdnvalitem" name="hdnvalitem" value="">
+								</td>
+							</tr>
+						</table>
+						<br>
+						<table width="100%" style="background-color:#fff;border-radius:5px;">
+							<tr style="background-color:#294570;font-weight:bold;">
+								<td id='tditem' colspan="4" align="center" class="padding5px colored  radius5pxup">
+									<a href="#lblitemno2"id="lblitemno1" class="coloredfff lblitemno">&nbsp;</a> <a href="#lblitemdesc2"id="lblitemdesc1" class="coloredfff lblitemdesc"></a>
+								</td>
+							</tr>
+							<tr style="background-color:#3b64a0;color:#fff;font-weight:bold;font-size:13px;">
+								<td align="center" class="padding5px">LOCATION</td>
+								<td align="center">ONHAND QUANTITY</td>
+								<td align="center">GOOD</td>
+								<td align="center">DEFECTIVE</td>
+							</tr>
+							<tr class="Text_header_hover trscanning">
+								<td class="padding5px colored moded">
+									SCANNING
+									<input type="hidden" id="hdnscannedmpos" name="hdnscannedmpos">
+								</td>
+								<td class="padding5px colored" id="tdSqty">0</td>
+								<td class="padding5px colored" id="tdSgood">0</td>
+								<td class="padding5px colored" id="tdSdef">0</td>
+							</tr>
+							<tr style="display:none;"id="trSdtls">
+								<td id="tdSdtls" class="tddtls" colspan="4" align="center"></td>
+							</tr>
+							<tr class="Text_header_hover trmto">
+								<td class="padding5px colored moded">
+									IN-PROCESS MTO
+									<input type="hidden" id="hdnmtompos" name="hdnmtompos">
+								</td>
+								<td class="padding5px colored" id="tdMqty">0</td>
+								<td class="padding5px colored" id="tdMgood"></td>
+								<td class="padding5px colored" id="tdMdef"></td>
+							</tr>
+							<tr style="display:none;"id="trMdtls">
+								<td id="tdMdtls" class="tddtls" colspan="4" align="center"></td>
+							</tr>
+							<tr style="display:none;"id="trSdtls">
+								<td id="tdSdtls" class="tddtls" colspan="4" align="center"></td>
+							</tr>
+							<tr class="Text_header_hover trmto">
+								<td class="padding5px colored moded">
+									POSTED MTO
+									<input type="hidden" id="hdnmtompos" name="hdnmtompos">
+								</td>
+								<td class="padding5px colored" id="tdMqty">0</td>
+								<td class="padding5px colored" id="tdMgood"></td>
+								<td class="padding5px colored" id="tdMdef"></td>
+							</tr>
+							<tr style="display:none;"id="trMdtls">
+								<td id="tdMdtls" class="tddtls" colspan="4" align="center"></td>
+							</tr>
+							<!--<tr class="Text_header_hover trraw">
+								<td class="padding5px colored">RAW</td>
+								<td class="padding5px colored" id="tdRqty">0</td>
+								<td class="padding5px colored" id="tdRgood"></td>
+								<td class="padding5px colored" id="tdRdef"></td>
+							</tr>
+							<tr style="display:none;"id="trRdtls">
+								<td id="tdRdtls" class="tddtls" colspan="4"></td>
+							</tr>
+							<tr class="Text_header_hover trpiecework">
+								<td class="padding5px colored">PIECEWORK</td>
+								<td class="padding5px colored" id="tdPqty">0</td>
+								<td class="padding5px colored" id="tdPgood"></td>
+								<td class="padding5px colored" id="tdPdef"></td>
+							</tr>
+							<tr style="display:none;"id="trPdtls">
+								<td id="tdPdtls" class="tddtls" colspan="4"></td>
+							</tr>
+							<tr class="Text_header_hover trfillingbin">
+								<td class="padding5px colored">FILLING BIN</td>
+								<td class="padding5px colored" id="tdFqty">0</td>
+								<td class="padding5px colored" id="tdFgood"></td>
+								<td class="padding5px colored" id="tdFdef"></td>
+							</tr>
+							<tr style="display:none;"id="trFdtls">
+								<td id="tdFdtls" class="tddtls" colspan="4"></td>
+							</tr>
+							<tr style="background-color:#6a90c8;font-weight:bold;">
+								<td id='tditem' colspan="4" align="center" class="padding5px colored radius5pxdn">
+									<a href="#lblitemno1"id="lblitemno2" class="coloredfff lblitemno">&nbsp;</a> <a href="#lblitemdesc1" id="lblitemdesc2" class="coloredfff lblitemdesc"></a>
+								</td>
+							</tr>-->
+						</table>
+						<br>
+						<div id="divdebug"></div>
+						<div id="divloader" style="display:none;" align="center"><img src="/wms/images/loading/animated-loading.gif" width="100%"><p>Please wait...</p></div>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+	<script>
+		$("#divloader").dialog({
+			dialogClass: "no-close",
+			closeOnEscape:false,	
+			title:'Processing',
+			bgiframe:true, resizable:false, height: "auto", width: 250, modal:true, autoOpen: false,draggable: false,
+			overlay: { backgroundColor: '#000', opacity: 0.5 }
+		});
+	</script>
+</html>
