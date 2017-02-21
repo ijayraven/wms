@@ -1,4 +1,5 @@
 <?php
+//sample change
 session_start();
 include($_SERVER['DOCUMENT_ROOT']."/public_php/config.php");
 if (empty($_SESSION['username'])) 
