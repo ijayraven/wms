@@ -22,7 +22,7 @@ $("#divmtodtls").dialog({
 	closeOnEscape:false,
 	dialogClass:"no-close dialog-1",
 	autoOpen: false,
-	width:1000,
+	width:1100,
 	buttons:
 	[
 	    {

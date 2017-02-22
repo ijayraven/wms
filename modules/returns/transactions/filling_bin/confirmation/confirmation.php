@@ -35,8 +35,11 @@ if($action == "GETMTO")
 	}
 	if($selstatus != "")
 	{
-		$STATUS_Q	=	" AND STATUS = '$selstatus'";
-		$default_Q	=	"";
+		if($selstatus != "CONFIRMED")
+		{
+			$STATUS_Q	=	" AND STATUS = '$selstatus'";
+			$default_Q	=	"";
+		}
 	}
 	if($txtfrom != "")
 	{
@@ -81,7 +84,9 @@ if($action == "GETMTO")
 				$MTONO				=	$RSGETMTO->fields["MTONO"];
 				$STATUS				=	$RSGETMTO->fields["STATUS"];
 				$RECEIVEDDATE		=	$RSGETMTO->fields["RECEIVEDDATE"];
+				
 				$notconfirmed		=	$DATASOURCE->selval($conn_255_10,"WMS_NEW","MTO_FILLINGBINDTL","SKUNO","MTONO = '$MTONO' and CONFIRMEDBY = ''");
+				
 				if($STATUS == "RECEIVED" OR $STATUS == "UPDATED")
 				{
 					$btnedit	=	"<img src='/wms/images/images/action_icon/new/compose.png' class='smallbtns editbtn tooltips' title='Edit: $MTONO' data-trxno='$MTONO'>";
@@ -110,19 +115,29 @@ if($action == "GETMTO")
 				{
 					$btntdocument	=	"";
 				}
-				
-				echo "<tr class='trbody trdtls tooltips' id='trdtl$cnt' title='Click to view details.'>
-								<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$cnt</td>
-								<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$TRANSNO</td>
-								<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$MTONO</td>
-								<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$STATUS</td>
-								<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$RECEIVEDDATE</td>
-								<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$CONFIRMEDDATE</td>
-								<td align='center'>
-									 $btnedit $btnconfirm $btnpost $btndocument
-								</td>
-						   </tr>";
+				$isconfirmed		=	true;
+				if($selstatus == "CONFIRMED" and $STATUS == "UPDATED")
+				{
+					if($notconfirmed != "")
+					{
+						$isconfirmed = false;
+					}
+				}
+				if($isconfirmed)
+				{
+					echo "<tr class='trbody trdtls tooltips' id='trdtl$cnt' title='Click to view details.'>
+									<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$cnt-$STATUS</td>
+									<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$TRANSNO</td>
+									<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$MTONO</td>
+									<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$STATUS</td>
+									<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$RECEIVEDDATE</td>
+									<td align='center' class='tddtls pntr' data-cnt='$cnt' data-mto='$MTONO'>$CONFIRMEDDATE</td>
+									<td align='center'>
+										 $btnedit $btnconfirm $btnpost $btndocument
+									</td>
+							   </tr>";
 					$cnt++;
+				}
 				$RSGETMTO->MoveNext();
 			}
 			echo "</tbody>
@@ -134,9 +149,8 @@ if($action == "GETMTO")
 if($action == "GETMTODTLS")
 {
 	$MTONO	=	$_GET["MTONO"];
-	$GETMTODETAILS	=	"SELECT `SKUNO`, `DESCRIPTION`, `QTY`, `RECQTY`, `DEFQTY`,`GOODQTY`,`UNITPRICE`, `GROSSAMT`,`CONFIRMEDBY` FROM WMS_NEW.MTO_FILLINGBINDTL
-						 WHERE `MTONO` = '$MTONO'
-						 limit 10";
+	$GETMTODETAILS	=	"SELECT `SKUNO`, `DESCRIPTION`, `QTY`, `RECQTY`, `DEFQTY`,`GOODQTY`,`UNITPRICE`,`NEWUNITPRICE`, `GROSSAMT`, `NEWGROSSAMT`,`CONFIRMEDBY`,`NEWITEMSTATUS`,`ITEMSTATUS` FROM WMS_NEW.MTO_FILLINGBINDTL
+						 WHERE `MTONO` = '$MTONO'";
 	$RSGETMTODETAILS	=	$conn_255_10->Execute($GETMTODETAILS);
 	if($RSGETMTODETAILS == false)
 	{
@@ -151,12 +165,16 @@ if($action == "GETMTODTLS")
 		while (!$RSGETMTODETAILS->EOF) {
 			$SKUNO 			= $RSGETMTODETAILS->fields["SKUNO"]; 
 			$DESCRIPTION 	= $RSGETMTODETAILS->fields["DESCRIPTION"]; 
+			$ITEMSTATUS 	= $RSGETMTODETAILS->fields["ITEMSTATUS"]; 
+			$NEWITEMSTATUS 	= $RSGETMTODETAILS->fields["NEWITEMSTATUS"]; 
 			$QTY 			= $RSGETMTODETAILS->fields["QTY"]; 
 			$RECQTY 		= $RSGETMTODETAILS->fields["RECQTY"]; 
 			$GOODQTY		= $RSGETMTODETAILS->fields["GOODQTY"]; 
 			$DEFQTY 		= $RSGETMTODETAILS->fields["DEFQTY"]; 
 			$UNITPRICE		= $RSGETMTODETAILS->fields["UNITPRICE"]; 
+			$NEWUNITPRICE	= $RSGETMTODETAILS->fields["NEWUNITPRICE"]; 
 			$GROSSAMT		= $RSGETMTODETAILS->fields["GROSSAMT"]; 
+			$NEWGROSSAMT	= $RSGETMTODETAILS->fields["NEWGROSSAMT"]; 
 			$CONFIRMEDBY	= $RSGETMTODETAILS->fields["CONFIRMEDBY"]; 
 			
 			$Location		= $DATASOURCE->selval($conn_255_10,"FDCRMSlive","itembal","whsloc","itmnbr= '{$SKUNO}'  AND house = 'FDC'"); ;
@@ -170,12 +188,16 @@ if($action == "GETMTODTLS")
 			$CLASS 			= $DATASOURCE->selval($conn_255_10,"FDCRMSlive","itemmaster","Class","ItemNo= '{$SKUNO}'");
 		
 			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["DESCRIPTION"]	=	$DESCRIPTION;
+			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["ITEMSTATUS"]	=	$ITEMSTATUS;
+			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["NEWITEMSTATUS"]	=	$NEWITEMSTATUS;
 			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["QTY"]			=	$QTY;
 			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["RECQTY"]		=	$RECQTY;
 			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["GOODQTY"]		=	$GOODQTY;
 			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["DEFQTY"]		=	$DEFQTY;
 			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["GROSSAMT"]	=	$GROSSAMT;
+			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["NEWGROSSAMT"]	=	$NEWGROSSAMT;
 			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["CONFIRMEDBY"]	=	$CONFIRMEDBY;
+			$arrMTO[$BRAND][$CATEGORY][$SUB_CATEGORY][$CLASS][$UNITPRICE][$Location][$SKUNO]["NEWUNITPRICE"]	=	$NEWUNITPRICE;
 			
 			$RSGETMTODETAILS->MoveNext();
 		}
@@ -185,6 +207,7 @@ if($action == "GETMTODTLS")
 		$totgoodqty	=	0;
 		$totdefqty	=	0;
 		$totgrossamt=	0;
+		$totnewgrossamt=	0;
 		echo "<div class='tblresul-tbltdtls-hdr cntrd' id='tdmtono' style='width:100%;padding-top:15px;'>$MTONO</div>";
 		foreach ($arrMTO as $brand_A=>$val1)
 			{
@@ -199,22 +222,26 @@ if($action == "GETMTODTLS")
 							$SUB_CATEGORY 	= $DATASOURCE->selval($conn_250_171,"FDC_PMS","SUB_CATEGORY_NEW","SUB_CATEGORY_NAME","SUB_CATEGORY_ID= '{$SUB_CATEGORY_A}'"); 
 							echo "<table class='tblresult tablesorter'>
 									<tr class='trheader'>
-										<td colspan='2'>$BRAND</td>
-										<td colspan='3'>$CATEGORY</td>
-										<td colspan='3'>$SUB_CATEGORY</td>
-										<td colspan='3'>$CLASS_A</td>
+										<td colspan='3'>$BRAND</td>
+										<td colspan='4'>$CATEGORY</td>
+										<td colspan='4'>$SUB_CATEGORY</td>
+										<td colspan='4'>$CLASS_A</td>
 									</tr>
 									<tr class='trheader'>
 										<th>No.</th>
 										<th>SKU No.</th>
 										<th>Description</th>
 										<th>Location</th>
+										<th>Item Status</th>
+										<th>New Item<br>Status</th>
 										<th>Unit Price.</th>
+										<th>New Unit<br>Price.</th>
 										<th>Quantity</th>
 										<th>Rec. Qty.</th>
 										<th>Good Qty.</th>
 										<th>Def. Qty</th>
 										<th>Gross Amt.</th>
+										<th>New Gross<br>Amt.</th>
 										<th>
 											<!-- <label for='chkAllCon'>All</label><br/>
 											<input type='checkbox' id='chkAllCon' name='chkAllCon' value='$SKUNO'> -->
@@ -231,12 +258,16 @@ if($action == "GETMTODTLS")
 									{
 										ksort($val7);
 										$DESCRIPTION	= $val7["DESCRIPTION"];
+										$ITEMSTATUS		= $val7["ITEMSTATUS"];
+										$NEWITEMSTATUS	= $val7["NEWITEMSTATUS"];
 										$QTY			= $val7["QTY"];
 										$RECQTY			= $val7["RECQTY"];
 										$GOODQTY		= $val7["GOODQTY"];
 										$DEFQTY			= $val7["DEFQTY"];
 										$GROSSAMT		= $val7["GROSSAMT"];
+										$NEWGROSSAMT	= $val7["NEWGROSSAMT"];
 										$CONFIRMEDBY	= $val7["CONFIRMEDBY"];
+										$NEWUNITPRICE	= $val7["NEWUNITPRICE"];
 										
 										if($CONFIRMEDBY != "")
 										{
@@ -255,7 +286,10 @@ if($action == "GETMTODTLS")
 													<td align='center' id='tdskuno$cnt'>$SKUNO_A</td>
 													<td align='left'>$DESCRIPTION</td>
 													<td align='center'>$LOC_A</td>
+													<td align='center'>$ITEMSTATUS</td>
+													<td align='center'>$NEWITEMSTATUS</td>
 													<td align='center' id='tdunitprice$cnt'>$UNITPRICE</td>
+													<td align='center' id='tdnewunitprice$cnt'>$NEWUNITPRICE</td>
 													<td align='center' id='tdqty$cnt'>$QTY</td>
 													<td align='center' id='tdrecqty$cnt'>$RECQTY</td>
 													<td align='center' id='tdgoodqty$cnt'>
@@ -265,6 +299,7 @@ if($action == "GETMTODTLS")
 														<input type='text' id='txtdefqty$cnt' name='txtdefqty$cnt' value='$DEFQTY' size='5' class='numbersonly txtdefqties  centered' data-curcnt='$cnt'$readonly>
 													</td>
 													<td align='right' id='tdgrossamt$cnt'>".number_format($GROSSAMT,2)."</td>
+													<td align='right' id='tdnewgrossamt$cnt'>".number_format($NEWGROSSAMT,2)."</td>
 													<td align='center' >
 														<input type='checkbox' id='chkcon$cnt' name='chkcon[]' class='chkcons' value='$SKUNO_A' $disabled $confirmed>
 													</td>
@@ -275,6 +310,7 @@ if($action == "GETMTODTLS")
 										$totgoodqty	+=	$GOODQTY;
 										$totdefqty	+=	$DEFQTY;
 										$totgrossamt+=	$GROSSAMT;
+										$totnewgrossamt+=	$NEWGROSSAMT;
 									}
 								}
 							}
@@ -283,12 +319,13 @@ if($action == "GETMTODTLS")
 				}
 			}
 		echo "<tr class='trbody bld'>
-					<td colspan='5' align='center'>TOTAL</td>
+					<td colspan='8' align='center'>TOTAL</td>
 					<td align='center' id='tdtotqty' data-totcnt='$cnt'>".number_format($totqty)."</td>
 					<td align='center' id='tdtotrecqty'>".number_format($totrecqty)."</td>
 					<td align='center' id='tdtotgoodqty'>".number_format($totgoodqty)."</td>
 					<td align='center' id='tdtotdefqty'>$totdefqty</td>
 					<td align='right' id='tdtotgrossamt'>".number_format($totgrossamt,2)."</td>
+					<td align='right' id='tdtotnewgrossamt'>".number_format($newtotgrossamt,2)."</td>
 					<td align='right'></td>
 				</tr>
 			</table>";
@@ -307,7 +344,7 @@ if($action == "SAVEQTY")
 	$conn_255_10->StartTrans();
 
 	
-	$UPDATEITEM		=	"UPDATE WMS_NEW.MTO_FILLINGBINDTL SET `RECQTY`='$txtrecqty',`GOODQTY`='$txtgoodqty', `DEFQTY`='$txtdefqty', `GROSSAMT`= $txtrecqty * `UNITPRICE`,
+	$UPDATEITEM		=	"UPDATE WMS_NEW.MTO_FILLINGBINDTL SET `RECQTY`='$txtrecqty',`GOODQTY`='$txtgoodqty', `DEFQTY`='$txtdefqty', `NEWGROSSAMT`= $txtrecqty * `NEWUNITPRICE`,
 						`UPDATED_BY`='$user', `UPDATED_DT`=NOW()
 						 WHERE `MTONO` = '$MTONO' AND `SKUNO` = '$hiditemno'";
 	$RSUPDATEITEM	=	$DATASOURCE->execQUERY("wms",$conn_255_10,$UPDATEITEM,$user,"FILLING BIN - CONFIRMATION","SAVEQTY");

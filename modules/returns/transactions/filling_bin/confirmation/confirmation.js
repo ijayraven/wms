@@ -68,20 +68,20 @@ Fb_confirmation.prototype	=	{
 		currtotrecqty	= currgoodqty + currdefqty;
 		
 		//compute current amount
-		unitprice	=  + $("#tdunitprice"+curcnt).text();
+		unitprice	=  + $("#tdnewunitprice"+curcnt).text();
 		currtotrecamt	=	parseFloat((unitprice * currtotrecqty)).toFixed(2);
 		//end compute current amount
 		
-		$("#tdgrossamt"+curcnt).text(inputAmount.getNumberWithCommas(currtotrecamt));
+		$("#tdnewgrossamt"+curcnt).text(inputAmount.getNumberWithCommas(currtotrecamt));
 		$("#tdrecqty"+curcnt).text(currtotrecqty);
 		
     	for(x; x < cnt; x++)
     	{
-    		if($("#"+source+x).val() != undefined && $("#tdgrossamt"+x).val() != undefined)
+    		if($("#"+source+x).val() != undefined && $("#tdnewgrossamt"+x).val() != undefined)
     		{
 	    		inputqty	=	+ ($("#"+source+x).val()).replace(/,/g, '');
 				recqty		=	+ ($("#tdrecqty"+x).text()).replace(/,/g, '');
-				recamt		=	+ ($("#tdgrossamt"+x).text()).replace(/,/g, '');
+				recamt		=	+ ($("#tdnewgrossamt"+x).text()).replace(/,/g, '');
 				
 				OAinputqty	=	OAinputqty	+ inputqty;
 				OAtotrecqty	=	OAtotrecqty + recqty;
@@ -90,7 +90,7 @@ Fb_confirmation.prototype	=	{
     	}
     	$("#"+destination).text(inputAmount.getNumberWithCommas(OAinputqty));
 		$("#tdtotrecqty").text(inputAmount.getNumberWithCommas(OAtotrecqty));
-		$("#tdtotgrossamt").text(inputAmount.getNumberWithCommas(parseFloat(OAtotrecamt).toFixed(2)));
+		$("#tdtotnewgrossamt").text(inputAmount.getNumberWithCommas(parseFloat(OAtotrecamt).toFixed(2)));
 					
     	Fb_confirmation_funcs.saveItem(curcnt);
 	},
