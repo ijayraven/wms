@@ -60,37 +60,43 @@ Fb_confirmation.prototype	=	{
 	getNewTotals:function(curcnt, source,destination){
 		var cnt	 			= + $("#tdtotqty").attr("data-totcnt");
     	var currecqty		= + $("#"+source+curcnt).val();
-		var currgoodqty		= 	currdefqty 	= currtotrecqty  	= 	currtotrecamt 	= 	0, 	x = 1;
-		var inputqty 		= 	recqty 		= recamt 			= 	OAinputqty		=	OAtotrecqty		= OAtotrecamt 	= 0;
-		
+		var currgoodqty		= 	currdefqty 	= currtotrecqty  	= 	currtotrecamt  	= 	currtotnewrecamt 	= 	0, 	x = 1;
+		var inputqty 		= 	recqty 		= recamt			= 	newrecamt 		= 	OAinputqty		=	OAtotrecqty		= OAtotrecamt		= OAtotnewrecamt 	= 0;
+		var unitprice,newunitprice;
 		currgoodqty 	= + $("#txtgoodqty"+curcnt).val();
 		currdefqty 		= + $("#txtdefqty"+curcnt).val();
 		currtotrecqty	= currgoodqty + currdefqty;
 		
 		//compute current amount
-		unitprice	=  + $("#tdunitprice"+curcnt).text();
-		currtotrecamt	=	parseFloat((unitprice * currtotrecqty)).toFixed(2);
+		unitprice			=  + $("#tdunitprice"+curcnt).text();
+		newunitprice		=  + $("#tdnewunitprice"+curcnt).text();
+		currtotrecamt		=	parseFloat((unitprice * currtotrecqty)).toFixed(2);
+		currtotnewrecamt	=	parseFloat((newunitprice * currtotrecqty)).toFixed(2);
 		//end compute current amount
 		
 		$("#tdgrossamt"+curcnt).text(inputAmount.getNumberWithCommas(currtotrecamt));
+		$("#tdnewgrossamt"+curcnt).text(inputAmount.getNumberWithCommas(currtotnewrecamt));
 		$("#tdrecqty"+curcnt).text(currtotrecqty);
 		
     	for(x; x < cnt; x++)
     	{
-    		if($("#"+source+x).val() != undefined && $("#tdgrossamt"+x).val() != undefined)
+    		if($("#"+source+x).val() != undefined && $("#tdnewgrossamt"+x).val() != undefined)
     		{
 	    		inputqty	=	+ ($("#"+source+x).val()).replace(/,/g, '');
 				recqty		=	+ ($("#tdrecqty"+x).text()).replace(/,/g, '');
 				recamt		=	+ ($("#tdgrossamt"+x).text()).replace(/,/g, '');
+				newrecamt		=	+ ($("#tdnewgrossamt"+x).text()).replace(/,/g, '');
 				
-				OAinputqty	=	OAinputqty	+ inputqty;
-				OAtotrecqty	=	OAtotrecqty + recqty;
-				OAtotrecamt	=	OAtotrecamt	+ recamt;
+				OAinputqty		=	OAinputqty	+ inputqty;
+				OAtotrecqty		=	OAtotrecqty + recqty;
+				OAtotrecamt		=	OAtotrecamt	+ recamt;
+				OAtotnewrecamt	=	OAtotnewrecamt	+ newrecamt;
     		}
     	}
     	$("#"+destination).text(inputAmount.getNumberWithCommas(OAinputqty));
 		$("#tdtotrecqty").text(inputAmount.getNumberWithCommas(OAtotrecqty));
 		$("#tdtotgrossamt").text(inputAmount.getNumberWithCommas(parseFloat(OAtotrecamt).toFixed(2)));
+		$("#tdtotnewgrossamt").text(inputAmount.getNumberWithCommas(parseFloat(OAtotnewrecamt).toFixed(2)));
 					
     	Fb_confirmation_funcs.saveItem(curcnt);
 	},
@@ -247,6 +253,7 @@ $("document").ready(function(){
 							if($("#tdskuno"+a).text() == itemno)
 							{
 								$("#hdncurrcnt").val(a);
+								$("#tr"+a).removeClass('updated_qty');
 								$("#tr"+a).addClass('trfound');
 								var element = document.getElementById("tr"+a);
 								element.scrollIntoView();

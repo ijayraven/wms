@@ -23,7 +23,7 @@ if($action == "GETMTO")
 	$txtfrom 	=	$_POST["txtfrom"];
 	$txtto 		=	$_POST["txtto"];
 	
-	if($txtmtono != "")
+	if($TRANS_NO != "")
 	{
 		$TRANS_NO_Q	=	" AND TRANS_NO = '$TRANS_NO'";
 		$default_Q	=	"";
@@ -185,7 +185,8 @@ if($action == "GETMTO")
 if($action == "GETMTODTLS")
 {
 	$MTONO	=	$_GET["MTONO"];
-	$GETMTODETAILS	=	"SELECT `SKUNO`, `DESCRIPTION`, `QTY`, `RECQTY`, `DEFQTY`,`GOODQTY`,`UNITPRICE`, `GROSSAMT` FROM WMS_NEW.MTO_PCWDTL
+	$GETMTODETAILS	=	"SELECT `SKUNO`, `DESCRIPTION`, `QTY`, `RECQTY`, `DEFQTY`,`GOODQTY`,`UNITPRICE`, `ITEMSTATUS`, `GROSSAMT`,`UPDATED_BY` 
+						 FROM WMS_NEW.MTO_PCWDTL
 						 WHERE `MTONO` = '$MTONO'";
 	$RSGETMTODETAILS	=	$conn_255_10->Execute($GETMTODETAILS);
 	if($RSGETMTODETAILS == false)
@@ -201,14 +202,18 @@ if($action == "GETMTODTLS")
 				<thead>
 					<tr class='trheader tooltips' title='Click and hold drag icon then drag to move column.'>
 						<th>No.</th>
-						<th class='tdaccept'><div class='some-handle'></div>SKU No.</th>
-						<th class='tdaccept'><div class='some-handle'></div>Description</th>
-						<th class='tdaccept'><div class='some-handle'></div>Unit Price.</th>
-						<th class=''>Quantity</th>
-						<th class=''>Rec. Qty.</th>
-						<th class=''>Good Qty.</th>
-						<th class=''>Def. Qty</th>
-						<th class=''>Gross Amt.</th>
+						<th>SKU No.</th>
+						<th>Description</th>
+						<th>Item Status</th>
+						<th>New Item<br>Status</th>
+						<th>Unit Price</th>
+						<th>New Unit<br>Price</th>
+						<th>Quantity</th>
+						<th>Rec. Qty.</th>
+						<th>Good Qty.</th>
+						<th>Def. Qty</th>
+						<th>Gross Amt.</th>
+						<th>New Gross<br>Amt.</th>
 					</tr>
 				<thead>
 				<tbody>";
@@ -227,17 +232,42 @@ if($action == "GETMTODTLS")
 			$DEFQTY 		= $RSGETMTODETAILS->fields["DEFQTY"]; 
 			$UNITPRICE		= $RSGETMTODETAILS->fields["UNITPRICE"]; 
 			$GROSSAMT		= $RSGETMTODETAILS->fields["GROSSAMT"]; 
+			$ITEMSTATUS		= $RSGETMTODETAILS->fields["ITEMSTATUS"]; 
+			$UPDATED_BY		= $RSGETMTODETAILS->fields["UPDATED_BY"]; 
+			$NEWITEMSTATUS	= $DATASOURCE->selval($conn_255_10,"FDCRMSlive","itemmaster","DeptNo","ItemNo = '$SKUNO'");
+			$NEWUNITPRICE	= $DATASOURCE->selval($conn_255_10,"FDCRMSlive","itemmaster","UnitPrice","ItemNo = '$SKUNO'");
+			$NEWGROSSAMT	= $NEWUNITPRICE * $RECQTY;
 			
-			echo "<tr class='trbody'  id='tr$cnt'>
+			if($NEWITEMSTATUS == "P")
+			{
+				$prime_color	=	"class='primeitem'";
+			}
+			else 
+			{
+				$prime_color	=	"";
+			}
+			if($UPDATED_BY != "")
+			{
+				$updatedbg	=	"updated_qty";
+			}
+			else 
+			{
+				$updatedbg	=	"";
+			}
+			echo "<tr class='trbody $updatedbg'  id='tr$cnt'>
 						<td align='center'>$cnt</td>
 						<td align='center' id='tdskuno$cnt'>$SKUNO</td>
 						<td align='left'>$DESCRIPTION</td>
+						<td align='center'>$ITEMSTATUS</td>
+						<td align='center'$prime_color>$NEWITEMSTATUS</td>
 						<td align='center' id='tdunitprice$cnt'>$UNITPRICE</td>
+						<td align='center' id='tdnewunitprice$cnt'>$NEWUNITPRICE</td>
 						<td align='center' id='tdqty$cnt'>$QTY</td>
 						<td align='center' id='tdrecqty$cnt'>$RECQTY</td>
 						<td align='center' id='tdgoodqty$cnt'>$GOODQTY</td>
 						<td align='center' id='tddefqty$cnt'>$DEFQTY</td>
 						<td align='right' id='tdgrossamt$cnt'>".number_format($GROSSAMT,2)."</td>
+						<td align='right' id='tdnewgrossamt$cnt'>".number_format($NEWGROSSAMT,2)."</td>
 				   </tr>";
 			$cnt++;
 			$totqty		+=	$QTY;
@@ -245,17 +275,19 @@ if($action == "GETMTODTLS")
 			$totgoodqty	+=	$GOODQTY;
 			$totdefqty	+=	$DEFQTY;
 			$totgrossamt+=	$GROSSAMT;
+			$totnewgrossamt+=	$NEWGROSSAMT;
 			$RSGETMTODETAILS->MoveNext();
 		}
 		echo "</tbody> 
 			  <tfoot>
 				<tr class='trbody bld'>
-					<td colspan='4' align='center'>TOTAL</td>
+					<td colspan='7' align='center'>TOTAL</td>
 					<td align='center' id='tdtotqty' data-totcnt='$cnt'>".number_format($totqty)."</td>
 					<td align='center' id='tdtotrecqty'>".number_format($totrecqty)."</td>
 					<td align='center' id='tdtotgoodqty'>".number_format($totgoodqty)."</td>
 					<td align='center' id='tdtotdefqty'>$totdefqty</td>
 					<td align='right' id='tdtotgrossamt'>".number_format($totgrossamt,2)."</td>
+					<td align='right' id='tdtotnewgrossamt'>".number_format($totnewgrossamt,2)."</td>
 				</tr>
 			  </tfoot>	
 			</table>";
@@ -431,12 +463,16 @@ if($action == "UPDATEITEM")
 	$GOODQTY	= $_POST["GOODQTY"];
 	$DEFQTY		= $_POST["DEFQTY"];
 	$GROSSAMT	= str_replace(",","",$_POST["GROSSAMT"]);
-	
+	$NEWGROSSAMT	= str_replace(",","",$_POST["NEWGROSSAMT"]);
+	$NEWITEMSTATUS	= $DATASOURCE->selval($conn_255_10,"FDCRMSlive","itemmaster","DeptNo","ItemNo = '$ITEMNO'");
+	$NEWUNITPRICE	= $DATASOURCE->selval($conn_255_10,"FDCRMSlive","itemmaster","UnitPrice","ItemNo = '$ITEMNO'");
+			
 	$UPDATEHDR	=	"UPDATE WMS_NEW.MTO_PCWHDR SET `STATUS` = 'UPDATED', `UPDATED_DT`=NOW(), `UPDATED_BY`='$user'
 					 WHERE MTONO = '$MTONO'";
 	$RSUPDATEHDR=	$DATASOURCE->execQUERY("wms",$conn_255_10,$UPDATEHDR,$user,"PIECEWORKER MTO UPDATE","UPDATEITEM");
 	
-	$UPDATEITEM	=	"UPDATE WMS_NEW.MTO_PCWDTL SET `RECQTY` = '$RECQTY', `GOODQTY`='$GOODQTY', `DEFQTY`='$DEFQTY', `GROSSAMT`='$GROSSAMT', `UPDATED_BY`='$user', `UPDATED_DT`=NOW()
+	$UPDATEITEM	=	"UPDATE WMS_NEW.MTO_PCWDTL SET `RECQTY` = '$RECQTY', `GOODQTY`='$GOODQTY', `DEFQTY`='$DEFQTY', `GROSSAMT`='$GROSSAMT', `NEWGROSSAMT`='$NEWGROSSAMT', 
+					`UPDATED_BY`='$user', `UPDATED_DT`=NOW(),`NEWITEMSTATUS` = '$NEWITEMSTATUS', `NEWUNITPRICE` = '$NEWUNITPRICE'
 					 WHERE MTONO = '$MTONO' AND SKUNO = '$ITEMNO'";
 	$RSUPDATEITEM	=	$DATASOURCE->execQUERY("wms",$conn_255_10,$UPDATEITEM,$user,"PIECEWORKER MTO UPDATE","UPDATEITEM");
 	if($RSUPDATEITEM)

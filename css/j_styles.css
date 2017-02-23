@@ -485,3 +485,7 @@ ul
 {
 	z-index:1000000 !important;
 }
+.updated_qty td
+{
+	background-color:#ccff99;
+}

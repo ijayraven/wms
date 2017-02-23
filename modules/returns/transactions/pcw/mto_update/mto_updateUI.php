@@ -143,14 +143,17 @@ $("#divscanning").dialog({
 						var totcnt		=	$("#tdtotqty").attr("data-totcnt");
 						var a			=	$("#hdncurrcnt").val();
 						var unitprice	=	+ $("#tdunitprice"+a).text();
+						var newunitprice=	+ $("#tdnewunitprice"+a).text();
 						var grossamt	=	unitprice * recqty;
+						var newgrossamt	=	newunitprice * recqty;
 						$("#tdrecqty"+a).text(recqty);
 						$("#tdgoodqty"+a).text(goodqty);
 						$("#tddefqty"+a).text(defqty);
 						$("#tdgrossamt"+a).text(inputAmount.getNumberWithCommas(grossamt.toFixed(2)));
+						$("#tdnewgrossamt"+a).text(inputAmount.getNumberWithCommas(newgrossamt.toFixed(2)));
 						PCW_mto_update_funcs.getTotals(a);
 						$.ajax({
-							data		:{ITEMNO:itemno, MTONO:mtono, RECQTY:recqty, GOODQTY:goodqty, DEFQTY:defqty,GROSSAMT:grossamt},
+							data		:{ITEMNO:itemno, MTONO:mtono, RECQTY:recqty, GOODQTY:goodqty, DEFQTY:defqty,GROSSAMT:grossamt,NEWGROSSAMT:newgrossamt},
 							type		:"POST",
 							url			:"mto_update.php?action=UPDATEITEM",
 							beforeSend	:function(){

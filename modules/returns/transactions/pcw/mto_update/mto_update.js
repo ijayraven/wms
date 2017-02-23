@@ -40,21 +40,6 @@ Fb_mto_update.prototype	=	{
 					$("#divmtodtls").html(response);
 					$("#divloader").dialog("close");
 					$("#divmtodtls").dialog("open");
-					$(".tooltips").tooltip();
-					$(".tablesorter").dragtable({
-						excludeFooter:true,
-						dragaccept:'.tdaccept',
-						dragHandle:'.some-handle'
-					});
-					$(".tablesorter").tablesorter({
-						sortList: [[0,0]],
-					 	headers: { 
-					 				5: { sorter: false },
-					 				6: { sorter: false },
-					 				7: { sorter: false },
-					 				8: { sorter: false }
-					 			}
-					});
 					$("#divscanning").dialog("open");
 				}
 			});
@@ -201,11 +186,12 @@ Fb_mto_update.prototype	=	{
 	getTotals:function(cnt)
 	{
 		
-		var totcnt		=	$("#tdtotqty").attr("data-totcnt");
-		var totdefqty	=	0;
-		var totrecqty	=	0;
-		var totgoodqty	=	0;
-		var totgrossamt	=	0;
+		var totcnt			=	$("#tdtotqty").attr("data-totcnt");
+		var totdefqty		=	0;
+		var totrecqty		=	0;
+		var totgoodqty		=	0;
+		var totgrossamt		=	0;
+		var totnewgrossamt	=	0;
 		
 		totdefqty = inputAmount.sumupByLoop(totcnt-1,"tddefqty","text","-");
 		$("#tdtotdefqty").text(inputAmount.getNumberWithCommas(totdefqty));
@@ -215,6 +201,9 @@ Fb_mto_update.prototype	=	{
 
 		totgrossamt = inputAmount.sumupByLoop(totcnt-1,"tdgrossamt","text","");
 		$("#tdtotgrossamt").text(inputAmount.getNumberWithCommas(totgrossamt.toFixed(2)));
+
+		totnewgrossamt = inputAmount.sumupByLoop(totcnt-1,"tdnewgrossamt","text","");
+		$("#tdtotnewgrossamt").text(inputAmount.getNumberWithCommas(totnewgrossamt.toFixed(2)));
 		
 		totgoodqty = inputAmount.sumupByLoop(totcnt-1,"tdgoodqty","text","-");
 		$("#tdtotgoodqty").text(inputAmount.getNumberWithCommas(totgoodqty));
@@ -349,6 +338,7 @@ $("document").ready(function(){
 							if($("#tdskuno"+a).text() == itemno)
 							{
 								$("#hdncurrcnt").val(a);
+								$("#tr"+a).removeClass('updated_qty');
 								$("#tr"+a).addClass('trfound');
 								var element = document.getElementById("tr"+a);
 								element.scrollIntoView();
