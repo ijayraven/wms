@@ -98,9 +98,6 @@ if($action == "GETMTO")
 				if($STATUS == "UPDATED" AND $notconfirmed == "")
 				{
 					$STATUS		=	"CONFIRMED";
-				}
-				if($STATUS == "CONFIRMED")
-				{
 					$btnpost	=	"<img src='/wms/images/images/action_icon/new/mail.png' class='smallbtns postbtn tooltips' title='Post: $MTONO' data-trxno='$MTONO'>";
 				}
 				else 
