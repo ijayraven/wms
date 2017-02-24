@@ -14,7 +14,8 @@ if (empty($_SESSION['username']))
 	echo "<script>location='index.php'</script>";
 }
 $conn			=	ADONewConnection('mysqlt');
-$dbconn10		=	$conn->Connect('192.168.255.10','root','');
+//$dbconn10		=	$conn->Connect('192.168.255.10','root','');
+$dbconn10		=	$conn->Connect('localhost','root','');
 if ($dbconn10 == false) 
 {
 	echo $conn172->ErrorMsg()."::".__LINE__;
