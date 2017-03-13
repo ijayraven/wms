@@ -1,6 +1,6 @@
 <?php
 /**
-* Module Name	:	FILLING BIN - CONFIRMATION
+* Module Name	:	PIECEWORK-DEFECTIVE MTO
 * Date Created	:	
 * @author Jay-R A. Magdaluyo <ijayraven@gmail.com>
 */
@@ -13,7 +13,7 @@ session_start();
 <!--		<script src="/wms/script/disabled.js" language="JavaScript" type="text/javascript"></script>-->
 		<script src="/public_js/jquery-3.0.0.min.js"></script>
 		<?php include($_SERVER['DOCUMENT_ROOT']."/public_js/jsUI.php");?>
-		<script type="text/javascript" src="confirmation.js"></script>
+		<script type="text/javascript" src="pcw_def_mto.js"></script>
 		<link rel="stylesheet"	href="/wms/css/j_styles.css">
 		<link rel="stylesheet"	href="/wms/css/style.css">
 	</head>
@@ -36,7 +36,7 @@ session_start();
 			                <td class="mid-left"></td>
 			                <td class="td-content">
 								<?php
-									include($_SERVER['DOCUMENT_ROOT'].'/wms/modules/returns/transactions/filling_bin/confirmation/confirmation.php');
+									include('pcw_def_mto.php');
 								?>
 							</td>
 			                <td class="mid-right"></td>

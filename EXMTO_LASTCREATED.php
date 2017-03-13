@@ -11,9 +11,7 @@ include($_SERVER['DOCUMENT_ROOT']."/public_js/jsUI.php");
 	}
 	else 
 	{
-		$GETMTOITEMS	=	"SELECT `ITEMNO` FROM WMS_LOOKUP.MTO_EX_ITEMS_DTLS WHERE `CANCELLED` != 'Y' 
-		
-		";
+//		$GETMTOITEMS	=	"SELECT `ITEMNO` FROM WMS_LOOKUP.MTO_EX_ITEMS_DTLS WHERE `CANCELLED` != 'Y' ";
 
 		$RSGETMTOITEMS	=	$conn_255_10->Execute($GETMTOITEMS);
 		if($RSGETMTOITEMS == false)
@@ -102,62 +100,62 @@ include($_SERVER['DOCUMENT_ROOT']."/public_js/jsUI.php");
 					$REGMIN_ADDDATE	=	"";
 					if($REGMTO != "")
 					{
-						$STATUS				=	"EXCLUSIVE MTO CREATED with Regular MTO.";
-						$REGMAX_MTONO		=	$DATASOURCE->selvalqry($conn_255_10,"SELECT MAX( D.`MTONO` ) AS MTONO
-																				FROM  WMS_NEW.`MTO_RTNDTL` AS D
-																				LEFT JOIN WMS_NEW.MTO_RTNHDR AS H ON H.`MTONO` = D.`MTONO` 
-																				WHERE  `SKUNO` =  '$ITEMNO'
-																				AND H.STATUS !=  'CANCELLED'", 
-																				"MTONO");
-						$REGMAX_ADDDATE		=	$DATASOURCE->selvalqry($conn_255_10,"SELECT CONCAT(H.ADDDATE,' ',H.ADDTIME) AS MAXDATE
-																				FROM  WMS_NEW.`MTO_RTNDTL` AS D
-																				LEFT JOIN WMS_NEW.MTO_RTNHDR AS H ON H.`MTONO` = D.`MTONO` 
-																				WHERE D.SKUNO =  '$ITEMNO'
-																				AND H.STATUS !=  'CANCELLED' AND D.`MTONO` = '$REGMAX_MTONO'", 
-																				"MAXDATE");
-						$REGMIN_MTONO		=	$DATASOURCE->selvalqry($conn_255_10,"SELECT MIN( D.`MTONO` ) AS MTONO
-																				FROM  WMS_NEW.`MTO_RTNDTL` AS D
-																				LEFT JOIN WMS_NEW.MTO_RTNHDR AS H ON H.`MTONO` = D.`MTONO` 
-																				WHERE  `SKUNO` =  '$ITEMNO'
-																				AND H.STATUS !=  'CANCELLED'", 
-																				"MTONO");
-						$REGMIN_ADDDATE		=	$DATASOURCE->selvalqry($conn_255_10,"SELECT CONCAT(H.ADDDATE,' ',H.ADDTIME) AS MINDATE
-																				FROM  WMS_NEW.`MTO_RTNDTL` AS D
-																				LEFT JOIN WMS_NEW.MTO_RTNHDR AS H ON H.`MTONO` = D.`MTONO` 
-																				WHERE D.SKUNO =  '$ITEMNO'
-																				AND H.STATUS !=  'CANCELLED' AND D.`MTONO` = '$REGMIN_MTONO'", 
-																				"MINDATE");
-						if($REGMAX_ADDDATE < $MIN_ADDDATE)
-						{
-							$cnt++;
-							echo "<tr  align='center'>
-									<td>$cnt</td>
-									<td>$ITEMNO</td>
-									<td>$STATUS</td>
-									<TD>$MIN_MTONO</TD>
-									<TD>$MIN_ADDDATE</TD>
-									<TD>$MAX_MTONO</TD>
-									<TD>$MAX_ADDDATE</TD>
-									<td>$REGMIN_MTONO</td>
-									<td>$REGMIN_ADDDATE</td>
-									<td>$REGMAX_MTONO</td>
-									<td>$REGMAX_ADDDATE</td>
-								</tr>";
+//						$STATUS				=	"EXCLUSIVE MTO CREATED with Regular MTO.";
+//						$REGMAX_MTONO		=	$DATASOURCE->selvalqry($conn_255_10,"SELECT MAX( D.`MTONO` ) AS MTONO
+//																				FROM  WMS_NEW.`MTO_RTNDTL` AS D
+//																				LEFT JOIN WMS_NEW.MTO_RTNHDR AS H ON H.`MTONO` = D.`MTONO` 
+//																				WHERE  `SKUNO` =  '$ITEMNO'
+//																				AND H.STATUS !=  'CANCELLED'", 
+//																				"MTONO");
+//						$REGMAX_ADDDATE		=	$DATASOURCE->selvalqry($conn_255_10,"SELECT CONCAT(H.ADDDATE,' ',H.ADDTIME) AS MAXDATE
+//																				FROM  WMS_NEW.`MTO_RTNDTL` AS D
+//																				LEFT JOIN WMS_NEW.MTO_RTNHDR AS H ON H.`MTONO` = D.`MTONO` 
+//																				WHERE D.SKUNO =  '$ITEMNO'
+//																				AND H.STATUS !=  'CANCELLED' AND D.`MTONO` = '$REGMAX_MTONO'", 
+//																				"MAXDATE");
+//						$REGMIN_MTONO		=	$DATASOURCE->selvalqry($conn_255_10,"SELECT MIN( D.`MTONO` ) AS MTONO
+//																				FROM  WMS_NEW.`MTO_RTNDTL` AS D
+//																				LEFT JOIN WMS_NEW.MTO_RTNHDR AS H ON H.`MTONO` = D.`MTONO` 
+//																				WHERE  `SKUNO` =  '$ITEMNO'
+//																				AND H.STATUS !=  'CANCELLED'", 
+//																				"MTONO");
+//						$REGMIN_ADDDATE		=	$DATASOURCE->selvalqry($conn_255_10,"SELECT CONCAT(H.ADDDATE,' ',H.ADDTIME) AS MINDATE
+//																				FROM  WMS_NEW.`MTO_RTNDTL` AS D
+//																				LEFT JOIN WMS_NEW.MTO_RTNHDR AS H ON H.`MTONO` = D.`MTONO` 
+//																				WHERE D.SKUNO =  '$ITEMNO'
+//																				AND H.STATUS !=  'CANCELLED' AND D.`MTONO` = '$REGMIN_MTONO'", 
+//																				"MINDATE");
+//						if($REGMAX_ADDDATE < $MIN_ADDDATE)
+//						{
+//							$cnt++;
+//							echo "<tr  align='center'>
+//									<td>$cnt</td>
+//									<td>$ITEMNO</td>
+//									<td>$STATUS</td>
+//									<TD>$MIN_MTONO</TD>
+//									<TD>$MIN_ADDDATE</TD>
+//									<TD>$MAX_MTONO</TD>
+//									<TD>$MAX_ADDDATE</TD>
+//									<td>$REGMIN_MTONO</td>
+//									<td>$REGMIN_ADDDATE</td>
+//									<td>$REGMAX_MTONO</td>
+//									<td>$REGMAX_ADDDATE</td>
+//								</tr>";
 							
-							echo $UPDATE_SCANDATADTL	=	"UPDATE WMS_NEW.SCANDATA_DTL AS D LEFT JOIN WMS_NEW.SCANDATA_HDR AS H ON H.`MPOSNO` = D.`MPOSNO`
-													 SET D.`MTOEXCREATED` = 'Y'
-													 WHERE `SKUNO` = '$ITEMNO' AND ITEMSTATUS != 'P' AND D.STATUS = 'POSTED' AND
-													 CONCAT(H.POSTEDDATE,' ',H.POSTEDTIME) BETWEEN '$REGMAX_ADDDATE' AND '$MIN_ADDDATE'";
-							$RSUPDATE_SCANDATADTL=	$DATASOURCE->execQUERY("wms",$conn_255_10,$UPDATE_SCANDATADTL,$user,"EXMTO_CHECK","EXMTO_CHECK");
-						}
-					}
-					else 
-					{
-//						$UPDATE_SCANDATADTL	=	"UPDATE WMS_NEW.SCANDATA_DTL AS D LEFT JOIN WMS_NEW.SCANDATA_HDR AS H ON H.`MPOSNO` = D.`MPOSNO`
+//						echo "<br>".$UPDATE_SCANDATADTL	=	"UPDATE WMS_NEW.SCANDATA_DTL AS D LEFT JOIN WMS_NEW.SCANDATA_HDR AS H ON H.`MPOSNO` = D.`MPOSNO`
 //												 SET D.`MTOEXCREATED` = 'Y'
 //												 WHERE `SKUNO` = '$ITEMNO' AND ITEMSTATUS != 'P' AND D.STATUS = 'POSTED' AND
 //												 CONCAT(H.POSTEDDATE,' ',H.POSTEDTIME) < '$MAX_ADDDATE'";
 //						$RSUPDATE_SCANDATADTL=	$DATASOURCE->execQUERY("wms",$conn_255_10,$UPDATE_SCANDATADTL,$user,"EXMTO_CHECK","EXMTO_CHECK");
+//						}
+					}
+					else 
+					{
+						$UPDATE_SCANDATADTL	=	"UPDATE WMS_NEW.SCANDATA_DTL AS D LEFT JOIN WMS_NEW.SCANDATA_HDR AS H ON H.`MPOSNO` = D.`MPOSNO`
+												 SET D.`MTOEXCREATED` = 'Y'
+												 WHERE `SKUNO` = '$ITEMNO' AND ITEMSTATUS != 'P' AND D.STATUS = 'POSTED' AND
+												 CONCAT(H.POSTEDDATE,' ',H.POSTEDTIME) < '$MAX_ADDDATE'";
+						$RSUPDATE_SCANDATADTL=	$DATASOURCE->execQUERY("wms",$conn_255_10,$UPDATE_SCANDATADTL,$user,"EXMTO_CHECK","EXMTO_CHECK");
 					}
 				}
 				$RSGETMTOITEMS->MoveNext();

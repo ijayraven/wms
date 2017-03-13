@@ -10,9 +10,9 @@ $TRXNO	=	$_GET["TRXNO"];
 
 $TODAY	=	date("Y-m-d");
 $time	=	date("H:i:s A");
-$MTOdate=	$global_func->Select_val($Filstar_conn,"WMS_NEW","MTO_PRIMESTOCK_HDR","POSTDATE","MTONO= '{$TRXNO}'");
+$MTOdate=	$global_func->Select_val($Filstar_conn,"WMS_NEW","MTO_DEFECTIVE_HDR","POSTDATE","MTONO= '{$TRXNO}'");
 
-$GETMTO	=	"SELECT * FROM WMS_NEW.MTO_PRIMESTOCK_DTL WHERE MTONO = '{$TRXNO}'";
+$GETMTO	=	"SELECT * FROM WMS_NEW. MTO_DEFECTIVE_DTL WHERE MTONO = '{$TRXNO}'";
 $RSGETMTO	=	$Filstar_conn->Execute($GETMTO);
 if($RSGETMTO == false)
 {
@@ -47,13 +47,13 @@ else
 				{
 					global $MTOdate,$destination,$global_func,$Filstar_conn;
 					$TRXNO	=	$_GET["TRXNO"];
-					$boxqty	=	__Global_Func::Select_val($Filstar_conn,"WMS_NEW","MTO_PRIMESTOCK_DTL","NO_OF_BOXES","MTONO= '{$TRXNO}'");
-					$pkgqty	=	__Global_Func::Select_val($Filstar_conn,"WMS_NEW","MTO_PRIMESTOCK_DTL","NO_OF_PACK","MTONO= '{$TRXNO}'");
+					$boxqty	=	__Global_Func::Select_val($Filstar_conn,"WMS_NEW"," MTO_DEFECTIVE_DTL","NO_OF_BOXES","MTONO= '{$TRXNO}'");
+					$pkgqty	=	__Global_Func::Select_val($Filstar_conn,"WMS_NEW"," MTO_DEFECTIVE_DTL","NO_OF_PACK","MTONO= '{$TRXNO}'");
 					
 					
 					$this->SetFont('Times','B',12);
 					$this->SetX(10);$this->Cell(0,5,'FILSTAR DISTRIBUTORS CORPORATION',0,1,'C');
-					$this->SetX(10);$this->Cell(0,5,'Material Transfer Order for Return Repacking(Prime Items)',0,1,'C');
+					$this->SetX(10);$this->Cell(0,5,'Material Transfer Order for Return Repacking(Defective Items)',0,1,'C');
 					$this->SetX(10);$this->Cell(0,5,'Listing Summary',0,1,'C');
 					$this->SetFont('Times','',12);
 					$this->SetX(10);$this->Cell(0,5,"M.T.O. Number: $TRXNO",0,1,'C');
@@ -98,7 +98,7 @@ else
 					$totqty		+=	$val1["SKUQTY"];
 					$pdf->SetX(5);$pdf->Cell(12,5,$cnt,1,0,'C');
 					$pdf->SetX(17);$pdf->Cell(20,5,$SKUNO,1,0,'C');
-					$pdf->SetX(37);$pdf->Cell(123,5,substr($DESCRIPTION,0,45),1,0,'L');
+					$pdf->SetX(37);$pdf->Cell(123,5,$DESCRIPTION,1,0,'L');
 					$pdf->SetX(160);$pdf->Cell(45,5,number_format($val1["SKUQTY"]),1,1,'C');
 					$cnt++;
 				}
@@ -108,17 +108,17 @@ else
 //			$pdf->SetX(120);$pdf->Cell(20,5,number_format($totqty),1,0,'C');
 //			$pdf->SetX(140);$pdf->Cell(20,5,number_format($totboxes),1,0,'C');
 			$pdf->SetX(160);$pdf->Cell(45,5,number_format($totqty),1,1,'C');
-			
+
 			$pdf->AddPage();
 			
-			$RANGESCANFROM	=	$global_func->Select_val($Filstar_conn,"WMS_NEW","MTO_PRIMESTOCK_DTL","RANGESCANFROM","MTONO= '{$TRXNO}'");
-			$RANGESCANTO	=	$global_func->Select_val($Filstar_conn,"WMS_NEW","MTO_PRIMESTOCK_DTL","RANGESCANTO","MTONO= '{$TRXNO}'");
+			$RANGESCANFROM	=	$global_func->Select_val($Filstar_conn,"WMS_NEW","MTO_DEFECTIVE_DTL","RANGESCANFROM","MTONO= '{$TRXNO}'");
+			$RANGESCANTO	=	$global_func->Select_val($Filstar_conn,"WMS_NEW","MTO_DEFECTIVE_DTL","RANGESCANTO","MTONO= '{$TRXNO}'");
 
-			$GETPRIMEITEMS	=	"SELECT D.MPOSNO, D.`SKUNO`, D.`ITEMSTATUS`, D.`POSTEDQTY`, D.`DEFECTIVEQTY`, D.`DELBY`,D.MTOPRIMECREATED FROM WMS_NEW.SCANDATA_DTL AS D
+			$GETPRIMEITEMS	=	"SELECT D.MPOSNO, D.`SKUNO`, D.`ITEMSTATUS`, SUM(D.`DEFECTIVEQTY`) AS QTY, D.`DELBY`,D.MTODEFCREATED FROM WMS_NEW.SCANDATA_DTL AS D
 								 LEFT JOIN WMS_NEW.SCANDATA_HDR AS H ON H.MPOSNO = D.MPOSNO 
-								 WHERE H.POSTEDBY != '' AND D.`DELBY` = '' AND D.`ITEMSTATUS` = 'P' AND H.SCANDATE BETWEEN '$RANGESCANFROM' AND '$RANGESCANTO'
-								 AND D.MTOPRIMECREATED = 'Y' AND (D.`POSTEDQTY` - D.`DEFECTIVEQTY`) != 0
-								 GROUP BY D.`MPOSNO`";
+								 WHERE H.POSTEDBY != '' AND D.`DELBY` = '' AND H.SCANDATE BETWEEN '$RANGESCANFROM' AND '$RANGESCANTO'
+								 AND D.MTODEFCREATED = 'Y' AND D.`DEFECTIVEQTY` != 0
+								 GROUP BY D.`SKUNO`";
 			$RSGETPRIMEITEMS	=	$Filstar_conn->Execute($GETPRIMEITEMS);
 			if($RSGETPRIMEITEMS == false)
 			{
@@ -127,23 +127,13 @@ else
 			else 
 			{
 				$pdf->SetX(5);$pdf->Cell(0,5,"MPOS LIST",0,1,'C');
+				$pdf->SetX(5);$pdf->Cell(20,5,"NO.",0,0,'C');
+				$pdf->SetX(25);$pdf->Cell(20,5,"MPOS NO.",0,1,'C');
 				$cnt	=	1;
-				$counter=	1;
-				$x		=	10;
 				while (!$RSGETPRIMEITEMS->EOF) {
-					$MPOSNO			=	$RSGETPRIMEITEMS->fields["MPOSNO"];
-					
-					$pdf->SetX($x);$pdf->Cell(30,5,"$cnt. $MPOSNO",0,0,"L");
-					if($counter == 6){
-						$pdf->SetX($x);$pdf->Cell(30,5,"",0,1,"L");
-						$counter = 1;
-						$x = 10;
-					}
-					else 
-					{
-						$x += 30;
-						$counter++;
-					}
+					$MPOSNO	=	$RSGETPRIMEITEMS->fields["MPOSNO"];
+					$pdf->SetX(5);$pdf->Cell(20,5,$cnt,0,0,'C');
+					$pdf->SetX(25);$pdf->Cell(20,5,$MPOSNO,0,1,'C');
 					$cnt++;
 					$RSGETPRIMEITEMS->MoveNext();
 				}

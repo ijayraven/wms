@@ -123,9 +123,9 @@ else
 			else 
 			{
 				$pdf->SetX(5);$pdf->Cell(0,5,"MPOS LIST",0,1,'C');
-				$pdf->SetX(5);$pdf->Cell(20,5,"NO.",0,0,'C');
-				$pdf->SetX(25);$pdf->Cell(20,5,"MPOS NO.",0,1,'C');
 				$cnt	=	1;
+				$counter=	1;
+				$x		=	10;
 				while (!$RSGETEXITEMS->EOF) {
 					$SKUNO	=	$RSGETEXITEMS->fields["SKUNO"];
 					
@@ -141,13 +141,23 @@ else
 					}
 					else 
 					{
+						
 						while (!$RSGETMPOS->EOF) {
 							$MPOSNO		=	$RSGETMPOS->fields["MPOSNO"];
 							$SCANNEDQTY	=	$RSGETMPOS->fields["SCANNEDQTY"];
 							if($SCANNEDQTY > 0)
 							{
-								$pdf->SetX(5);$pdf->Cell(20,5,$cnt,0,0,'C');
-								$pdf->SetX(25);$pdf->Cell(20,5,$MPOSNO,0,1,'C');
+								$pdf->SetX($x);$pdf->Cell(30,5,"$cnt. $MPOSNO",0,0,"L");
+								if($counter == 6){
+									$pdf->SetX($x);$pdf->Cell(30,5,"",0,1,"L");
+									$counter = 1;
+									$x = 10;
+								}
+								else 
+								{
+									$x += 30;
+									$counter++;
+								}
 								$cnt++;
 							}
 							$RSGETMPOS->MoveNext(); 
